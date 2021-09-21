@@ -1,4 +1,7 @@
-/* eslint-disable */
+/* Amplify Params - DO NOT EDIT
+	ENV
+	REGION
+Amplify Params - DO NOT EDIT *//* eslint-disable */
 /*
  * Copyright 2019-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
