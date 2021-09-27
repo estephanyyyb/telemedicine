@@ -5,7 +5,7 @@
     "env": {
       "Type": "String"
     },
-    "authtelemedicinebcbb0ab7UserPoolId": { 
+    "authtelemedicinebcbb0ab7UserPoolId": {
       "Default": "us-east-1_RSuJCQd2b"
     },
     "deploymentBucketName": {
@@ -58,7 +58,7 @@
               "Ref": "env"
             },
             "GROUP": "admin",
-            "USERPOOL": "us-east-1_RSuJCQd2b"           
+            "USERPOOL": "us-east-1_RSuJCQd2b"
           }
         },
         "Role": {
