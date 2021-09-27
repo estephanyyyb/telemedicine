@@ -200,11 +200,7 @@ const App = () => {
               <div className="dot"><img id="center-icons2" src={meetingIcon} alt="" width="110" height="100" className="d-inline-block align-text-top" />
               </div>
               <div className="textbox">
-<<<<<<< HEAD
               <a href="https://video-app-tele.herokuapp.com/" target="_blank"><h3>Start a Meeting</h3></a>
-=======
-                <a href="https://video-app-tele.herokuapp.com/" target="_blank"><h3>Start a Meeting</h3></a>
->>>>>>> c5337f1a1d394b6679f8352c08fe24cd7ecd0e17
               </div>
             </div>
           </div>
