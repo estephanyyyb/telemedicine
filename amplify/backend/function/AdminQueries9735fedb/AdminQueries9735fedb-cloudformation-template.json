@@ -5,9 +5,8 @@
     "env": {
       "Type": "String"
     },
-    "authtelemedicinebcbb0ab7UserPoolId": {
-      "Type": "String",
-      "Default": "authtelemedicinebcbb0ab7UserPoolId"
+    "authtelemedicinebcbb0ab7UserPoolId": { 
+      "Default": "us-east-1_RSuJCQd2b"
     },
     "deploymentBucketName": {
       "Type": "String"
@@ -59,12 +58,7 @@
               "Ref": "env"
             },
             "GROUP": "admin",
-            "USERPOOL": {
-              "Ref": "authtelemedicinebcbb0ab7UserPoolId"
-            },
-            "REGION": {
-              "Ref": "AWS::Region"
-            }
+            "USERPOOL": "us-east-1_RSuJCQd2b"           
           }
         },
         "Role": {
