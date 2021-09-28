@@ -22,6 +22,8 @@ import {
   Link,
 } from "react-router-dom";
 
+import Reports from './components/Reports';
+
 Amplify.configure(awsconfig);
 
 const App = () => {
@@ -96,7 +98,7 @@ const App = () => {
             </div>
           </nav>
           <div className="d-flex justify-content-evenly navbar primary-color">
-            <button type="button" className="btn btn-secondary btn-sm">Reports</button>
+            <button type="button" className="btn btn-secondary btn-sm" href="reports">Reports</button>
             <button type="button" className="btn btn-secondary btn-sm">Messages</button>
             <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
             <button type="button" className="btn btn-secondary btn-sm">Recordings</button>
@@ -110,7 +112,7 @@ const App = () => {
               <div className="dot"><img id="center-icons1" src={reportsIcon} alt="" width="130" height="100" />
               </div>
               <div className="textbox">
-                <a href="#"><h3>View your reports</h3></a>
+                <a href="reports"><h3>View your reports</h3></a>
               </div>
             </div>
           </div>
@@ -168,7 +170,7 @@ const App = () => {
             </div>
           </nav>
           <div className="d-flex justify-content-evenly navbar primary-color">
-            <button type="button" className="btn btn-secondary btn-sm">Reports</button>
+            <button type="button" className="btn btn-secondary btn-sm" href="reports">Reports</button>
             <button type="button" className="btn btn-secondary btn-sm">Messages</button>
             <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
             <button type="button" className="btn btn-secondary btn-sm">Recordings</button>
@@ -182,7 +184,7 @@ const App = () => {
               <div className="dot"><img id="center-icons1" src={reportsIcon} alt="" width="130" height="100" />
               </div>
               <div className="textbox">
-                <a href="#"><h3>View your reports</h3></a>
+                <a href="reports"><h3>View your reports</h3></a>
               </div>
             </div>
           </div>
@@ -245,7 +247,7 @@ const App = () => {
             </div>
           </nav>
           <div className="d-flex justify-content-evenly navbar primary-color">
-            <button type="button" className="btn btn-secondary btn-sm">Reports</button>
+            <button type="button" className="btn btn-secondary btn-sm" href="reports">Reports</button>
             <button type="button" className="btn btn-secondary btn-sm">Messages</button>
             <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
             <span className="navbar-brand mb-0 h1"></span>
@@ -321,7 +323,7 @@ const App = () => {
             </div>
           </nav>
           <div className="d-flex justify-content-evenly navbar primary-color">
-            <button type="button" className="btn btn-secondary btn-sm">Reports</button>
+            <button type="button" className="btn btn-secondary btn-sm" href="reports">Reports</button>
             <button type="button" className="btn btn-secondary btn-sm">Messages</button>
             <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
             <button type="button" className="btn btn-secondary btn-sm">Recordings</button>
@@ -390,7 +392,7 @@ const App = () => {
             </div>
           </nav>
           <div className="d-flex justify-content-evenly navbar primary-color">
-            <button type="button" className="btn btn-secondary btn-sm">Reports</button>
+            <button type="button" className="btn btn-secondary btn-sm" href="reports">Reports</button>
             <button type="button" className="btn btn-secondary btn-sm">Messages</button>
             <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
             <button type="button" className="btn btn-secondary btn-sm">Recordings</button>
@@ -404,7 +406,7 @@ const App = () => {
               <div className="dot"><img id="center-icons1" src={reportsIcon} alt="" width="130" height="100" />
               </div>
               <div className="textbox">
-                <a href="#"><h3>View your reports</h3></a>
+                <a href="reports"><h3>View your reports</h3></a>
               </div>
             </div>
           </div>
@@ -448,6 +450,9 @@ const App = () => {
           </Route>
           <Route path="/about">
             <About />
+          </Route>
+          <Route path="/reports">
+            <Reports />
           </Route>
         </Switch>
       </div>
