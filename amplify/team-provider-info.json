@@ -15,12 +15,6 @@
       "auth": {
         "telemedicinebcbb0ab7": {},
         "userPoolGroups": {}
-      },
-      "function": {
-        "AdminQueries9735fedb": {
-          "deploymentBucketName": "amplify-amplify44813ea7b89b4-staging-01655-deployment",
-          "s3Key": "amplify-builds/AdminQueries9735fedb-7247684e704357785537-build.zip"
-        }
       }
     }
   },

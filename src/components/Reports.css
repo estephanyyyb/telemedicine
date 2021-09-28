@@ -29,10 +29,12 @@
 		'labs labs labs notes notes notes'
 		'labs labs labs notes notes notes';
 	grid-gap: 10px;
-	background-color: blue;
+	background-color: black;
 	padding: 10px;
-	width:98.5vw;
-	height: 97vh;
+	/* width:98.5vw; */
+	width: 100%;
+	/* height: 97vh; */
+	height: 100%;
 }
 
 .grid-container > div {

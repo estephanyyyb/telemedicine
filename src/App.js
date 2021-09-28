@@ -40,26 +40,26 @@ const App = () => {
     });
   }, []);
 
-  let nextToken;
-  async function listUsers(limit) {
-    let apiName = 'AdminQueries';
-    let path = '/listUsersInGroup';
-    let myInit = {
-      queryStringParameters: {
-        "groupname": "doctors",
-        "limit": limit,
-        "token": nextToken,
-      },
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `${(await Auth.currentSession()).getAccessToken().getJwtToken()}`
-      },
-    }
-    const { NextToken, ...rest } = await API.get(apiName, path, myInit);
-    nextToken = NextToken;
-    console.log("data", rest);
-    return rest;
-  }
+  // let nextToken;
+  // async function listUsers(limit) {
+  //   let apiName = 'AdminQueries';
+  //   let path = '/listUsersInGroup';
+  //   let myInit = {
+  //     queryStringParameters: {
+  //       "groupname": "doctors",
+  //       "limit": limit,
+  //       "token": nextToken,
+  //     },
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       Authorization: `${(await Auth.currentSession()).getAccessToken().getJwtToken()}`
+  //     },
+  //   }
+  //   const { NextToken, ...rest } = await API.get(apiName, path, myInit);
+  //   nextToken = NextToken;
+  //   console.log("data", rest);
+  //   return rest;
+  // }
 
 
   function Home() {
@@ -362,7 +362,6 @@ const App = () => {
           <div className="lower-buttons-container">
             <button type="button" className="btn btn-secondary lower-buttons">View Patients</button>
             <button type="button" className="btn btn-secondary lower-buttons">View Staff</button>
-            <button type="button" className="btn btn-secondary lower-buttons" onClick={() => listUsers(10)}>List Patients</button>
           </div>
         </div>
       )
@@ -448,9 +447,9 @@ const App = () => {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/about">
+          {/* <Route path="/about">
             <About />
-          </Route>
+          </Route> */}
           <Route path="/reports">
             <Reports />
           </Route>
@@ -492,18 +491,9 @@ const App = () => {
             inputProps: { required: true }
           },
           {
-            type: "gender",
-            label: "What gender are you?"
-          },
-          {
             type: "birthdate",
             label: "Enter your birthdate: ",
             placeholder: "MM/DD/YYYY"
-          },
-          {
-            type: "ethnicty",
-            label: "Enter your ethnicity ",
-            placeholder: "Enter ethnicity..."
           },
           {
             type: "email",
@@ -532,18 +522,6 @@ const App = () => {
   )
 
 }
-
-
-
-function About() {
-  return (
-
-    <div>
-      <h2>About</h2>
-    </div>
-  );
-}
-
 export default App;
 
 
