@@ -5,11 +5,9 @@ import styles from './Reports.css';
 function PatientReport (props) {
 
     const fullName = props.patientData.given_name + " " + (props.patientData.middle_name? props.patientData.middle_name + " " : " ") + props.patientData.family_name;
-    console.log("hello from reports! user:" );
-    console.log(props.patientData);
 	const age = calculate_age(props.patientData.birthdate);
     const id = props.patientData.sub;
-
+    const patientNotes = null;
     return (
         <div className="styles" className="grid-container">
           <div className="item1">
@@ -57,6 +55,13 @@ function PatientReport (props) {
           <div className="item4">
               <h4><strong>Labs</strong></h4>
               <table className="labs-table center">
+                  <thead>
+                        <tr>
+                            <td>Lab Type</td>
+                            <td>Value</td>
+                            <td>Unit</td>
+                        </tr>
+                  </thead>
                   <tbody>
                         <tr>
                             <td>Sodium</td>
@@ -114,18 +119,26 @@ function PatientReport (props) {
           </div>
           
           <div className="item5">
-              <h4><strong>Medications</strong></h4>
-              <form>
-                  <label htmlFor="m&d">Medication & Dosage</label>
-                  <input type="text" id="m&d" name="m&d"/>
-                  <input type="submit" value="Submit"/>
-              </form>
+                <h4><strong>Medications</strong></h4>
+                <table className="labs-table center">
+                    <thead>
+                        <tr>
+                            <td>Medication</td>
+                            <td>Dosage</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Med Name</td>
+                            <td>Dose data</td>
+                        </tr>
+                  </tbody>
+              </table>
           </div>
           
           <div className="item6">
               <h4><strong>Notes</strong></h4>
-              <textarea defaultValue="Enter notes here.." name="notesTextBox" cols="50" rows="10"></textarea><br/>
-              <input type="submit" value="Submit"/>
+              <span name="notesTextBox" cols="50" rows="10">{patientNotes ? patientNotes : "No current notes"}</span><br/>
           </div>
       </div>
   );

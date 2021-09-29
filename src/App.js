@@ -450,6 +450,9 @@ const App = () => {
           {/* <Route path="/about">
             <About />
           </Route> */}
+          <Route path={"/report/patient/" + user.attributes.sub}>
+            <PatientReport patientData={user.attributes} />
+          </Route>
           <Route path="/reports">
             <ListOfPatientReports/>
           </Route>
