@@ -22,7 +22,9 @@ import {
   Link,
 } from "react-router-dom";
 
-import Reports from './components/Reports';
+import Reports from './components/reports/Reports';
+import PatientReport from './components/reports/PatientReport';
+import ListOfPatientReports from './components/reports/ListOfPatientReports';
 
 Amplify.configure(awsconfig);
 
@@ -75,7 +77,6 @@ const App = () => {
     else if (user['signInUserSession']['accessToken']['payload']['cognito:groups'][0] === 'patients') {
       return (
         <div className="App">
-
           <nav className="navbar navbar-light bg-light">
             <div className="container-fluid">
               <a className="navbar-brand brand-text" href="#">
@@ -98,7 +99,7 @@ const App = () => {
             </div>
           </nav>
           <div className="d-flex justify-content-evenly navbar primary-color">
-            <button type="button" className="btn btn-secondary btn-sm" href="reports">Reports</button>
+            <button type="button" className="btn btn-secondary btn-sm" href={"/report/patient/" + user.attributes.sub}>Reports</button>
             <button type="button" className="btn btn-secondary btn-sm">Messages</button>
             <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
             <button type="button" className="btn btn-secondary btn-sm">Recordings</button>
@@ -112,7 +113,7 @@ const App = () => {
               <div className="dot"><img id="center-icons1" src={reportsIcon} alt="" width="130" height="100" />
               </div>
               <div className="textbox">
-                <a href="reports"><h3>View your reports</h3></a>
+                <a href={"/report/patient/" + user.attributes.sub}><h3>View your reports</h3></a>
               </div>
             </div>
           </div>
@@ -170,7 +171,7 @@ const App = () => {
             </div>
           </nav>
           <div className="d-flex justify-content-evenly navbar primary-color">
-            <button type="button" className="btn btn-secondary btn-sm" href="reports">Reports</button>
+            <button type="button" className="btn btn-secondary btn-sm" href="/reports">Reports</button>
             <button type="button" className="btn btn-secondary btn-sm">Messages</button>
             <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
             <button type="button" className="btn btn-secondary btn-sm">Recordings</button>
@@ -184,7 +185,7 @@ const App = () => {
               <div className="dot"><img id="center-icons1" src={reportsIcon} alt="" width="130" height="100" />
               </div>
               <div className="textbox">
-                <a href="reports"><h3>View your reports</h3></a>
+                <a href="/reports"><h3>View your reports</h3></a>
               </div>
             </div>
           </div>
@@ -247,7 +248,7 @@ const App = () => {
             </div>
           </nav>
           <div className="d-flex justify-content-evenly navbar primary-color">
-            <button type="button" className="btn btn-secondary btn-sm" href="reports">Reports</button>
+            <button type="button" className="btn btn-secondary btn-sm" href="/reports">Reports</button>
             <button type="button" className="btn btn-secondary btn-sm">Messages</button>
             <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
             <span className="navbar-brand mb-0 h1"></span>
@@ -260,7 +261,7 @@ const App = () => {
               <div className="dot"><img id="center-icons1" src={reportsIcon} alt="" width="130" height="100" />
               </div>
               <div className="textbox">
-                <a href="#"><h3>View Patient Reports</h3></a>
+                <a href="/reports"><h3>View Patient Reports</h3></a>
               </div>
             </div>
           </div>
@@ -323,7 +324,7 @@ const App = () => {
             </div>
           </nav>
           <div className="d-flex justify-content-evenly navbar primary-color">
-            <button type="button" className="btn btn-secondary btn-sm" href="reports">Reports</button>
+            <button type="button" className="btn btn-secondary btn-sm" href="/reports">Reports</button>
             <button type="button" className="btn btn-secondary btn-sm">Messages</button>
             <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
             <button type="button" className="btn btn-secondary btn-sm">Recordings</button>
@@ -439,7 +440,6 @@ const App = () => {
 
   console.log('USER', user)
   var userGroup = '';
-
   return authState === AuthState.SignedIn && user ? (
     <Router>
       <div>
@@ -451,7 +451,7 @@ const App = () => {
             <About />
           </Route> */}
           <Route path="/reports">
-            <Reports />
+            <ListOfPatientReports/>
           </Route>
         </Switch>
       </div>
