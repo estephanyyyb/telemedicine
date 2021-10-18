@@ -451,10 +451,10 @@ const App = () => {
             <About />
           </Route> */}
           <Route path={"/report/patient/" + user.attributes.sub}>
-            <PatientReport patientData={user.attributes} />
+            <PatientReport currentUser={user} patientData={user.attributes} />
           </Route>
           <Route path="/reports">
-            <ListOfPatientReports/>
+            <ListOfPatientReports sortFields={['FIRSTNAME', 'LASTNAME']} currentUser={user}/>
           </Route>
         </Switch>
       </div>
