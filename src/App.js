@@ -25,6 +25,7 @@ import {
 import Reports from './components/reports/Reports';
 import PatientReport from './components/reports/PatientReport';
 import ListOfPatientReports from './components/reports/ListOfPatientReports';
+import DoctorRecordings from './components/DoctorRecordings';
 
 Amplify.configure(awsconfig);
 
@@ -447,6 +448,7 @@ const App = () => {
           <Route exact path="/">
             <Home />
           </Route>
+          <Route exact path="/recordings" component={DoctorRecordings} />
           {/* <Route path="/about">
             <About />
           </Route> */}
