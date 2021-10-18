@@ -5,9 +5,7 @@ const AWS = require('aws-sdk');
 function DoctorRecordings() {
     const bucketName = "recordings.senior-project";
     const bucketRegion = "us-east-1";
-    const IdentityPoolId = "us-east-1:21b804bd-e47e-42f5-8136-2a7b09b105ff";
-    const accessKeyId = "AKIAUIO6XERTOB4Y2HMZ";
-    const secretAccessKey = "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";
+    //securely add AWS access keys somehwere...
     const file = "/Users/cadelanktree/Downloads/myTemp.txt";
 
     AWS.config.update({
