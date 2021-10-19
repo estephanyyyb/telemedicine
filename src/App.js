@@ -464,19 +464,20 @@ const App = () => {
         slot="forgot-password"
         usernameAlias="email">
       </AmplifyForgotPassword>
-      <AmplifySignUp headerText="To create an account, fill out all of the slots on this page." slot="sign-up"
-        usernameAlias="email"
-        formFields={[
+      <AmplifySignUp headerText="Create your Account"
+      slot="sign-up"
+      usernameAlias="email"
+      formFields={[
           {
             type: "given_name",
             label: "Enter your First Name: ",
-            placeholder: "First Name...",
+            placeholder: "Enter your first name",
             inputProps: { required: true }
           },
           {
             type: "middle_name",
-            label: "Enter your Middle Name: ",
-            placeholder: "middle name..."
+            label: "Enter your Middle Name (optional): ",
+            placeholder: "Enter your first name"
           },
           {
             type: "family_name",
@@ -486,41 +487,51 @@ const App = () => {
           },
           {
             type: "address",
-            label: "Enter your Address: ",
-            placeholder: "Address..",
+            label: "Enter your Address:  ",
+            placeholder: "Enter your address",
             inputProps: { required: true }
           },
           {
             type: "birthdate",
-            label: "Enter your birthdate: ",
-            placeholder: "MM/DD/YYYY"
+            label: "Enter your Birthdate: ",
+            placeholder: "MM/DD/YYYY",
+            inputProps: {required: true}
           },
           {
             type: "email",
-            label: "Enter Email Address: ",
-            placeholder: "Type your email...",
+            label: "Enter you Email Address: ",
+            placeholder: "Enter your email",
             inputProps: { required: true, autocomplete: "username" },
           },
           {
             type: "password",
-            label: "Enter Password: ",
-            placeholder: "Type password...",
+            label: "Enter Password:",
+            placeholder: "Enter password",
             inputProps: { required: true, autocomplete: "new-password" },
           },
           {
             type: "phone_number",
-            label: "Enter Phone Number: ",
+            label: "Enter you Phone Number: ",
+            inputProps: {required: true}
           },
-        ]} />
+          {
+            type: "gender",
+            label: "Gender: ",
+            placeholder: "Enter: female, male, or other",
+            inputProps: {required: true},
+          },
+          {
+            
+          }
+      ]}/>
       <AmplifySignIn headerText="Welcome to Telemedicine!" slot="sign-in" usernameAlias="email" />
       <AmplifySignOut buttonText="LOGOUT" />
       <AmplifyConfirmSignUp usernameAlias="email"
-        headerText="Custom confirm Sign Up"
+        headerText="Confirm Sign Up"
         slot="confirm-sign-up">
       </AmplifyConfirmSignUp>
     </AmplifyAuthenticator>
   )
-
 }
 export default App;
 
