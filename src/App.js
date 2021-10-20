@@ -23,6 +23,7 @@ import {
 } from "react-router-dom";
 
 import Reports from './components/Reports';
+import Profile from './components/Profile';
 
 Amplify.configure(awsconfig);
 
@@ -46,7 +47,7 @@ const App = () => {
     let path = '/listUsersInGroup';
     let myInit = {
       queryStringParameters: {
-        "groupname": "doctors",
+        "groupname": "patients",
         "limit": limit,
         "token": nextToken,
       },
@@ -66,7 +67,7 @@ const App = () => {
     if (user['signInUserSession']['accessToken']['payload']['cognito:groups'] === undefined) {
       return (
         <div className="position-absolute top-0 start-50 translate-middle-x square-unauthorized h1-unauthorized">
-          <h1>Unauthorized User</h1>
+          <h1>... Waiting for Unauthorization ...</h1>
           <br />
           <AmplifySignOut />
         </div>
@@ -88,7 +89,7 @@ const App = () => {
                   <span className="visually-hidden">Toggle Dropdown</span>
                 </button>
                 <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="#">Profile</a></li>
+                  <li><a className="dropdown-item" href="profile">Profile</a></li>
                   <li><a className="dropdown-item" href="#">Another action</a></li>
                   <li><a className="dropdown-item" href="#">Something else here</a></li>
                   <li><hr className="dropdown-divider"></hr></li>
@@ -453,6 +454,9 @@ const App = () => {
           </Route>
           <Route path="/reports">
             <Reports />
+          </Route>
+          <Route path="/profile">
+            <Profile />
           </Route>
         </Switch>
       </div>
