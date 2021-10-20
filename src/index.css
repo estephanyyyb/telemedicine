@@ -22,6 +22,8 @@ code {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* temporary color */
+  /* background-color: #7EC4E8; */
   background-color: white;
 
 }
