@@ -517,12 +517,9 @@ const App = () => {
           {
             type: "gender",
             label: "Gender: ",
-            placeholder: "Enter: female, male, or other",
+            placeholder: "female, male, or other",
             inputProps: {required: true},
           },
-          {
-            
-          }
       ]}/>
       <AmplifySignIn headerText="Welcome to Telemedicine!" slot="sign-in" usernameAlias="email" />
       <AmplifySignOut buttonText="LOGOUT" />
