@@ -27,6 +27,7 @@ import PatientReport from './components/reports/PatientReport';
 import ListOfPatientReports from './components/reports/ListOfPatientReports';
 import DoctorRecordings from './components/recordings/DoctorRecordings';
 import Appointments from './components/appointments/Appointments';
+import Profile from './components/Profile';
 
 Amplify.configure(awsconfig);
 
@@ -44,33 +45,11 @@ const App = () => {
     });
   }, []);
 
-  // let nextToken;
-  // async function listUsers(limit) {
-  //   let apiName = 'AdminQueries';
-  //   let path = '/listUsersInGroup';
-  //   let myInit = {
-  //     queryStringParameters: {
-  //       "groupname": "doctors",
-  //       "limit": limit,
-  //       "token": nextToken,
-  //     },
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       Authorization: `${(await Auth.currentSession()).getAccessToken().getJwtToken()}`
-  //     },
-  //   }
-  //   const { NextToken, ...rest } = await API.get(apiName, path, myInit);
-  //   nextToken = NextToken;
-  //   console.log("data", rest);
-  //   return rest;
-  // }
-
-
   function Home() {
     if (user['signInUserSession']['accessToken']['payload']['cognito:groups'] === undefined) {
       return (
         <div className="position-absolute top-0 start-50 translate-middle-x square-unauthorized h1-unauthorized">
-          <h1>Unauthorized User</h1>
+          <h1>... Waiting for Unauthorization ...</h1>
           <br />
           <AmplifySignOut />
         </div>
@@ -91,7 +70,7 @@ const App = () => {
                   <span className="visually-hidden">Toggle Dropdown</span>
                 </button>
                 <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="#">Profile</a></li>
+                  <li><a className="dropdown-item" href="profile">Profile</a></li>
                   <li><a className="dropdown-item" href="#">Another action</a></li>
                   <li><a className="dropdown-item" href="#">Something else here</a></li>
                   <li><hr className="dropdown-divider"></hr></li>
@@ -461,6 +440,9 @@ const App = () => {
           </Route>
           <Route path="/appointments">
             <Appointments currentUser={user} patientData={user.attributes} />
+          </Route>
+          <Route path="/profile">
+            <Profile />
           </Route>
         </Switch>
       </div>
