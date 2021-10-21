@@ -25,7 +25,7 @@ import {
 import Reports from './components/reports/Reports';
 import PatientReport from './components/reports/PatientReport';
 import ListOfPatientReports from './components/reports/ListOfPatientReports';
-import DoctorRecordings from './components/DoctorRecordings';
+import DoctorRecordings from './components/recordings/DoctorRecordings';
 
 Amplify.configure(awsconfig);
 
