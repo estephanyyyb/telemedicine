@@ -31,7 +31,9 @@
         "gender",
         "given_name",
         "phone_number",
-        "email"
+        "email",
+        "custom:ethnicity",
+        "custom:martial-status"
     ],
     "userpoolClientReadAttributes": [
         "address",
@@ -41,7 +43,9 @@
         "middle_name",
         "gender",
         "given_name",
-        "phone_number"
+        "phone_number",
+        "custom:ethnicity",
+        "custom:martial-status"
     ],
     "userpoolClientLambdaRole": "telemebcbb0ab7_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": true,
