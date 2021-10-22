@@ -45,11 +45,38 @@ const App = () => {
     });
   }, []);
 
+<<<<<<< HEAD
+=======
+  let nextToken;
+  async function listUsers(limit) {
+    let apiName = 'AdminQueries';
+    let path = '/listUsersInGroup';
+    let myInit = {
+      queryStringParameters: {
+        "groupname": "patients",
+        "limit": limit,
+        "token": nextToken,
+      },
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `${(await Auth.currentSession()).getAccessToken().getJwtToken()}`
+      },
+    }
+    const { NextToken, ...rest } = await API.get(apiName, path, myInit);
+    nextToken = NextToken;
+    console.log("data", rest);
+    return rest;
+  }
+
+  
+
+
+>>>>>>> added profile component
   function Home() {
-    if (user['signInUserSession']['accessToken']['payload']['cognito:groups'] === undefined) {
+    if ((user['signInUserSession']['accessToken']['payload']['cognito:groups'] === undefined) || (user['signInUserSession']['accessToken']['payload']['cognito:groups'] === 0)) {
       return (
         <div className="position-absolute top-0 start-50 translate-middle-x square-unauthorized h1-unauthorized">
-          <h1>... Waiting for Unauthorization ...</h1>
+          <h1>Waiting for Unauthorization...</h1>
           <br />
           <AmplifySignOut />
         </div>
@@ -255,15 +282,6 @@ const App = () => {
               </div>
             </div>
           </div>
-          {/* <div className="d-flex justify-content-evenly flex-column primary-color info-box">
-            <div className="beside">
-              <div className="dot"><img id="center-icons2" src={meetingIcon} alt="" width="110" height="100" className="d-inline-block align-text-top" />
-              </div>
-              <div className="textbox">
-              <a href="https://video-app-tele.herokuapp.com/" target="_blank"><h3>Start a Meeting</h3></a>
-              </div>
-            </div>
-          </div> */}
           <div className="d-flex justify-content-evenly flex-column primary-color info-box">
             <div className="beside">
               <div className="dot"><img id="center-icons2" src={chatIcon} alt="" width="110" height="100" className="d-inline-block align-text-top" />
@@ -428,6 +446,7 @@ const App = () => {
           <Route exact path="/">
             <Home />
           </Route>
+<<<<<<< HEAD
           <Route exact path="/recordings" component={DoctorRecordings} />
           {/* <Route path="/about">
             <About />
@@ -435,6 +454,8 @@ const App = () => {
           <Route path={"/report/patient/" + user.attributes.sub}>
             <PatientReport currentUser={user} patientData={user.attributes} />
           </Route>
+=======
+>>>>>>> added profile component
           <Route path="/reports">
             <ListOfPatientReports sortFields={['FIRSTNAME', 'LASTNAME']} currentUser={user}/>
           </Route>
@@ -442,7 +463,7 @@ const App = () => {
             <Appointments currentUser={user} patientData={user.attributes} />
           </Route>
           <Route path="/profile">
-            <Profile />
+            <Profile currentUser={user} userData={user.attributes}/>
           </Route>
         </Switch>
       </div>
@@ -458,6 +479,7 @@ const App = () => {
       <AmplifySignUp headerText="To create an account, fill out all of the slots on this page." slot="sign-up"
         usernameAlias="email"
         formFields={[
+<<<<<<< HEAD
           {
             type: "given_name",
             label: "Enter your First Name: ",
@@ -502,6 +524,73 @@ const App = () => {
             type: "phone_number",
             label: "Enter Phone Number: ",
           },
+=======
+         { 
+          type: "given_name",
+          label: "Enter your First Name: ",
+          placeholder: "Enter your first name",
+          inputProps: { required: true }
+        },
+        {
+          type: "middle_name",
+          label: "Enter your Middle Name (optional): ",
+          placeholder: "Enter your first name"
+        },
+        {
+          type: "family_name",
+          label: "Enter your Last Name: ",
+          placeholder: "Last Name",
+          inputProps: { required: true }
+        },
+        {
+          type: "address",
+          label: "Enter your Address:  ",
+          placeholder: "Enter your address",
+          inputProps: { required: true }
+        },
+        {
+          type: "birthdate",
+          label: "Enter your Birthdate: ",
+          placeholder: "MM/DD/YYYY",
+          inputProps: {required: true}
+        },
+        {
+          type: "email",
+          label: "Enter you Email Address: ",
+          placeholder: "Enter your email",
+          inputProps: { required: true, autocomplete: "username" },
+        },
+        {
+          type: "password",
+          label: "Enter Password:",
+          placeholder: "Enter password",
+          inputProps: { required: true, autocomplete: "new-password" },
+        },
+        {
+          type: "phone_number",
+          label: "Enter you Phone Number: ",
+          inputProps: {required: true}
+        },
+        {
+          type: "gender",
+          label: "Gender: ",
+          placeholder: "female, male, or other",
+          inputProps: {required: true},
+        },
+        {
+          type: "custom:ethnicity",
+          label: "Enter your Ethnicity: ",
+          placeholder: "White, Hispanic, Asian, or Black/African American",
+          inputProps: {required: true},
+        },
+        {
+          type: "custom:marital-status",
+          label: "Marital Status: ",
+          placeholder: "Married, Single, Widowed, or Divorced",
+          inputProps: {required: true},
+        },
+
+>>>>>>> added profile component
         ]} />
       <AmplifySignIn headerText="Welcome to Telemedicine!" slot="sign-in" usernameAlias="email" />
       <AmplifySignOut buttonText="LOGOUT" />
@@ -513,6 +602,19 @@ const App = () => {
   )
 
 }
+<<<<<<< HEAD
+=======
+
+
+async function updateUser() {
+  const user = await Auth.currentAuthenticatedUser();
+  await Auth.updateUserAttributes(user, {
+    'address': '105 Main St. New York, NY 10001'
+  });
+}
+
+
+>>>>>>> added profile component
 export default App;
 
 
