@@ -17,6 +17,8 @@ import addUserIcon from './images/addUserIcon.png'
 import removeUserIcon from './images/removeUserIcon.png'
 import editUserIcon from './images/editUserIcon.png'
 
+import ChatApp from "./cpages/cApp";
+
 import { Component } from 'react';
 import { Auth } from 'aws-amplify';
 
@@ -32,9 +34,11 @@ Amplify.configure(awsconfig);
 
 
 const App = () => {
+	
   
   const [authState, setAuthState] = React.useState();
   const [user, setUser] = React.useState();
+  window.$user = user;
 
   React.useEffect(() => {
 
@@ -42,6 +46,7 @@ const App = () => {
 
       setAuthState(nextAuthState);
       setUser(authData)
+	  
     });
   }, []);
 
@@ -305,11 +310,15 @@ const App = () => {
           {/* <Route path="/dashboard">
             <Dashboard />
           </Route>  */}
+		<Route exact path="/messages" component={ChatApp}/>
         </Switch>
 
         <ul>
           <li>
             <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/messages">Messages</Link>
           </li>
           <li>
             <Link to="/about">About</Link>
@@ -423,7 +432,7 @@ const App = () => {
           ]} />
 
         <AmplifySignIn headerText="Welcome to Telemedicine!" slot="sign-in" usernameAlias="email" />
-
+		
       </AmplifyAuthenticator>
   )
 
@@ -439,6 +448,7 @@ function About() {
     </div>
   );
 }
+
 
 export default (App);
 
