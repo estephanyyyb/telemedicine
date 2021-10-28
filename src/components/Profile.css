@@ -59,3 +59,12 @@ label {display: inline;}
 .edit-dropdown:hover {
     background-color: lightblue;
 }
+
+.primary-color {
+    background-color: #7EC4E8
+  }
+
+.h1 {
+    text-align: center;
+    font-family: Monospace;
+}
