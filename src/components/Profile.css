@@ -58,8 +58,6 @@ label {display: inline;}
 
 .edit-dropdown:hover {
     background-color: lightblue;
-<<<<<<< HEAD:src/components/Profile.css
-=======
 }
 
 .primary-color {
@@ -69,5 +67,4 @@ label {display: inline;}
 .h1 {
     text-align: center;
     font-family: Monospace;
->>>>>>> fix styling, added profile:src/components/Profile.module.css
 }
