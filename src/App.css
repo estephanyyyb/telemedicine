@@ -58,7 +58,7 @@
 }
 
 .info-box {
-  margin: 30px 30px 0px 30px;
+  margin: 30px 30px 30px 30px;
   height: 200px;
   border: 1px solid grey;
 }
@@ -146,14 +146,17 @@ a:link{
 }
 
 .square-unauthorized{
-  height: 250px;
-  width: 500px;
-  background-color:white ;
+  height: 400px;
+  width: 700px;
+  background-color: white;
   border: 1px solid black;
   padding: 30px;
   margin: 50px 0 0 0;
 }
 
 .h1-unauthorized{
-  color: red;
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
 }

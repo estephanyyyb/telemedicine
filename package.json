@@ -17,7 +17,7 @@
     "@testing-library/user-event": "^12.8.3",
     "aws-amplify": "^4.3.3",
     "aws-amplify-react": "^5.0.16",
-    "aws-sdk": "^2.1008.0",
+    "aws-sdk": "^2.1016.0",
     "bootstrap": "^5.1.1",
     "jquery": "^3.6.0",
     "react": "^17.0.2",
