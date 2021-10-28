@@ -1,0 +1,21 @@
+
+
+type Medications @model
+{
+  id: ID!
+  medicine: String @aws_cognito_user_pools
+  dosage: String @aws_cognito_user_pools 
+}
+
+type Notes @model {
+id: ID!
+description: String!
+}
+
+
+
+type Labs @model {
+type: String!
+value: String!
+}
+
