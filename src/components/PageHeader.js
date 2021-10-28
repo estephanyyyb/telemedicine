@@ -44,7 +44,7 @@ const RenderDoctorView = (props) => {
           </button>
           <ul className="dropdown-menu">
             <li><a className="dropdown-item" href="#">Profile</a></li>
-            <li><a className="dropdown-item" href="#">Another action</a></li>
+            <li><a className="dropdown-item" href="/">Home</a></li>
             <li><a className="dropdown-item" href="#">Something else here</a></li>
             <li><hr className="dropdown-divider"></hr></li>
             <li><a className="dropdown-item" href="#"><AmplifySignOut /></a></li>
@@ -113,7 +113,7 @@ const RenderNurseView = (props) => {
                 </button>
                 <ul className="dropdown-menu">
                   <li><a className="dropdown-item" href="#">Profile</a></li>
-                  <li><a className="dropdown-item" href="#">Another action</a></li>
+                  <li><a className="dropdown-item" href="/">Home</a></li>
                   <li><a className="dropdown-item" href="#">Something else here</a></li>
                   <li><hr className="dropdown-divider"></hr></li>
                   <li><a className="dropdown-item" href="#"><AmplifySignOut /></a></li>
@@ -146,7 +146,7 @@ const RenderAdminView = (props) => {
             </button>
             <ul className="dropdown-menu">
               <li><a className="dropdown-item" href="#">Profile</a></li>
-              <li><a className="dropdown-item" href="#">Another action</a></li>
+              <li><a className="dropdown-item" href="/">Home</a></li>
               <li><a className="dropdown-item" href="#">Something else here</a></li>
               <li><hr className="dropdown-divider"></hr></li>
               <li><a className="dropdown-item" href="#"><AmplifySignOut /></a></li>
