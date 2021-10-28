@@ -73,8 +73,14 @@ const App = () => {
     if ((user['signInUserSession']['accessToken']['payload']['cognito:groups'] === undefined) || (user['signInUserSession']['accessToken']['payload']['cognito:groups'] === 0)) {
       return (
         <div className="position-absolute top-0 start-50 translate-middle-x square-unauthorized h1-unauthorized">
-          <h1>Waiting for Unauthorization...</h1>
+          {/* <h1>Waiting for Unauthorization...</h1>
           <br />
+          <AmplifySignOut /> */}
+          <h1>Welcome, {user.attributes.given_name}</h1>
+          <br/>
+          You have not been authorized. Please wait 24 to 48 hours to be able to access data.
+          <br/> <br/>Sorry for the inconvenience. 
+          <br /> <br/>
           <AmplifySignOut />
         </div>
       )
@@ -166,9 +172,7 @@ const App = () => {
                   <span className="visually-hidden">Toggle Dropdown</span>
                 </button>
                 <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="#">Profile</a></li>
-                  <li><a className="dropdown-item" href="#">Another action</a></li>
-                  <li><a className="dropdown-item" href="#">Something else here</a></li>
+                  <li><a className="dropdown-item" href="profile">Profile</a></li>
                   <li><hr className="dropdown-divider"></hr></li>
                   <li><a className="dropdown-item" href="#"><AmplifySignOut /></a></li>
                 </ul>
@@ -243,7 +247,7 @@ const App = () => {
                   <span className="visually-hidden">Toggle Dropdown</span>
                 </button>
                 <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="#">Profile</a></li>
+                  <li><a className="dropdown-item" href="profile">Profile</a></li>
                   <li><a className="dropdown-item" href="#">Another action</a></li>
                   <li><a className="dropdown-item" href="#">Something else here</a></li>
                   <li><hr className="dropdown-divider"></hr></li>
@@ -363,74 +367,74 @@ const App = () => {
         </div>
       )
     }
-    else if (user['signInUserSession']['accessToken']['payload']['cognito:groups'][0] === 'nurses') {
-      return (
-        <div className="App">
-          <nav className="navbar navbar-light bg-light">
-            <div className="container-fluid">
-              <a className="navbar-brand brand-text" href="#">
-                <img src={telemedicineLogo} alt="" width="25" height="25" className="d-inline-block align-text-top" />
-                Telemedicine
-              </a>
-              <div className="btn-group">
-                <button type="button" className="btn btn-light"><img className="d-inline-block align-text-top" src={userIcon} alt="" width="20" height="20" />{" " + user.attributes.name}</button>
-                <button type="button" className="btn btn-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                  <span className="visually-hidden">Toggle Dropdown</span>
-                </button>
-                <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="#">Profile</a></li>
-                  <li><a className="dropdown-item" href="#">Another action</a></li>
-                  <li><a className="dropdown-item" href="#">Something else here</a></li>
-                  <li><hr className="dropdown-divider"></hr></li>
-                  <li><a className="dropdown-item" href="#"><AmplifySignOut /></a></li>
-                </ul>
-              </div>
-            </div>
-          </nav>
-          <div className="d-flex justify-content-evenly navbar primary-color">
-            <button type="button" className="btn btn-secondary btn-sm" href="reports">Reports</button>
-            <button type="button" className="btn btn-secondary btn-sm">Messages</button>
-            <button type="button" className="btn btn-secondary btn-sm" href="/appointments">Appointments</button>
-            <button type="button" className="btn btn-secondary btn-sm">Recordings</button>
-            <span className="navbar-brand mb-0 h1"></span>
-          </div>
-          <div className="d-flex justify-content-evenly flex-column primary-color welcome-box">
-            <div className="welcome-textbox">
-              <h1>Welcome, {user.attributes.name}</h1>
-            </div>
-            <div className="beside">
-              <div className="dot"><img id="center-icons1" src={reportsIcon} alt="" width="130" height="100" />
-              </div>
-              <div className="textbox">
-                <a href="reports"><h3>View your reports</h3></a>
-              </div>
-            </div>
-          </div>
-          <div className="d-flex justify-content-evenly flex-column primary-color info-box">
-            <div className="beside">
-              <div className="dot"><img id="center-icons2" src={appointmentIcon} alt="" width="105" height="100" />
-              </div>
-              <div className="textbox">
-                <a href="/appointments"><h3>View Appointments</h3></a>
-              </div>
-            </div>
-          </div>
-          <div className="d-flex justify-content-evenly flex-column primary-color info-box">
-            <div className="beside">
-              <div className="dot"><img id="center-icons1" src={chatIcon} alt="" width="110" height="100" className="d-inline-block align-text-top" />
-              </div>
-              <div className="textbox">
-                <a href="#"><h3>Chat with Patient</h3></a>
-              </div>
-            </div>
-          </div>
-          <div className="lower-buttons-container">
-            <button type="button" className="btn btn-secondary lower-buttons">View Patients</button>
-            <button type="button" className="btn btn-secondary lower-buttons">View Staff</button>
-          </div>
-        </div>
-      )
-    }
+    // else if (user['signInUserSession']['accessToken']['payload']['cognito:groups'][0] === 'nurses') {
+    //   return (
+    //     <div className="App">
+    //       <nav className="navbar navbar-light bg-light">
+    //         <div className="container-fluid">
+    //           <a className="navbar-brand brand-text" href="#">
+    //             <img src={telemedicineLogo} alt="" width="25" height="25" className="d-inline-block align-text-top" />
+    //             Telemedicine
+    //           </a>
+    //           <div className="btn-group">
+    //             <button type="button" className="btn btn-light"><img className="d-inline-block align-text-top" src={userIcon} alt="" width="20" height="20" />{" " + user.attributes.name}</button>
+    //             <button type="button" className="btn btn-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+    //               <span className="visually-hidden">Toggle Dropdown</span>
+    //             </button>
+    //             <ul className="dropdown-menu">
+    //               <li><a className="dropdown-item" href="#">Profile</a></li>
+    //               <li><a className="dropdown-item" href="#">Another action</a></li>
+    //               <li><a className="dropdown-item" href="#">Something else here</a></li>
+    //               <li><hr className="dropdown-divider"></hr></li>
+    //               <li><a className="dropdown-item" href="#"><AmplifySignOut /></a></li>
+    //             </ul>
+    //           </div>
+    //         </div>
+    //       </nav>
+    //       <div className="d-flex justify-content-evenly navbar primary-color">
+    //         <button type="button" className="btn btn-secondary btn-sm" href="reports">Reports</button>
+    //         <button type="button" className="btn btn-secondary btn-sm">Messages</button>
+    //         <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
+    //         <button type="button" className="btn btn-secondary btn-sm">Recordings</button>
+    //         <span className="navbar-brand mb-0 h1"></span>
+    //       </div>
+    //       <div className="d-flex justify-content-evenly flex-column primary-color welcome-box">
+    //         <div className="welcome-textbox">
+    //           <h1>Welcome, {user.attributes.name}</h1>
+    //         </div>
+    //         <div className="beside">
+    //           <div className="dot"><img id="center-icons1" src={reportsIcon} alt="" width="130" height="100" />
+    //           </div>
+    //           <div className="textbox">
+    //             <a href="reports"><h3>View your reports</h3></a>
+    //           </div>
+    //         </div>
+    //       </div>
+    //       <div className="d-flex justify-content-evenly flex-column primary-color info-box">
+    //         <div className="beside">
+    //           <div className="dot"><img id="center-icons2" src={appointmentIcon} alt="" width="105" height="100" />
+    //           </div>
+    //           <div className="textbox">
+    //             <a href="#"><h3>View Appointments</h3></a>
+    //           </div>
+    //         </div>
+    //       </div>
+    //       <div className="d-flex justify-content-evenly flex-column primary-color info-box">
+    //         <div className="beside">
+    //           <div className="dot"><img id="center-icons1" src={chatIcon} alt="" width="110" height="100" className="d-inline-block align-text-top" />
+    //           </div>
+    //           <div className="textbox">
+    //             <a href="#"><h3>Chat with Patient</h3></a>
+    //           </div>
+    //         </div>
+    //       </div>
+    //       <div className="lower-buttons-container">
+    //         <button type="button" className="btn btn-secondary lower-buttons">View Patients</button>
+    //         <button type="button" className="btn btn-secondary lower-buttons">View Staff</button>
+    //       </div>
+    //     </div>
+    //   )
+    // }
   }
 
 
@@ -473,71 +477,94 @@ const App = () => {
       <AmplifySignUp headerText="To create an account, fill out all of the slots on this page." slot="sign-up"
         usernameAlias="email"
         formFields={[
-         { 
-          type: "given_name",
-          label: "Enter your First Name: ",
-          placeholder: "Enter your first name",
-          inputProps: { required: true }
-        },
-        {
-          type: "middle_name",
-          label: "Enter your Middle Name (optional): ",
-          placeholder: "Enter your first name"
-        },
-        {
-          type: "family_name",
-          label: "Enter your Last Name: ",
-          placeholder: "Last Name",
-          inputProps: { required: true }
-        },
-        {
-          type: "address",
-          label: "Enter your Address:  ",
-          placeholder: "Enter your address",
-          inputProps: { required: true }
-        },
-        {
-          type: "birthdate",
-          label: "Enter your Birthdate: ",
-          placeholder: "MM/DD/YYYY",
-          inputProps: {required: true}
-        },
-        {
-          type: "email",
-          label: "Enter you Email Address: ",
-          placeholder: "Enter your email",
-          inputProps: { required: true, autocomplete: "username" },
-        },
-        {
-          type: "password",
-          label: "Enter Password:",
-          placeholder: "Enter password",
-          inputProps: { required: true, autocomplete: "new-password" },
-        },
-        {
-          type: "phone_number",
-          label: "Enter you Phone Number: ",
-          inputProps: {required: true}
-        },
-        {
-          type: "gender",
-          label: "Gender: ",
-          placeholder: "female, male, or other",
-          inputProps: {required: true},
-        },
-        {
-          type: "custom:ethnicity",
-          label: "Enter your Ethnicity: ",
-          placeholder: "White, Hispanic, Asian, or Black/African American",
-          inputProps: {required: true},
-        },
-        {
-          type: "custom:marital-status",
-          label: "Marital Status: ",
-          placeholder: "Married, Single, Widowed, or Divorced",
-          inputProps: {required: true},
-        },
-
+          {
+            type: "given_name",
+            label: "Enter your First Name: ",
+            placeholder: "Enter your first name",
+            inputProps: { required: true }
+          },
+          {
+            type: "middle_name",
+            label: "Enter your Middle Name (optional): ",
+            placeholder: "Enter your first name"
+          },
+          {
+            type: "family_name",
+            label: "Enter your Last Name: ",
+            placeholder: "Enter your last name",
+            inputProps: { required: true }
+          },
+          {
+            type: "address",
+            label: "Enter your Address:  ",
+            placeholder: "Enter your address",
+            inputProps: { required: true }
+          },
+          {
+            type: "custom:city",
+            label: "Enter City: ",
+            placeholder: "Enter city",
+            inputProps: {required: true},
+          },
+          {
+            type: "custom:state",
+            label: "Enter State: ",
+            placeholder: "Enter state",
+            inputProps: {required: true},
+          },
+          {
+            type: "custom:zc",
+            label: "Enter Zipcode: ",
+            placeholder: "Enter zipcode",
+            inputProps: {required: true},
+          },
+          {
+            type: "birthdate",
+            label: "Enter your Birthdate: ",
+            placeholder: "MM/DD/YYYY",
+            inputProps: {required: true}
+          },
+          {
+            type: "email",
+            label: "Enter your Email Address: ",
+            placeholder: "Enter your email address",
+            inputProps: { required: true, autocomplete: "username" },
+          },
+          {
+            type: "gender",
+            label: "Enter Gender: ",
+            placeholder: "Female, Male, or Other",
+            inputProps: {required: true},
+          },
+          {
+            type: "custom:ethnicity",
+            label: "Enter your Ethnicity: ",
+            placeholder: "White, Hispanic, Asian, or Black/African American",
+            inputProps: {required: true},
+          },
+          {
+            type: "custom:marital-status",
+            label: "Enter your Marital Status: ",
+            placeholder: "Married, Single, Widowed, or Divorced",
+            inputProps: {required: true},
+          },
+          {
+            type: "password",
+            label: "Enter Password:",
+            placeholder: "Enter password",
+            inputProps: { required: true, autocomplete: "new-password" },
+          },
+          {
+            type: "phone_number",
+            label: "Enter your Phone Number: ",
+            inputProps: {required: true}
+          },
+          {
+            type: "custom:provider",
+            label: "Enter your Insurance Provider: ",
+            placeholder: "e.g. Blue Shield or 'none'",
+            inputProps: {required: true},
+          }
         ]} />
       <AmplifySignIn headerText="Welcome to Telemedicine!" slot="sign-in" usernameAlias="email" />
       <AmplifySignOut buttonText="LOGOUT" />
@@ -550,13 +577,6 @@ const App = () => {
 
 }
 
-
-async function updateUser() {
-  const user = await Auth.currentAuthenticatedUser();
-  await Auth.updateUserAttributes(user, {
-    'address': '105 Main St. New York, NY 10001'
-  });
-}
 
 
 export default App;
