@@ -17,10 +17,7 @@ import editUserIcon from './images/editUserIcon.png'
 import DoctorTest from './doctorTest';
 import Test from './test';
 
-import ChatApp from "./cpages/cApp";
-
 import { Component } from 'react';
-import { Auth } from 'aws-amplify';
 
 import {
   BrowserRouter as Router,
