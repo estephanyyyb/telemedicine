@@ -14,6 +14,8 @@ import chatIcon from './images/chatIcon.png'
 import addUserIcon from './images/addUserIcon.png'
 import removeUserIcon from './images/removeUserIcon.png'
 import editUserIcon from './images/editUserIcon.png'
+import DoctorTest from './doctorTest';
+import Test from './test';
 
 import ChatApp from "./cpages/cApp";
 
@@ -173,7 +175,7 @@ const App = () => {
               <div className="dot"><img id="center-icons1" src={reportsIcon} alt="" width="130" height="100" />
               </div>
               <div className="textbox">
-                <a href="#"><h3>View your reports</h3></a>
+                <a href={"/doctorTest" + user.attributes.sub}><h3>View Patient Reports</h3></a>
               </div>
             </div>
           </div>
@@ -249,7 +251,7 @@ const App = () => {
               <div className="dot"><img id="center-icons1" src={reportsIcon} alt="" width="130" height="100" />
               </div>
               <div className="textbox">
-                <a href="#"><h3>View Patient Reports</h3></a>
+                <a href={"/test" + user.attributes.sub}><h3>Add Patient Reports</h3></a>
               </div>
             </div>
           </div>
@@ -347,76 +349,7 @@ const App = () => {
         </div>
       )
     }
-    else if (user['signInUserSession']['accessToken']['payload']['cognito:groups'][0] === 'nurses') {
-      return (
-        <div className="App">
-          <nav className="navbar navbar-light bg-light">
-            <div className="container-fluid">
-              <a className="navbar-brand brand-text" href="#">
-                <img src={telemedicineLogo} alt="" width="25" height="25" className="d-inline-block align-text-top" />
-                Telemedicine
-              </a>
-              <div className="btn-group">
-                <button type="button" className="btn btn-light"><img className="d-inline-block align-text-top" src={userIcon} alt="" width="20" height="20" />{" " + user.attributes.name}</button>
-                <button type="button" className="btn btn-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                  <span className="visually-hidden">Toggle Dropdown</span>
-                </button>
-                <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="#">Profile</a></li>
-                  <li><a className="dropdown-item" href="#">Another action</a></li>
-                  <li><a className="dropdown-item" href="#">Something else here</a></li>
-                  <li><hr className="dropdown-divider"></hr></li>
-                  <li><a className="dropdown-item" href="#"><AmplifySignOut /></a></li>
-                </ul>
-              </div>
-            </div>
-          </nav>
-          <div className="d-flex justify-content-evenly navbar primary-color">
-            <button type="button" className="btn btn-secondary btn-sm">Reports</button>
-            <button type="button" className="btn btn-secondary btn-sm">Messages</button>
-            <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
-            <button type="button" className="btn btn-secondary btn-sm">Recordings</button>
-            <span className="navbar-brand mb-0 h1"></span>
-          </div>
-          <div className="d-flex justify-content-evenly flex-column primary-color welcome-box">
-            <div className="welcome-textbox">
-              <h1>Welcome, {user.attributes.name}</h1>
-            </div>
-            <div className="beside">
-              <div className="dot"><img id="center-icons1" src={reportsIcon} alt="" width="130" height="100" />
-              </div>
-              <div className="textbox">
-                <a href="#"><h3>View your reports</h3></a>
-              </div>
-            </div>
-          </div>
-          <div className="d-flex justify-content-evenly flex-column primary-color info-box">
-            <div className="beside">
-              <div className="dot"><img id="center-icons2" src={appointmentIcon} alt="" width="105" height="100" />
-              </div>
-              <div className="textbox">
-                <a href="#"><h3>View Appointments</h3></a>
-              </div>
-            </div>
-          </div>
-          <div className="d-flex justify-content-evenly flex-column primary-color info-box">
-            <div className="beside">
-              <div className="dot"><img id="center-icons1" src={chatIcon} alt="" width="110" height="100" className="d-inline-block align-text-top" />
-              </div>
-              <div className="textbox">
-                <a href="#"><h3>Chat with Patient</h3></a>
-              </div>
-            </div>
-          </div>
-          <div className="lower-buttons-container">
-            <button type="button" className="btn btn-secondary lower-buttons">View Patients</button>
-            <button type="button" className="btn btn-secondary lower-buttons">View Staff</button>
-          </div>
-        </div>
-      )
-    }
   }
-
 
   console.log('USER', user)
   var userGroup = '';
@@ -432,9 +365,6 @@ const App = () => {
             <About />
           </Route>
           <Route exact path="/recordings" component={DoctorRecordings} />
-          {/* <Route path="/about">
-            <About />
-          </Route> */}
           <Route path={"/report/patient/" + user.attributes.sub}>
             <PatientReport currentUser={user} patientData={user.attributes} />
           </Route>
@@ -447,6 +377,12 @@ const App = () => {
           <Route path="/profile">
             <Profile currentUser={user} userData={user.attributes}/>
           </Route>
+          <Route path ={"/test" + user.attributes.sub}>
+            <Test currentUser = {user} patientData = {user.attributes}/>
+        </Route>
+        <Route path ={"/doctorTest" + user.attributes.sub}>
+            <DoctorTest currentUser = {user} patientData = {user.attributes}/>
+        </Route>
         </Switch>
 
         <ul>
