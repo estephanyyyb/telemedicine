@@ -33,7 +33,11 @@
         "phone_number",
         "email",
         "custom:ethnicity",
-        "custom:martial-status"
+        "custom:martial-status",
+        "custom:city",
+        "custom:state",
+        "custom:zc",
+        "custom:provider"
     ],
     "userpoolClientReadAttributes": [
         "address",
@@ -45,7 +49,11 @@
         "given_name",
         "phone_number",
         "custom:ethnicity",
-        "custom:martial-status"
+        "custom:martial-status",
+        "custom:city",
+        "custom:state",
+        "custom:zc",
+        "custom:provider"
     ],
     "userpoolClientLambdaRole": "telemebcbb0ab7_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": true,

@@ -5,13 +5,17 @@ import profileStyle from './Profile.css'
 import Auth from '@aws-amplify/auth';
 
 
-
 class Profile extends React.Component {
     constructor(props){
         super(props)
         this.state = {
             address: props.userData.address,
-            phone_number: props.userData.phone_number
+            phone_number: props.userData.phone_number,
+            city: props.userData['custom:city'],
+            state: props.userData['custom:state'],
+            zipcode: props.userData['custom:zc'],
+            reveal: false,
+            revealPhone: false,
         }    
     }
 
@@ -19,12 +23,11 @@ class Profile extends React.Component {
     handleSubmit = (event) => {
         event.preventDefault()
         const data = this.state
-        console.log("Final Data is", data)
-        console.log('New User Address', this.props.userData.address)
         this.props.userData.address = data.address
-        console.log('New User Address', this.props.userData.address)
         this.props.userData.address = data.phone_number
-        console.log('New User Phone Number', this.props.userData.phone_number)
+        this.props.userData['custom:city'] = data['custom:city']
+        this.props.userData['custom:state'] = data['custom:state']
+        this.props.userData['custom:zc'] = data['custom:zc']
     };
     
 
@@ -34,34 +37,48 @@ class Profile extends React.Component {
         console.log(event.target.name)
         console.log(event.target.value)
         this.setState({
-            [event.target.name]: event.target.value
+            [event.target.name]: event.target.value,
         })
     };
+
+    operation = (event) => {
+        event.preventDefault()
+        this.setState({
+            reveal:!this.state.reveal
+        })
+        
+    }
+
+    operationPhone = (event) => {
+        event.preventDefault()
+        this.setState({
+            revealPhone:!this.state.revealPhone
+        })
+    }
 
     changeLabel = (event) => {
         event.preventDefault()
         const data = this.state
-        document.getElementById("address_label").innerHTML = data.address;
+        document.getElementById("address_label").innerHTML = (data.address + ", " + data.city + ", " + data.state + ", " + data.zipcode).toUpperCase();
         document.getElementById("phone_number_label").innerHTML = data.phone_number
-
     }
 
+
     render() {
-        const {address, phone_number} = this.state
+        const {address, phone_number, city, state, zipcode, reveal} = this.state
         console.log('ADDRESS', this.state)
-        updateUser(address,phone_number)
-        
+        updateUser(address,phone_number, city, state, zipcode)
         return (
             <div>
                 <div>
                     <PageHeader currentUser={this.props.currentUser}></PageHeader>
                     <br/>
                     <h1>Profile</h1>
-                    <div className="profileStyle" class="profile-box primary-color">
-                        <div class="profile-textbox">
-                            <div class="profile-innertext">
+                    <div className="profileStyle" className={ reveal ? "profile-box primary-color" : "profile-box2 primary-color"}>
+                        <div className={ reveal ? "profile-textbox" : "profile-textbox2"}>
+                            <div className="profile-innertext">
                             <form onSubmit={this.handleSubmit}>
-                                <div class="form-group">
+                                <div className="form-group">
                                     <h4>Basic Information</h4>
                                     <br/>
                                     <h5>Full-Name</h5>
@@ -79,42 +96,75 @@ class Profile extends React.Component {
                                     <br/>
                                     <br/>
                                     <hr/>
-                                    <h5>Maritial Status</h5>
+                                    <h5>Marital Status</h5>
                                     <label>{(this.props.userData["custom:marital-status"]).toUpperCase()}</label>
                                     <br/>
                                     <br/>
                                     <hr/>
                                 </div>
                                 <br/>
-                                <div class="form-group">
+                                <div className="form-group">
                                     <h4>Contact Information</h4>
                                     <br/>
-
                                     <h5>Email Address</h5>
                                     <label>{(this.props.userData.email).toUpperCase()}</label>
                                     <br/>
                                     <br/>
                                     <hr/>
 
+                                    <br/>
                                     <h5>Address</h5>
-                                    <label id="address_label">{this.props.userData.address.toUpperCase()}</label>
+                                    <label id="address_label">{(this.props.userData.address + ", " + this.props.userData['custom:city'] + ", " + this.props.userData['custom:state'] + " " + this.props.userData['custom:zc']).toUpperCase()}</label>
+
                                     <br/>
                                     <br/>
-                                    <label for="inputAddress">Edit Address</label>
-                                    <input type="text" class="form-control" id="inputAddress" value={address} name="address" placeholder={address} onChange={this.handleInputChange}/>
+                    
+                                    <div>
+                                        {
+                                            this.state.reveal?
+                                            <div className="">
+                                                <label for="inputAddress">Edit Street Address</label>
+                                                <br/>
+                                                <input type="text" className="form-control" id="inputAddress" value={address} name="address" placeholder={address} onChange={this.handleInputChange}/>
+                                                <br/>
+                                                <label id="city_label" for="inputCity">Edit City</label>
+                                                <input type="text" className="form-control" id="inputCity" value={city} name="city" placeholder={city} onChange={this.handleInputChange}/>
+                                                <br/>
+                                                <label id="state_label" for="inputState">Edit State</label>
+                                                <input type="text" className="form-control" id="inputState" value={state} name="state" placeholder={state} onChange={this.handleInputChange}/>
+                                                <br/>
+                                                <label id="zipcode_label" for="inputState">Edit ZIP Code</label>
+                                                <input type="text" className="form-control" id="zipcode_label" value={zipcode} name="zipcode" placeholder={zipcode} onChange={this.handleInputChange}/>
+                                                <br/>
+                                            </div>
+                                            :null
+                                        }
+                                        <button className="edit-dropdown"onClick={this.operation}>Edit Address</button>
+                                    </div>
                                     <br/>
                                     <hr/>
-
                                     <h5>Phone Number</h5>
                                     <label id="phone_number_label">{this.props.userData.phone_number}</label>
                                     <br/>
                                     <br/>
-                                    <label for="inputPhoneNumber">Edit Phone Number</label>
-                                    <input type="text" class="form-control" id="inputPhoneNumber" value={phone_number} name="phone_number" placeholder={phone_number} onChange={this.handleInputChange}/>
+                                    
+                                    <div>
+                                        {
+                                            this.state.revealPhone?
+                                            <div className="">
+                                                <label for="inputPhoneNumber">Edit Phone Number</label>
+                                                <input type="text" className="form-control" id="inputPhoneNumber" value={phone_number} name="phone_number" placeholder={phone_number} onChange={this.handleInputChange}/>
+                                            </div>
+                                            :""
+                                        }
+                                        <br/>
+                                        { <button className="edit-dropdown" onClick={this.operationPhone}>Edit Number</button> }
+                                    </div>
                                 </div>
                                 <br/>
+                                <hr/>
                                 <br/>
-                                <button class="btn btn-primary" onClick={this.changeLabel}>Update</button>
+                                <button className="btn btn-primary" onClick={this.changeLabel}>Update</button>
                             </form>
                             </div>
                         </div>
@@ -125,13 +175,16 @@ class Profile extends React.Component {
     }
 }
 
-async function updateUser(address, phone_number) {
+async function updateUser(address, phone_number, city, state, zipcode) {
     const user = await Auth.currentAuthenticatedUser();
     await Auth.updateUserAttributes(user, {
     'address': address,
-    'phone_number': phone_number
+    'phone_number': phone_number,
+    'custom:city': city,
+    'custom:state': state,
+    'custom:zc': zipcode
     });
-  }
+}
 
 Profile.propTypes = {};
 

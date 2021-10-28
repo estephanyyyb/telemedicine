@@ -45,33 +45,6 @@ const App = () => {
     });
   }, []);
 
-<<<<<<< HEAD
-=======
-  let nextToken;
-  async function listUsers(limit) {
-    let apiName = 'AdminQueries';
-    let path = '/listUsersInGroup';
-    let myInit = {
-      queryStringParameters: {
-        "groupname": "patients",
-        "limit": limit,
-        "token": nextToken,
-      },
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `${(await Auth.currentSession()).getAccessToken().getJwtToken()}`
-      },
-    }
-    const { NextToken, ...rest } = await API.get(apiName, path, myInit);
-    nextToken = NextToken;
-    console.log("data", rest);
-    return rest;
-  }
-
-  
-
-
->>>>>>> added profile component
   function Home() {
     if ((user['signInUserSession']['accessToken']['payload']['cognito:groups'] === undefined) || (user['signInUserSession']['accessToken']['payload']['cognito:groups'] === 0)) {
       return (
@@ -446,7 +419,6 @@ const App = () => {
           <Route exact path="/">
             <Home />
           </Route>
-<<<<<<< HEAD
           <Route exact path="/recordings" component={DoctorRecordings} />
           {/* <Route path="/about">
             <About />
@@ -454,8 +426,6 @@ const App = () => {
           <Route path={"/report/patient/" + user.attributes.sub}>
             <PatientReport currentUser={user} patientData={user.attributes} />
           </Route>
-=======
->>>>>>> added profile component
           <Route path="/reports">
             <ListOfPatientReports sortFields={['FIRSTNAME', 'LASTNAME']} currentUser={user}/>
           </Route>
@@ -479,52 +449,6 @@ const App = () => {
       <AmplifySignUp headerText="To create an account, fill out all of the slots on this page." slot="sign-up"
         usernameAlias="email"
         formFields={[
-<<<<<<< HEAD
-          {
-            type: "given_name",
-            label: "Enter your First Name: ",
-            placeholder: "First Name...",
-            inputProps: { required: true }
-          },
-          {
-            type: "middle_name",
-            label: "Enter your Middle Name: ",
-            placeholder: "middle name..."
-          },
-          {
-            type: "family_name",
-            label: "Enter your Last Name: ",
-            placeholder: "Last Name",
-            inputProps: { required: true }
-          },
-          {
-            type: "address",
-            label: "Enter your Address: ",
-            placeholder: "Address..",
-            inputProps: { required: true }
-          },
-          {
-            type: "birthdate",
-            label: "Enter your birthdate: ",
-            placeholder: "MM/DD/YYYY"
-          },
-          {
-            type: "email",
-            label: "Enter Email Address: ",
-            placeholder: "Type your email...",
-            inputProps: { required: true, autocomplete: "username" },
-          },
-          {
-            type: "password",
-            label: "Enter Password: ",
-            placeholder: "Type password...",
-            inputProps: { required: true, autocomplete: "new-password" },
-          },
-          {
-            type: "phone_number",
-            label: "Enter Phone Number: ",
-          },
-=======
          { 
           type: "given_name",
           label: "Enter your First Name: ",
@@ -590,7 +514,6 @@ const App = () => {
           inputProps: {required: true},
         },
 
->>>>>>> added profile component
         ]} />
       <AmplifySignIn headerText="Welcome to Telemedicine!" slot="sign-in" usernameAlias="email" />
       <AmplifySignOut buttonText="LOGOUT" />
@@ -602,19 +525,6 @@ const App = () => {
   )
 
 }
-<<<<<<< HEAD
-=======
-
-
-async function updateUser() {
-  const user = await Auth.currentAuthenticatedUser();
-  await Auth.updateUserAttributes(user, {
-    'address': '105 Main St. New York, NY 10001'
-  });
-}
-
-
->>>>>>> added profile component
 export default App;
 
 
