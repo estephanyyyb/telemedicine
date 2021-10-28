@@ -1,0 +1,19 @@
+#upload-card {
+    width: 20%;
+    margin: 0 auto;
+    font-size: 20px;
+}
+
+#recordings {
+    font-size: 20px;
+}
+
+
+button { 
+    background-color:yellow;
+
+}
+
+button:hover{background-color:orange;}
+
+button:focus{background-color:red;}
