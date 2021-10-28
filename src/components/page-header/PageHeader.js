@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './PageHeader.css';
 import telemedicineLogo from '../../images/telemedicineLogo2.png';
 import userIcon from '../../images/userIcon1.png';
+import { useHistory } from 'react-router-dom';
 
 import { AmplifySignOut } from '@aws-amplify/ui-react';
 
@@ -63,6 +64,11 @@ const RenderDoctorView = (props) => {
 }
 
 const RenderPatientView = (props) => {
+  let history = useHistory();
+  const AppRedirect = () => {
+    history.push('/appointments')
+  }
+
   return (
     <div className="App">
       <nav className="navbar navbar-light bg-light">
@@ -89,7 +95,7 @@ const RenderPatientView = (props) => {
       <div className="d-flex justify-content-evenly navbar primary-color">
         <button type="button" className="btn btn-secondary btn-sm" href={"/report/patient/" + props.currentUser.attributes.sub}>Reports</button>
         <button type="button" className="btn btn-secondary btn-sm">Messages</button>
-        <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
+        <button type="button" className="btn btn-secondary btn-sm" onClick={AppRedirect}>Appointments</button>
         <button type="button" className="btn btn-secondary btn-sm">Recordings</button>
         <span className="navbar-brand mb-0 h1"></span>
       </div>
@@ -124,7 +130,8 @@ const RenderNurseView = (props) => {
           <div className="d-flex justify-content-evenly navbar primary-color">
             <button type="button" className="btn btn-secondary btn-sm" href="/reports">Reports</button>
             <button type="button" className="btn btn-secondary btn-sm">Messages</button>
-            <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
+            <button type="button" className="btn btn-secondary btn-sm"></button>
+            {/* <input type='button' className>Appointments</input> */}
             <span className="navbar-brand mb-0 h1"></span>
           </div>
     </div>)

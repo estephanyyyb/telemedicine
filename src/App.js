@@ -26,6 +26,7 @@ import Reports from './components/reports/Reports';
 import PatientReport from './components/reports/PatientReport';
 import ListOfPatientReports from './components/reports/ListOfPatientReports';
 import DoctorRecordings from './components/recordings/DoctorRecordings';
+import Appointments from './components/appointments/Appointments';
 
 Amplify.configure(awsconfig);
 
@@ -123,7 +124,7 @@ const App = () => {
               <div className="dot"><img id="center-icons2" src={appointmentIcon} alt="" width="105" height="100" />
               </div>
               <div className="textbox">
-                <a href="#"><h3>Schedule an Appointment</h3></a>
+                <a href="/appointments"><h3>View your appointments</h3></a>
               </div>
             </div>
           </div>
@@ -174,7 +175,7 @@ const App = () => {
           <div className="d-flex justify-content-evenly navbar primary-color">
             <button type="button" className="btn btn-secondary btn-sm" href="/reports">Reports</button>
             <button type="button" className="btn btn-secondary btn-sm">Messages</button>
-            <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
+            <button type="button" className="btn btn-secondary btn-sm" href="/appointments">Appointments</button>
             <button type="button" className="btn btn-secondary btn-sm">Recordings</button>
             <span className="navbar-brand mb-0 h1"></span>
           </div>
@@ -195,7 +196,7 @@ const App = () => {
               <div className="dot"><img id="center-icons2" src={appointmentIcon} alt="" width="105" height="100" />
               </div>
               <div className="textbox">
-                <a href="#"><h3>View Appointments</h3></a>
+                <a href="/appointments"><h3>View Appointments</h3></a>
               </div>
             </div>
           </div>
@@ -251,7 +252,7 @@ const App = () => {
           <div className="d-flex justify-content-evenly navbar primary-color">
             <button type="button" className="btn btn-secondary btn-sm" href="/reports">Reports</button>
             <button type="button" className="btn btn-secondary btn-sm">Messages</button>
-            <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
+            <button type="button" className="btn btn-secondary btn-sm" href="/appointments">Appointments</button>
             <span className="navbar-brand mb-0 h1"></span>
           </div>
           <div className="d-flex justify-content-evenly flex-column primary-color welcome-box">
@@ -271,7 +272,7 @@ const App = () => {
               <div className="dot"><img id="center-icons2" src={appointmentIcon} alt="" width="105" height="100" />
               </div>
               <div className="textbox">
-                <a href="#"><h3>View Appointments</h3></a>
+                <a href="/appointments"><h3>View Appointments</h3></a>
               </div>
             </div>
           </div>
@@ -327,7 +328,7 @@ const App = () => {
           <div className="d-flex justify-content-evenly navbar primary-color">
             <button type="button" className="btn btn-secondary btn-sm" href="/reports">Reports</button>
             <button type="button" className="btn btn-secondary btn-sm">Messages</button>
-            <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
+            <button type="button" className="btn btn-secondary btn-sm" href="/appointments">Appointments</button>
             <button type="button" className="btn btn-secondary btn-sm">Recordings</button>
             <span className="navbar-brand mb-0 h1"></span>
           </div>
@@ -395,7 +396,7 @@ const App = () => {
           <div className="d-flex justify-content-evenly navbar primary-color">
             <button type="button" className="btn btn-secondary btn-sm" href="reports">Reports</button>
             <button type="button" className="btn btn-secondary btn-sm">Messages</button>
-            <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
+            <button type="button" className="btn btn-secondary btn-sm" href="/appointments">Appointments</button>
             <button type="button" className="btn btn-secondary btn-sm">Recordings</button>
             <span className="navbar-brand mb-0 h1"></span>
           </div>
@@ -416,7 +417,7 @@ const App = () => {
               <div className="dot"><img id="center-icons2" src={appointmentIcon} alt="" width="105" height="100" />
               </div>
               <div className="textbox">
-                <a href="#"><h3>View Appointments</h3></a>
+                <a href="/appointments"><h3>View Appointments</h3></a>
               </div>
             </div>
           </div>
@@ -457,6 +458,9 @@ const App = () => {
           </Route>
           <Route path="/reports">
             <ListOfPatientReports sortFields={['FIRSTNAME', 'LASTNAME']} currentUser={user}/>
+          </Route>
+          <Route path="/appointments">
+            <Appointments currentUser={user} patientData={user.attributes} />
           </Route>
         </Switch>
       </div>
