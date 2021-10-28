@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Auth, API } from 'aws-amplify';
+import { BrowserRouter } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -13,6 +14,7 @@ import config from './aws-exports';
 
 
 Amplify.configure(config);
+
 
 ReactDOM.render(
   <React.StrictMode>

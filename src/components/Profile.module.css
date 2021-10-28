@@ -1,13 +1,13 @@
 .profile-box {
     margin: 30px 30px 30px 30px;
     /* height: 310px; */
-    height: 1800px;
+    height: 1750px;
     border: 1px solid grey;
   }
 
 .profile-textbox {
     margin:50px 40px 40px 40px;
-    height: 1700px;
+    height: 1650px;
     background-color: #e6edf6;
     border: 1px solid black;
     padding:24px;
@@ -16,13 +16,13 @@
 .profile-box2 {
     margin: 30px 30px 30px 30px;
     /* height: 310px; */
-    height: 1450px;
+    height: 1370px;
     border: 1px solid grey;
   }
 
 .profile-textbox2 {
     margin:50px 40px 40px 40px;
-    height: 1350px;
+    height: 1270px;
     background-color: #e6edf6;
     border: 1px solid black;
     padding:24px;
@@ -45,7 +45,7 @@ h5 {
     color:grey
 }
 
-label {display: inline;}
+.label {display: inline}
 
 
 .edit-dropdown {
@@ -59,3 +59,7 @@ label {display: inline;}
 .edit-dropdown:hover {
     background-color: lightblue;
 }
+
+.primary-color {
+    background-color: #7EC4E8
+  }

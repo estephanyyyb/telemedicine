@@ -1,0 +1,12 @@
+{
+  "lambdaLayers": [],
+  "environmentVariableList": [
+    {
+      "cloudFormationParameterName": "serviceUrl",
+      "environmentVariableName": "SERVICE_URL"
+    }
+  ],
+  "secretNames": [
+    "SECRET_TOKEN"
+  ]
+}

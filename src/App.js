@@ -22,8 +22,11 @@ import {
   Link,
 } from "react-router-dom";
 
-import Reports from './components/Reports';
 import Profile from './components/Profile';
+import Reports from './components/reports/Reports';
+import PatientReport from './components/reports/PatientReport';
+import ListOfPatientReports from './components/reports/ListOfPatientReports';
+import DoctorRecordings from './components/recordings/DoctorRecordings';
 
 Amplify.configure(awsconfig);
 
@@ -61,7 +64,6 @@ const App = () => {
     console.log("data", rest);
     return rest;
   }
-
   
 
 
@@ -69,9 +71,6 @@ const App = () => {
     if ((user['signInUserSession']['accessToken']['payload']['cognito:groups'] === undefined) || (user['signInUserSession']['accessToken']['payload']['cognito:groups'] === 0)) {
       return (
         <div className="position-absolute top-0 start-50 translate-middle-x square-unauthorized h1-unauthorized">
-          {/* <h1>Waiting for Unauthorization...</h1>
-          <br />
-          <AmplifySignOut /> */}
           <h1>Welcome, {user.attributes.given_name}</h1>
           <br/>
           You have not been authorized. Please wait 24 to 48 hours to be able to access data.
@@ -84,7 +83,6 @@ const App = () => {
     else if (user['signInUserSession']['accessToken']['payload']['cognito:groups'][0] === 'patients') {
       return (
         <div className="App">
-
           <nav className="navbar navbar-light bg-light">
             <div className="container-fluid">
               <a className="navbar-brand brand-text" href="#">
@@ -107,7 +105,7 @@ const App = () => {
             </div>
           </nav>
           <div className="d-flex justify-content-evenly navbar primary-color">
-            <button type="button" className="btn btn-secondary btn-sm" href="reports">Reports</button>
+            <button type="button" className="btn btn-secondary btn-sm" href={"/report/patient/" + user.attributes.sub}>Reports</button>
             <button type="button" className="btn btn-secondary btn-sm">Messages</button>
             <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
             <button type="button" className="btn btn-secondary btn-sm">Recordings</button>
@@ -121,7 +119,7 @@ const App = () => {
               <div className="dot"><img id="center-icons1" src={reportsIcon} alt="" width="130" height="100" />
               </div>
               <div className="textbox">
-                <a href="reports"><h3>View your reports</h3></a>
+                <a href={"/report/patient/" + user.attributes.sub}><h3>View your reports</h3></a>
               </div>
             </div>
           </div>
@@ -177,7 +175,7 @@ const App = () => {
             </div>
           </nav>
           <div className="d-flex justify-content-evenly navbar primary-color">
-            <button type="button" className="btn btn-secondary btn-sm" href="reports">Reports</button>
+            <button type="button" className="btn btn-secondary btn-sm" href="/reports">Reports</button>
             <button type="button" className="btn btn-secondary btn-sm">Messages</button>
             <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
             <button type="button" className="btn btn-secondary btn-sm">Recordings</button>
@@ -191,7 +189,7 @@ const App = () => {
               <div className="dot"><img id="center-icons1" src={reportsIcon} alt="" width="130" height="100" />
               </div>
               <div className="textbox">
-                <a href="reports"><h3>View your reports</h3></a>
+                <a href="/reports"><h3>View your reports</h3></a>
               </div>
             </div>
           </div>
@@ -254,7 +252,7 @@ const App = () => {
             </div>
           </nav>
           <div className="d-flex justify-content-evenly navbar primary-color">
-            <button type="button" className="btn btn-secondary btn-sm" href="reports">Reports</button>
+            <button type="button" className="btn btn-secondary btn-sm" href="/reports">Reports</button>
             <button type="button" className="btn btn-secondary btn-sm">Messages</button>
             <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
             <span className="navbar-brand mb-0 h1"></span>
@@ -267,7 +265,7 @@ const App = () => {
               <div className="dot"><img id="center-icons1" src={reportsIcon} alt="" width="130" height="100" />
               </div>
               <div className="textbox">
-                <a href="#"><h3>View Patient Reports</h3></a>
+                <a href="/reports"><h3>View Patient Reports</h3></a>
               </div>
             </div>
           </div>
@@ -321,7 +319,7 @@ const App = () => {
             </div>
           </nav>
           <div className="d-flex justify-content-evenly navbar primary-color">
-            <button type="button" className="btn btn-secondary btn-sm" href="reports">Reports</button>
+            <button type="button" className="btn btn-secondary btn-sm" href="/reports">Reports</button>
             <button type="button" className="btn btn-secondary btn-sm">Messages</button>
             <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
             <button type="button" className="btn btn-secondary btn-sm">Recordings</button>
@@ -360,85 +358,15 @@ const App = () => {
           <div className="lower-buttons-container">
             <button type="button" className="btn btn-secondary lower-buttons">View Patients</button>
             <button type="button" className="btn btn-secondary lower-buttons">View Staff</button>
-            <button type="button" className="btn btn-secondary lower-buttons" onClick={() => listUsers(10)}>List Patients</button>
           </div>
         </div>
       )
     }
-    // else if (user['signInUserSession']['accessToken']['payload']['cognito:groups'][0] === 'nurses') {
-    //   return (
-    //     <div className="App">
-    //       <nav className="navbar navbar-light bg-light">
-    //         <div className="container-fluid">
-    //           <a className="navbar-brand brand-text" href="#">
-    //             <img src={telemedicineLogo} alt="" width="25" height="25" className="d-inline-block align-text-top" />
-    //             Telemedicine
-    //           </a>
-    //           <div className="btn-group">
-    //             <button type="button" className="btn btn-light"><img className="d-inline-block align-text-top" src={userIcon} alt="" width="20" height="20" />{" " + user.attributes.name}</button>
-    //             <button type="button" className="btn btn-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-    //               <span className="visually-hidden">Toggle Dropdown</span>
-    //             </button>
-    //             <ul className="dropdown-menu">
-    //               <li><a className="dropdown-item" href="#">Profile</a></li>
-    //               <li><a className="dropdown-item" href="#">Another action</a></li>
-    //               <li><a className="dropdown-item" href="#">Something else here</a></li>
-    //               <li><hr className="dropdown-divider"></hr></li>
-    //               <li><a className="dropdown-item" href="#"><AmplifySignOut /></a></li>
-    //             </ul>
-    //           </div>
-    //         </div>
-    //       </nav>
-    //       <div className="d-flex justify-content-evenly navbar primary-color">
-    //         <button type="button" className="btn btn-secondary btn-sm" href="reports">Reports</button>
-    //         <button type="button" className="btn btn-secondary btn-sm">Messages</button>
-    //         <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
-    //         <button type="button" className="btn btn-secondary btn-sm">Recordings</button>
-    //         <span className="navbar-brand mb-0 h1"></span>
-    //       </div>
-    //       <div className="d-flex justify-content-evenly flex-column primary-color welcome-box">
-    //         <div className="welcome-textbox">
-    //           <h1>Welcome, {user.attributes.name}</h1>
-    //         </div>
-    //         <div className="beside">
-    //           <div className="dot"><img id="center-icons1" src={reportsIcon} alt="" width="130" height="100" />
-    //           </div>
-    //           <div className="textbox">
-    //             <a href="reports"><h3>View your reports</h3></a>
-    //           </div>
-    //         </div>
-    //       </div>
-    //       <div className="d-flex justify-content-evenly flex-column primary-color info-box">
-    //         <div className="beside">
-    //           <div className="dot"><img id="center-icons2" src={appointmentIcon} alt="" width="105" height="100" />
-    //           </div>
-    //           <div className="textbox">
-    //             <a href="#"><h3>View Appointments</h3></a>
-    //           </div>
-    //         </div>
-    //       </div>
-    //       <div className="d-flex justify-content-evenly flex-column primary-color info-box">
-    //         <div className="beside">
-    //           <div className="dot"><img id="center-icons1" src={chatIcon} alt="" width="110" height="100" className="d-inline-block align-text-top" />
-    //           </div>
-    //           <div className="textbox">
-    //             <a href="#"><h3>Chat with Patient</h3></a>
-    //           </div>
-    //         </div>
-    //       </div>
-    //       <div className="lower-buttons-container">
-    //         <button type="button" className="btn btn-secondary lower-buttons">View Patients</button>
-    //         <button type="button" className="btn btn-secondary lower-buttons">View Staff</button>
-    //       </div>
-    //     </div>
-    //   )
-    // }
   }
 
 
   console.log('USER', user)
   var userGroup = '';
-
   return authState === AuthState.SignedIn && user ? (
     <Router>
       <div>
@@ -446,8 +374,15 @@ const App = () => {
           <Route exact path="/">
             <Home />
           </Route>
+          <Route exact path="/recordings" component={DoctorRecordings} />
+          {/* <Route path="/about">
+            <About />
+          </Route> */}
+          <Route path={"/report/patient/" + user.attributes.sub}>
+            <PatientReport currentUser={user} patientData={user.attributes} />
+          </Route>
           <Route path="/reports">
-            <Reports />
+            <ListOfPatientReports sortFields={['FIRSTNAME', 'LASTNAME']} currentUser={user}/>
           </Route>
           <Route path="/profile">
             <Profile currentUser={user} userData={user.attributes}/>
@@ -565,9 +500,4 @@ const App = () => {
   )
 
 }
-
-
-
 export default App;
-
-
