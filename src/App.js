@@ -14,6 +14,8 @@ import chatIcon from './images/chatIcon.png'
 import addUserIcon from './images/addUserIcon.png'
 import removeUserIcon from './images/removeUserIcon.png'
 import editUserIcon from './images/editUserIcon.png'
+import DoctorTest from './doctorTest';
+import Test from './test';
 
 import {
   BrowserRouter as Router,
@@ -65,7 +67,6 @@ const App = () => {
     return rest;
   }
   
-
 
   function Home() {
     if ((user['signInUserSession']['accessToken']['payload']['cognito:groups'] === undefined) || (user['signInUserSession']['accessToken']['payload']['cognito:groups'] === 0)) {
@@ -189,7 +190,7 @@ const App = () => {
               <div className="dot"><img id="center-icons1" src={reportsIcon} alt="" width="130" height="100" />
               </div>
               <div className="textbox">
-                <a href="/reports"><h3>View your reports</h3></a>
+                <a href={"/doctorTest" + user.attributes.sub}><h3>View Patient Reports</h3></a>
               </div>
             </div>
           </div>
@@ -265,7 +266,7 @@ const App = () => {
               <div className="dot"><img id="center-icons1" src={reportsIcon} alt="" width="130" height="100" />
               </div>
               <div className="textbox">
-                <a href="/reports"><h3>View Patient Reports</h3></a>
+                <a href={"/test" + user.attributes.sub}><h3>Add Patient Reports</h3></a>
               </div>
             </div>
           </div>
@@ -375,9 +376,6 @@ const App = () => {
             <Home />
           </Route>
           <Route exact path="/recordings" component={DoctorRecordings} />
-          {/* <Route path="/about">
-            <About />
-          </Route> */}
           <Route path={"/report/patient/" + user.attributes.sub}>
             <PatientReport currentUser={user} patientData={user.attributes} />
           </Route>
@@ -387,6 +385,12 @@ const App = () => {
           <Route path="/profile">
             <Profile currentUser={user} userData={user.attributes}/>
           </Route>
+          <Route path ={"/test" + user.attributes.sub}>
+            <Test currentUser = {user} patientData = {user.attributes}/>
+        </Route>
+        <Route path ={"/doctorTest" + user.attributes.sub}>
+            <DoctorTest currentUser = {user} patientData = {user.attributes}/>
+        </Route>
         </Switch>
       </div>
     </Router>
