@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './PageHeader.css';
+import '../App.css';
 import telemedicineLogo from '../images/telemedicineLogo2.png';
 import userIcon from '../images/userIcon1.png';
 
@@ -43,7 +43,7 @@ const RenderDoctorView = (props) => {
             <span className="visually-hidden">Toggle Dropdown</span>
           </button>
           <ul className="dropdown-menu">
-            <li><a className="dropdown-item" href="#">Profile</a></li>
+            <li><a className="dropdown-item" href="">Profile</a></li>
             <li><a className="dropdown-item" href="/">Home</a></li>
             <li><a className="dropdown-item" href="#">Something else here</a></li>
             <li><hr className="dropdown-divider"></hr></li>
