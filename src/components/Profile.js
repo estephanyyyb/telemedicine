@@ -72,6 +72,7 @@ class Profile extends React.Component {
                 <div>
                     <PageHeader currentUser={this.props.currentUser}></PageHeader>
                     <br/>
+
                     <h1 className={profileStyle.h1}>Profile</h1>
                     <div className={ reveal ? `${profileStyle['profile-box']} ${profileStyle['primary-color']}` : `${profileStyle['profile-box2']} ${profileStyle['primary-color']}`}>
                         <div className={ reveal ? `${profileStyle['profile-textbox']}` : `${profileStyle['profile-textbox2']}`}>
