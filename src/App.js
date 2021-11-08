@@ -79,7 +79,7 @@ const App = () => {
                   <span className="visually-hidden">Toggle Dropdown</span>
                 </button>
                 <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="profile">Profile</a></li>
+                  <li><a className="dropdown-item" href="/profile">Profile</a></li>
                   <li><a className="dropdown-item" href="#">Another action</a></li>
                   <li><a className="dropdown-item" href="#">Something else here</a></li>
                   <li><hr className="dropdown-divider"></hr></li>
@@ -91,8 +91,8 @@ const App = () => {
           <div className={`d-flex justify-content-evenly navbar ${style['primary-color']}`}>
             <button type="button" className={`btn btn-secondary ${style['btn-sm']}`} href={"/report/patient/" + user.attributes.sub}>Reports</button>
             <button type="button" className={`btn btn-secondary ${style['btn-sm']}`} >Messages</button>
-            <button type="button" className={`btn btn-secondary ${style['btn-sm']}`} >Appointments</button>
-            <button type="button" className={`btn btn-secondary ${style['btn-sm']}`} >Recordings</button>
+            <button type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/appointments">Appointments</button>
+            <button type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/recordings">Recordings</button>
             <span className={`navbar-brand mb-0 ${style.h1}`}></span>
           </div>
           <div className={`d-flex justify-content-evenly flex-column ${style['primary-color']} ${style['welcome-box']}`}>
@@ -112,7 +112,7 @@ const App = () => {
               <div className={style.dot}><img id={style['center-icons2']} src={appointmentIcon} alt="" width="105" height="100" />
               </div>
               <div className="textbox">
-                <a href="#"><h3>Schedule an Appointment</h3></a>
+                <a href="/appointments"><h3 className={style.h3}>View Your Appointments</h3></a>
               </div>
             </div>
           </div>
@@ -151,7 +151,7 @@ const App = () => {
                   <span className="visually-hidden">Toggle Dropdown</span>
                 </button>
                 <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="#">Profile</a></li>
+                  <li><a className="dropdown-item" href="/profile">Profile</a></li>
                   <li><a className="dropdown-item" href="#">Another action</a></li>
                   <li><a className="dropdown-item" href="#">Something else here</a></li>
                   <li><hr className="dropdown-divider"></hr></li>
@@ -164,7 +164,7 @@ const App = () => {
             <button type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/reports">Reports</button>
             <button type="button" className={`btn btn-secondary ${style['btn-sm']}`}>Messages</button>
             <button type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/appointments">Appointments</button>
-            <button type="button" className={`btn btn-secondary ${style['btn-sm']}`}>Recordings</button>
+            <button type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/recordings">Recordings</button>
             <span className={`navbar-brand mb-0 ${style.h1}`}></span>
           </div>
           <div className={`d-flex justify-content-evenly flex-column ${style['primary-color']} ${style['welcome-box']}`}>
@@ -228,7 +228,7 @@ const App = () => {
                   <span className="visually-hidden">Toggle Dropdown</span>
                 </button>
                 <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="#">Profile</a></li>
+                  <li><a className="dropdown-item" href="/profile">Profile</a></li>
                   <li><a className="dropdown-item" href="#">Another action</a></li>
                   <li><a className="dropdown-item" href="#">Something else here</a></li>
                   <li><hr className="dropdown-divider"></hr></li>
@@ -295,7 +295,7 @@ const App = () => {
                   <span className="visually-hidden">Toggle Dropdown</span>
                 </button>
                 <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="#">Profile</a></li>
+                  <li><a className="dropdown-item" href="/profile">Profile</a></li>
                   <li><a className="dropdown-item" href="#">Another action</a></li>
                   <li><a className="dropdown-item" href="#">Something else here</a></li>
                   <li><hr className="dropdown-divider"></hr></li>
@@ -308,7 +308,7 @@ const App = () => {
             <button type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/reports">Reports</button>
             <button type="button" className={`btn btn-secondary ${style['btn-sm']}`}>Messages</button>
             <button type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/appointments">Appointments</button>
-            <button type="button" className={`btn btn-secondary ${style['btn-sm']}`}>Recordings</button>
+            <button type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/recordings">Recordings</button>
             <span className={`navbar-brand mb-0 ${style.h1}`}></span>
           </div>
           <div className={`d-flex justify-content-evenly flex-column ${style['primary-color']} ${style['welcome-box']}`}>
@@ -383,26 +383,6 @@ const App = () => {
             <DoctorTest currentUser = {user} patientData = {user.attributes}/>
         </Route>
         </Switch>
-
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/messages">Messages</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/dashboard">Dashboard</Link>
-          </li>
-          
-          <AmplifySignOut />
-        </ul>
-
-        <hr />
-
         {/*
           A <Switch> looks through all its children <Route>
           elements and renders the first one whose path
@@ -449,6 +429,24 @@ const App = () => {
           inputProps: { required: true }
         },
         {
+          type: "custom:city",
+          label: "Enter City: ",
+          placeholder: "Enter city",
+          inputProps: {required: true},
+        },
+        {
+          type: "custom:state",
+          label: "Enter State: ",
+          placeholder: "Enter state",
+          inputProps: {required: true},
+        },
+        {
+          type: "custom:zc",
+          label: "Enter Zipcode: ",
+          placeholder: "Enter zipcode",
+          inputProps: {required: true},
+        },
+        {
           type: "birthdate",
           label: "Enter your Birthdate: ",
           placeholder: "MM/DD/YYYY",
@@ -489,6 +487,12 @@ const App = () => {
           placeholder: "Married, Single, Widowed, or Divorced",
           inputProps: {required: true},
         },
+        {
+          type: "custom:provider",
+          label: "Enter your Insurance Provider: ",
+          placeholder: "e.g. Blue Shield or 'none'",
+          inputProps: {required: true},
+        }
 
         ]} />
       <AmplifySignIn headerText="Welcome to Telemedicine!" slot="sign-in" usernameAlias="email" />
