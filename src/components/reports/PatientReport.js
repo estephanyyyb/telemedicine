@@ -40,10 +40,10 @@ function PatientReport (props) {
                             <td>{props.patientData.birthdate}</td>
                             <td>{age}</td>
                             <td>{props.patientData.gender}</td>
-                            <td>Data</td>
-                            <td>Data</td>
+                            <td>{props.patientData['custom:ethnicity']}</td>
+                            <td>{props.patientData['custom:marital-status']}</td>
                             <td>{props.patientData.phone_number}</td>
-                            <td>Data</td>
+                            <td>{props.patientData['custom:provider']}</td>
                         </tr>
                     </tbody>
                 </table>

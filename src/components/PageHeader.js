@@ -43,7 +43,7 @@ const RenderDoctorView = (props) => {
             <span className="visually-hidden">Toggle Dropdown</span>
           </button>
           <ul className="dropdown-menu">
-            <li><a className="dropdown-item" href="">Profile</a></li>
+            <li><a className="dropdown-item" href="/profile">Profile</a></li>
             <li><a className="dropdown-item" href="/">Home</a></li>
             <li><a className="dropdown-item" href="#">Something else here</a></li>
             <li><hr className="dropdown-divider"></hr></li>
@@ -55,8 +55,8 @@ const RenderDoctorView = (props) => {
     <div className="d-flex justify-content-evenly navbar primary-color">
       <button type="button" className="btn btn-secondary btn-sm" href="/reports">Reports</button>
       <button type="button" className="btn btn-secondary btn-sm">Messages</button>
-      <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
-      <button type="button" className="btn btn-secondary btn-sm">Recordings</button>
+      <button type="button" className="btn btn-secondary btn-sm" href="/appointments">Appointments</button>
+      <button type="button" className="btn btn-secondary btn-sm" href="/recordings">Recordings</button>
       <span className="navbar-brand mb-0 h1"></span>
     </div>
   </div>);
@@ -77,7 +77,7 @@ const RenderPatientView = (props) => {
               <span className="visually-hidden">Toggle Dropdown</span>
             </button>
             <ul className="dropdown-menu">
-              <li><a className="dropdown-item" href="#">Profile</a></li>
+              <li><a className="dropdown-item" href="/profile">Profile</a></li>
               <li><a className="dropdown-item" href="/">Home</a></li>
               <li><a className="dropdown-item" href="#">Something else here</a></li>
               <li><hr className="dropdown-divider"></hr></li>
@@ -89,8 +89,8 @@ const RenderPatientView = (props) => {
       <div className="d-flex justify-content-evenly navbar primary-color">
         <button type="button" className="btn btn-secondary btn-sm" href={"/report/patient/" + props.currentUser.attributes.sub}>Reports</button>
         <button type="button" className="btn btn-secondary btn-sm">Messages</button>
-        <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
-        <button type="button" className="btn btn-secondary btn-sm">Recordings</button>
+        <button type="button" className="btn btn-secondary btn-sm" href="/appointments">Appointments</button>
+        <button type="button" className="btn btn-secondary btn-sm" href="/recordings">Recordings</button>
         <span className="navbar-brand mb-0 h1"></span>
       </div>
     </div>
@@ -112,7 +112,7 @@ const RenderNurseView = (props) => {
                   <span className="visually-hidden">Toggle Dropdown</span>
                 </button>
                 <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="#">Profile</a></li>
+                  <li><a className="dropdown-item" href="/profile">Profile</a></li>
                   <li><a className="dropdown-item" href="/">Home</a></li>
                   <li><a className="dropdown-item" href="#">Something else here</a></li>
                   <li><hr className="dropdown-divider"></hr></li>
@@ -124,7 +124,7 @@ const RenderNurseView = (props) => {
           <div className="d-flex justify-content-evenly navbar primary-color">
             <button type="button" className="btn btn-secondary btn-sm" href="/reports">Reports</button>
             <button type="button" className="btn btn-secondary btn-sm">Messages</button>
-            <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
+            <button type="button" className="btn btn-secondary btn-sm" href="/appointments">Appointments</button>
             <span className="navbar-brand mb-0 h1"></span>
           </div>
     </div>)
@@ -145,7 +145,7 @@ const RenderAdminView = (props) => {
               <span className="visually-hidden">Toggle Dropdown</span>
             </button>
             <ul className="dropdown-menu">
-              <li><a className="dropdown-item" href="#">Profile</a></li>
+              <li><a className="dropdown-item" href="/profile">Profile</a></li>
               <li><a className="dropdown-item" href="/">Home</a></li>
               <li><a className="dropdown-item" href="#">Something else here</a></li>
               <li><hr className="dropdown-divider"></hr></li>
@@ -157,8 +157,8 @@ const RenderAdminView = (props) => {
       <div className="d-flex justify-content-evenly navbar primary-color">
         <button type="button" className="btn btn-secondary btn-sm" href="/reports">Reports</button>
         <button type="button" className="btn btn-secondary btn-sm">Messages</button>
-        <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
-        <button type="button" className="btn btn-secondary btn-sm">Recordings</button>
+        <button type="button" className="btn btn-secondary btn-sm" href="/appointments">Appointments</button>
+        <button type="button" className="btn btn-secondary btn-sm" href="/recordings">Recordings</button>
         <span className="navbar-brand mb-0 h1"></span>
       </div>
     </div>);
