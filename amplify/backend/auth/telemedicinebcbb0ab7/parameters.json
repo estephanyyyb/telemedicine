@@ -56,7 +56,7 @@
         "custom:provider"
     ],
     "userpoolClientLambdaRole": "telemebcbb0ab7_userpoolclient_lambda_role",
-    "userpoolClientSetAttributes": true,
+    "userpoolClientSetAttributes": false,
     "sharedId": "bcbb0ab7",
     "resourceName": "telemedicinebcbb0ab7",
     "authSelections": "identityPoolAndUserPool",
@@ -76,7 +76,12 @@
     "usernameAttributes": [
         "email"
     ],
-    "userPoolGroupList": [],
+    "userPoolGroupList": [
+        "admin",
+        "doctors",
+        "nurses",
+        "patients"
+    ],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,
     "dependsOn": [],

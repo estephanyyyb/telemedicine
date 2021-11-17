@@ -235,6 +235,7 @@ const App = () => {
                   <li><a className="dropdown-item" href="#"><AmplifySignOut /></a></li>
                 </ul>
               </div>
+
             </div>
           </nav>
           <div className={`d-flex justify-content-evenly navbar ${style['primary-color']}`}>
@@ -359,9 +360,6 @@ const App = () => {
         <Switch>
           <Route exact path="/">
             <Home />
-          </Route>
-          <Route path="/about">
-            <About />
           </Route>
           <Route exact path="/recordings" component={DoctorRecordings} />
           <Route path={"/report/patient/" + user.attributes.sub}>
@@ -504,15 +502,6 @@ const App = () => {
     </AmplifyAuthenticator>
   )
 
-}
-
-function About() {
-  return (
-
-    <div>
-      <h2>About</h2>
-    </div>
-  );
 }
 
 export default App;

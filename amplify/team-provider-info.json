@@ -21,7 +21,7 @@
           "serviceUrl": "https://example.com",
           "secretsPathAmplifyAppId": "dvho1kvvcvpi",
           "deploymentBucketName": "amplify-amplify44813ea7b89b4-staging-01655-deployment",
-          "s3Key": "amplify-builds/telemedicinea0e20537-6265694868764a584755-build.zip"
+          "s3Key": "amplify-builds/telemedicinea0e20537-5856714251315a654b46-build.zip"
         }
       }
     }
