@@ -16,6 +16,7 @@ import removeUserIcon from './images/removeUserIcon.png'
 import editUserIcon from './images/editUserIcon.png'
 import DoctorTest from './doctorTest';
 import Test from './test';
+import ListUsers from './listusers';
 
 import { Component } from 'react';
 
@@ -32,6 +33,7 @@ import ListOfPatientReports from './components/reports/ListOfPatientReports';
 import DoctorRecordings from './components/recordings/DoctorRecordings';
 import Appointments from './components/appointments/Appointments';
 import Profile from './components/Profile';
+import { listUsers } from './graphql/queries';
 
 Amplify.configure(awsconfig);
 
@@ -296,7 +298,7 @@ const App = () => {
                   <span className="visually-hidden">Toggle Dropdown</span>
                 </button>
                 <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="/profile">Profile</a></li>
+                  <li><a className="dropdown-item" href={"/profile" + + user.attributes.email}>Profile</a></li>
                   <li><a className="dropdown-item" href="#">Another action</a></li>
                   <li><a className="dropdown-item" href="#">Something else here</a></li>
                   <li><hr className="dropdown-divider"></hr></li>
@@ -338,7 +340,7 @@ const App = () => {
               <div className={style.dot}><img id={style['center-icons1']} src={editUserIcon} alt="" width="110" height="100" className="d-inline-block align-text-top" />
               </div>
               <div className={style.textbox}>
-                <a href="#"><h3 className={style.h3}>Edit User</h3></a>
+                <a href={"/listusers" + user.attributes.sub}><h3 className={style.h3}>Edit User</h3></a>
               </div>
             </div>
           </div>
@@ -371,7 +373,7 @@ const App = () => {
           <Route path="/appointments">
             <Appointments currentUser={user} patientData={user.attributes} />
           </Route>
-          <Route path="/profile">
+          <Route path={"/profile" + user.attributes.sub}>
             <Profile currentUser={user} userData={user.attributes}/>
           </Route>
           <Route path ={"/test" + user.attributes.sub}>
@@ -379,6 +381,9 @@ const App = () => {
         </Route>
         <Route path ={"/doctorTest" + user.attributes.sub}>
             <DoctorTest currentUser = {user} patientData = {user.attributes}/>
+        </Route>
+        <Route path={"/listusers" + user.attributes.sub}>
+          <ListUsers currentUser = {user} patientData = {user.attributes}/>
         </Route>
         </Switch>
         {/*
@@ -464,7 +469,7 @@ const App = () => {
         },
         {
           type: "phone_number",
-          label: "Enter you Phone Number: ",
+          label: "Enter your Phone Number: ",
           inputProps: {required: true}
         },
         {
