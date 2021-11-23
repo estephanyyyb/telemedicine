@@ -10,20 +10,6 @@
       "StackName": "amplify-amplify44813ea7b89b4-staging-01655",
       "StackId": "arn:aws:cloudformation:us-east-1:686239348244:stack/amplify-amplify44813ea7b89b4-staging-01655/101933d0-19a8-11ec-a3b1-0a1393eb7b59",
       "AmplifyAppId": "dvho1kvvcvpi"
-    },
-    "categories": {
-      "auth": {
-        "telemedicinebcbb0ab7": {},
-        "userPoolGroups": {}
-      },
-      "function": {
-        "telemedicinea0e20537": {
-          "serviceUrl": "https://example.com",
-          "secretsPathAmplifyAppId": "dvho1kvvcvpi",
-          "deploymentBucketName": "amplify-amplify44813ea7b89b4-staging-01655-deployment",
-          "s3Key": "amplify-builds/telemedicinea0e20537-6265694868764a584755-build.zip"
-        }
-      }
     }
   },
   "test": {
