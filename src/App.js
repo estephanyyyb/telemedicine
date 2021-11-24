@@ -14,8 +14,6 @@ import chatIcon from './images/chatIcon.png'
 import addUserIcon from './images/addUserIcon.png'
 import removeUserIcon from './images/removeUserIcon.png'
 import editUserIcon from './images/editUserIcon.png'
-import DoctorTest from './doctorTest';
-import Test from './test';
 
 import {
   BrowserRouter as Router,
@@ -30,6 +28,8 @@ import ListOfPatientReports from './components/reports/ListOfPatientReports';
 import DoctorRecordings from './components/recordings/DoctorRecordings';
 import Appointments from './components/appointments/Appointments';
 import Profile from './components/Profile';
+import ListUsers from './listusers';
+
 
 Amplify.configure(awsconfig);
 
@@ -170,7 +170,7 @@ const App = () => {
               <div className={style.dot}><img id={style['center-icons1']} src={reportsIcon} alt="" width="130" height="100" />
               </div>
               <div className={style.textbox}>
-                <a href={"/doctorTest" + user.attributes.sub}><h3 className={style.h3}>View Patient Reports</h3></a>
+                <a href="#"><h3 className={style.h3}>View Patient Reports</h3></a>
               </div>
             </div>
           </div>
@@ -246,7 +246,7 @@ const App = () => {
               <div className={style.dot}><img id={style['center-icons1']} src={reportsIcon} alt="" width="130" height="100" />
               </div>
               <div className={style.textbox}>
-                <a href={"/test" + user.attributes.sub}><h3 className={style.h3}>Add Patient Reports</h3></a>
+                <a href="#"><h3 className={style.h3}>Add Patient Reports</h3></a>
               </div>
             </div>
           </div>
@@ -314,7 +314,7 @@ const App = () => {
               <div className={style.dot}><img id={style['center-icons1']} src={addUserIcon} alt="" width="105" height="100" />
               </div>
               <div className={style.textbox}>
-                <a href="#"><h3 className={style.h3}>Add User</h3></a>
+                <a href={"/listusers" + user.attributes.sub}><h3 className={style.h3}>View User</h3></a>
               </div>
             </div>
           </div>
@@ -368,12 +368,15 @@ const App = () => {
           <Route path="/profile">
             <Profile currentUser={user} userData={user.attributes}/>
           </Route>
-          <Route path ={"/test" + user.attributes.sub}>
+          <Route path={"/listusers" + user.attributes.sub}>
+          <ListUsers currentUser = {user} patientData = {user.attributes}/>
+        </Route>
+          {/* <Route path ="#">
             <Test currentUser = {user} patientData = {user.attributes}/>
-        </Route>
-        <Route path ={"/doctorTest" + user.attributes.sub}>
+        </Route> */}
+        {/* <Route path ="#">
             <DoctorTest currentUser = {user} patientData = {user.attributes}/>
-        </Route>
+        </Route> */}
         </Switch>
       </div>
     </Router>
@@ -397,7 +400,7 @@ const App = () => {
           {
             type: "middle_name",
             label: "Enter your Middle Name (optional): ",
-            placeholder: "Enter your first name"
+            placeholder: "Enter your middle name"
           },
           {
             type: "family_name",
