@@ -1,0 +1,23 @@
+.columns1{
+    font-weight:bold; 
+    font-size: 36px;
+    text-align: center;
+}
+
+.tablecell1{
+    background-color: #7ec4e8;
+}
+
+.columnsMain{
+    height: 700px;
+    margin: 30px 30px 30px 30px;
+    border: 1px solid grey;
+}
+
+.rows1{
+    text-align: center;
+    /* background-color: #d4f1ff; */
+    font-weight: bold;
+    font-size: 20px;
+}
+
