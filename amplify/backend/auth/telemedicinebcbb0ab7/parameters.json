@@ -18,7 +18,19 @@
     "passwordPolicyMinLength": 8,
     "passwordPolicyCharacters": [],
     "requiredAttributes": [
-        "email"
+        "address",
+        "birthdate",
+        "family_name",
+        "gender",
+        "given_name",
+        "phone_number",
+        "email",
+        "custom:city",
+        "custom:state",
+        "custom:zc",
+        "custom:ethnicity",
+        "custom:marital-status",
+        "custom:provider"
     ],
     "aliasAttributes": [],
     "userpoolClientGenerateSecret": false,
@@ -32,11 +44,11 @@
         "given_name",
         "phone_number",
         "email",
-        "custom:ethnicity",
-        "custom:martial-status",
         "custom:city",
         "custom:state",
         "custom:zc",
+        "custom:ethnicity",
+        "custom:marital-status",
         "custom:provider"
     ],
     "userpoolClientReadAttributes": [
@@ -48,11 +60,11 @@
         "gender",
         "given_name",
         "phone_number",
-        "custom:ethnicity",
-        "custom:martial-status",
         "custom:city",
         "custom:state",
         "custom:zc",
+        "custom:ethnicity",
+        "custom:marital-status",
         "custom:provider"
     ],
     "userpoolClientLambdaRole": "telemebcbb0ab7_userpoolclient_lambda_role",

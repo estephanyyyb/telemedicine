@@ -49,16 +49,15 @@
     }
   },
   "api": {
-    "TReportAPI": {
+    "telemedicineApi4": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
       "output": {
         "authConfig": {
           "defaultAuthentication": {
-            "authenticationType": "API_KEY",
-            "apiKeyConfig": {
-              "apiKeyExpirationDays": 60,
-              "description": "apiKEY"
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authtelemedicinebcbb0ab7"
             }
           },
           "additionalAuthenticationProviders": []
