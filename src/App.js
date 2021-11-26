@@ -15,6 +15,7 @@ import addUserIcon from './images/addUserIcon.png'
 import removeUserIcon from './images/removeUserIcon.png'
 import editUserIcon from './images/editUserIcon.png'
 
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -30,6 +31,7 @@ import Appointments from './components/appointments/Appointments';
 import Profile from './components/Profile';
 import ListUsers from './listusers';
 
+import ChatApp from "./components/chat/cApp";
 
 Amplify.configure(awsconfig);
 
@@ -37,6 +39,7 @@ const App = () => {
 
   const [authState, setAuthState] = React.useState();
   const [user, setUser] = React.useState();
+  window.$user = user;	
 
   React.useEffect(() => {
 
@@ -377,6 +380,7 @@ const App = () => {
         {/* <Route path ="#">
             <DoctorTest currentUser = {user} patientData = {user.attributes}/>
         </Route> */}
+		  <Route exact path="/chat" component={ChatApp}/>
         </Switch>
       </div>
     </Router>
