@@ -1,6 +1,6 @@
 import React from 'react';
 import { Auth, API } from 'aws-amplify';
-import './App.css';
+import './App.css';	
 import Amplify from '@aws-amplify/core';
 import { withAuthenticator, AmplifyAuthenticator, AmplifySignIn, AmplifySignOut, AmplifySignUp, AmplifyForgotPassword, AmplifyConfirmSignUp } from '@aws-amplify/ui-react';
 import { AuthState, onAuthUIStateChange } from '@aws-amplify/ui-components';
@@ -15,6 +15,7 @@ import addUserIcon from './images/addUserIcon.png'
 import removeUserIcon from './images/removeUserIcon.png'
 import editUserIcon from './images/editUserIcon.png'
 
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -26,6 +27,7 @@ import Reports from './components/reports/Reports';
 import PatientReport from './components/reports/PatientReport';
 import ListOfPatientReports from './components/reports/ListOfPatientReports';
 import DoctorRecordings from './components/recordings/DoctorRecordings';
+import ChatApp from "./components/chat/cApp";
 
 Amplify.configure(awsconfig);
 
@@ -33,6 +35,7 @@ const App = () => {
 
   const [authState, setAuthState] = React.useState();
   const [user, setUser] = React.useState();
+  window.$user = user;	
 
   React.useEffect(() => {
 
@@ -101,7 +104,7 @@ const App = () => {
           </nav>
           <div className="d-flex justify-content-evenly navbar primary-color">
             <button type="button" className="btn btn-secondary btn-sm" href={"/report/patient/" + user.attributes.sub}>Reports</button>
-            <button type="button" className="btn btn-secondary btn-sm">Messages</button>
+            <button type="button" className="btn btn-secondary btn-sm">Chat</button>
             <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
             <button type="button" className="btn btn-secondary btn-sm">Recordings</button>
             <span className="navbar-brand mb-0 h1"></span>
@@ -173,7 +176,7 @@ const App = () => {
           </nav>
           <div className="d-flex justify-content-evenly navbar primary-color">
             <button type="button" className="btn btn-secondary btn-sm" href="/reports">Reports</button>
-            <button type="button" className="btn btn-secondary btn-sm">Messages</button>
+            <button type="button" className="btn btn-secondary btn-sm">Chat</button>
             <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
             <button type="button" className="btn btn-secondary btn-sm">Recordings</button>
             <span className="navbar-brand mb-0 h1"></span>
@@ -250,7 +253,7 @@ const App = () => {
           </nav>
           <div className="d-flex justify-content-evenly navbar primary-color">
             <button type="button" className="btn btn-secondary btn-sm" href="/reports">Reports</button>
-            <button type="button" className="btn btn-secondary btn-sm">Messages</button>
+            <button type="button" className="btn btn-secondary btn-sm">Chat</button>
             <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
             <span className="navbar-brand mb-0 h1"></span>
           </div>
@@ -326,7 +329,7 @@ const App = () => {
           </nav>
           <div className="d-flex justify-content-evenly navbar primary-color">
             <button type="button" className="btn btn-secondary btn-sm" href="/reports">Reports</button>
-            <button type="button" className="btn btn-secondary btn-sm">Messages</button>
+            <button type="button" className="btn btn-secondary btn-sm">Chat</button>
             <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
             <button type="button" className="btn btn-secondary btn-sm">Recordings</button>
             <span className="navbar-brand mb-0 h1"></span>
@@ -394,7 +397,7 @@ const App = () => {
           </nav>
           <div className="d-flex justify-content-evenly navbar primary-color">
             <button type="button" className="btn btn-secondary btn-sm" href="reports">Reports</button>
-            <button type="button" className="btn btn-secondary btn-sm">Messages</button>
+            <button type="button" className="btn btn-secondary btn-sm">Chat</button>
             <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
             <button type="button" className="btn btn-secondary btn-sm">Recordings</button>
             <span className="navbar-brand mb-0 h1"></span>
@@ -458,6 +461,7 @@ const App = () => {
           <Route path="/reports">
             <ListOfPatientReports sortFields={['FIRSTNAME', 'LASTNAME']} currentUser={user}/>
           </Route>
+		  <Route exact path="/chat" component={ChatApp}/>
         </Switch>
       </div>
     </Router>
