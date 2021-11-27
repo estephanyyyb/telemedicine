@@ -1,0 +1,7 @@
+type User @model
+   {
+    id: ID!
+    email: String!
+    given_name: String!
+    family_name: String!
+  }
