@@ -1,5 +1,5 @@
 {
-  "AppSyncApiName": "TReportAPI",
+  "AppSyncApiName": "telemedicineApi4",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false,
   "AuthCognitoUserPoolId": {

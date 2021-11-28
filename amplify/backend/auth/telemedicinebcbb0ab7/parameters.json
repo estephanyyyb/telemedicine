@@ -31,13 +31,7 @@
         "gender",
         "given_name",
         "phone_number",
-        "email",
-        "custom:ethnicity",
-        "custom:martial-status",
-        "custom:city",
-        "custom:state",
-        "custom:zc",
-        "custom:provider"
+        "email"
     ],
     "userpoolClientReadAttributes": [
         "address",
@@ -47,16 +41,10 @@
         "middle_name",
         "gender",
         "given_name",
-        "phone_number",
-        "custom:ethnicity",
-        "custom:martial-status",
-        "custom:city",
-        "custom:state",
-        "custom:zc",
-        "custom:provider"
+        "phone_number"
     ],
     "userpoolClientLambdaRole": "telemebcbb0ab7_userpoolclient_lambda_role",
-    "userpoolClientSetAttributes": false,
+    "userpoolClientSetAttributes": true,
     "sharedId": "bcbb0ab7",
     "resourceName": "telemedicinebcbb0ab7",
     "authSelections": "identityPoolAndUserPool",
@@ -76,12 +64,7 @@
     "usernameAttributes": [
         "email"
     ],
-    "userPoolGroupList": [
-        "admin",
-        "doctors",
-        "nurses",
-        "patients"
-    ],
+    "userPoolGroupList": [],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,
     "dependsOn": [],
