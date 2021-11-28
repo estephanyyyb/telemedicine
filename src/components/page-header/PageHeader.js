@@ -21,7 +21,7 @@ export default class PageHeader extends React.Component {
     else if(this.props.currentUser['signInUserSession']['accessToken']['payload']['cognito:groups'][0] === 'nurses') {
       return <RenderNurseView currentUser={this.props.currentUser}></RenderNurseView>
     }
-    else if(this.props.currentUser['signInUserSession']['accessToken']['payload']['cognito:groups'][0] === 'admins') {
+    else if(this.props.currentUser['signInUserSession']['accessToken']['payload']['cognito:groups'][0] === 'admin') {
       return <RenderAdminView currentUser={this.props.currentUser}></RenderAdminView>
     }
   }
@@ -33,7 +33,7 @@ const RenderDoctorView = (props) => {
       <div className="container-fluid">
         <a className="navbar-brand brand-text" href="/">
           <img src={telemedicineLogo} alt="" width="25" height="25" className="d-inline-block align-text-top" />
-          Telemedicine
+          Health-T
         </a>
         <div className="btn-group">
           <button type="button" className="btn btn-light"><img className="d-inline-block align-text-top" src={userIcon} alt="" width="20" height="20" />
@@ -43,9 +43,8 @@ const RenderDoctorView = (props) => {
             <span className="visually-hidden">Toggle Dropdown</span>
           </button>
           <ul className="dropdown-menu">
-            <li><a className="dropdown-item" href="">Profile</a></li>
+            <li><a className="dropdown-item" href="/profile">Profile</a></li>
             <li><a className="dropdown-item" href="/">Home</a></li>
-            <li><a className="dropdown-item" href="#">Something else here</a></li>
             <li><hr className="dropdown-divider"></hr></li>
             <li><a className="dropdown-item" href="#"><AmplifySignOut /></a></li>
           </ul>
@@ -69,7 +68,7 @@ const RenderPatientView = (props) => {
         <div className="container-fluid">
           <a className="navbar-brand brand-text" href="/">
             <img src={telemedicineLogo} alt="" width="25" height="25" className="d-inline-block align-text-top" />
-            Telemedicine
+            Health-T
           </a>
           <div className="btn-group">
             <button type="button" className="btn btn-light"><img className="d-inline-block align-text-top" src={userIcon} alt="" width="20" height="20" />{" " + props.currentUser.attributes.given_name}</button>
@@ -79,7 +78,6 @@ const RenderPatientView = (props) => {
             <ul className="dropdown-menu">
               <li><a className="dropdown-item" href="#">Profile</a></li>
               <li><a className="dropdown-item" href="/">Home</a></li>
-              <li><a className="dropdown-item" href="#">Something else here</a></li>
               <li><hr className="dropdown-divider"></hr></li>
               <li><a className="dropdown-item" href="#"><AmplifySignOut /></a></li>
             </ul>
@@ -104,7 +102,7 @@ const RenderNurseView = (props) => {
             <div className="container-fluid">
               <a className="navbar-brand brand-text" href="/">
                 <img src={telemedicineLogo} alt="" width="25" height="25" className="d-inline-block align-text-top" />
-                Telemedicine
+                Health-T
               </a>
               <div className="btn-group">
                 <button type="button" className="btn btn-light"><img className="d-inline-block align-text-top" src={userIcon} alt="" width="20" height="20" />{" Nurse " + props.currentUser.attributes.given_name}</button>
@@ -114,7 +112,6 @@ const RenderNurseView = (props) => {
                 <ul className="dropdown-menu">
                   <li><a className="dropdown-item" href="#">Profile</a></li>
                   <li><a className="dropdown-item" href="/">Home</a></li>
-                  <li><a className="dropdown-item" href="#">Something else here</a></li>
                   <li><hr className="dropdown-divider"></hr></li>
                   <li><a className="dropdown-item" href="#"><AmplifySignOut /></a></li>
                 </ul>
@@ -122,7 +119,7 @@ const RenderNurseView = (props) => {
             </div>
           </nav>
           <div className="d-flex justify-content-evenly navbar primary-color">
-            <a type="button" className="btn btn-secondary btn-sm" href="/reports">Reports</a>
+            <a type="button" className="btn btn-secondary btn-sm" href="/newReports">Reports</a>
             <a type="button" className="btn btn-secondary btn-sm" href="/chat">Chat</a>
             <a type="button" className="btn btn-secondary btn-sm" href="/appointments">Appointments</a>
             <span className="navbar-brand mb-0 h1"></span>
@@ -137,7 +134,7 @@ const RenderAdminView = (props) => {
         <div className="container-fluid">
           <a className="navbar-brand brand-text" href="/">
             <img src={telemedicineLogo} alt="" width="25" height="25" className="d-inline-block align-text-top" />
-            Telemedicine
+            Health-T
           </a>
           <div className="btn-group">
             <button type="button" className="btn btn-light"><img className="d-inline-block align-text-top" src={userIcon} alt="" width="20" height="20" />{" " + props.currentUser.attributes.given_name}</button>
@@ -145,9 +142,8 @@ const RenderAdminView = (props) => {
               <span className="visually-hidden">Toggle Dropdown</span>
             </button>
             <ul className="dropdown-menu">
-              <li><a className="dropdown-item" href="#">Profile</a></li>
+              <li><a className="dropdown-item" href="/profile">Profile</a></li>
               <li><a className="dropdown-item" href="/">Home</a></li>
-              <li><a className="dropdown-item" href="#">Something else here</a></li>
               <li><hr className="dropdown-divider"></hr></li>
               <li><a className="dropdown-item" href="#"><AmplifySignOut /></a></li>
             </ul>
@@ -155,10 +151,10 @@ const RenderAdminView = (props) => {
         </div>
       </nav>
       <div className="d-flex justify-content-evenly navbar primary-color">
-        <a type="button" className="btn btn-secondary btn-sm" href="/reports">Reports</a>
+        <a type="button" className="btn btn-secondary btn-sm" href="/createuser">Add</a>
         <a type="button" className="btn btn-secondary btn-sm" href="/chat">Chat</a>
-        <a type="button" className="btn btn-secondary btn-sm" href="/appointments">Appointments</a>
-        <a type="button" className="btn btn-secondary btn-sm" href="/recordings">Recordings</a>
+        <a type="button" className="btn btn-secondary btn-sm" href="/deleteusers">Delete</a>
+        <a type="button" className="btn btn-secondary btn-sm" href="/listusers">View All</a>
         <span className="navbar-brand mb-0 h1"></span>
       </div>
     </div>);
