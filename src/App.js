@@ -26,6 +26,7 @@ import Reports from './components/reports/Reports';
 import PatientReport from './components/reports/PatientReport';
 import ListOfPatientReports from './components/reports/ListOfPatientReports';
 import DoctorRecordings from './components/recordings/DoctorRecordings';
+import PatientRecordings from './components/recordings/PatientRecordings';
 
 Amplify.configure(awsconfig);
 
@@ -103,7 +104,7 @@ const App = () => {
             <button type="button" className="btn btn-secondary btn-sm" href={"/report/patient/" + user.attributes.sub}>Reports</button>
             <button type="button" className="btn btn-secondary btn-sm">Messages</button>
             <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
-            <button type="button" className="btn btn-secondary btn-sm">Recordings</button>
+            <Link to="/recordings/patient/"><button type="button" className="btn btn-secondary btn-sm">Recordings</button></Link>
             <span className="navbar-brand mb-0 h1"></span>
           </div>
           <div className="d-flex justify-content-evenly flex-column primary-color welcome-box">
@@ -175,7 +176,7 @@ const App = () => {
             <button type="button" className="btn btn-secondary btn-sm" href="/reports">Reports</button>
             <button type="button" className="btn btn-secondary btn-sm">Messages</button>
             <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
-            <button type="button" className="btn btn-secondary btn-sm">Recordings</button>
+            <Link to="/recordings"><button type="button" className="btn btn-secondary btn-sm">Recordings</button></Link>
             <span className="navbar-brand mb-0 h1"></span>
           </div>
           <div className="d-flex justify-content-evenly flex-column primary-color welcome-box">
@@ -328,7 +329,7 @@ const App = () => {
             <button type="button" className="btn btn-secondary btn-sm" href="/reports">Reports</button>
             <button type="button" className="btn btn-secondary btn-sm">Messages</button>
             <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
-            <button type="button" className="btn btn-secondary btn-sm">Recordings</button>
+            <Link to="/recordings"><button type="button" className="btn btn-secondary btn-sm">Recordings</button></Link>
             <span className="navbar-brand mb-0 h1"></span>
           </div>
           <div className="d-flex justify-content-evenly flex-column primary-color welcome-box">
@@ -396,7 +397,7 @@ const App = () => {
             <button type="button" className="btn btn-secondary btn-sm" href="reports">Reports</button>
             <button type="button" className="btn btn-secondary btn-sm">Messages</button>
             <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
-            <button type="button" className="btn btn-secondary btn-sm">Recordings</button>
+            <Link to="/recordings"><button type="button" className="btn btn-secondary btn-sm">Recordings</button></Link>
             <span className="navbar-brand mb-0 h1"></span>
           </div>
           <div className="d-flex justify-content-evenly flex-column primary-color welcome-box">
@@ -449,6 +450,7 @@ const App = () => {
             <Home />
           </Route>
           <Route exact path="/recordings" component={DoctorRecordings} />
+          <Route path="/recordings/patient/" component={PatientRecordings} />
           {/* <Route path="/about">
             <About />
           </Route> */}

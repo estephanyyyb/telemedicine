@@ -26,7 +26,7 @@ if (!firebase.apps.length) {
 }
 const storage = firebase.storage();
 
-const DoctorRecordings = (props) => { 
+const PatientRecordings = (props) => { 
 
   const heading = ['#', 'File', 'Time Created', 'Size(bytes)', 'File URL'];
   const [name, setNameArray] = useState(""); //declare name array
@@ -34,17 +34,6 @@ const DoctorRecordings = (props) => {
   const [size, setSizeArray] = useState(""); //declare size array
   const [URL, setURLArray] = useState(""); //declare URL array
 
-
-  const [image , setImage] = useState('');
-
-  const upload = ()=>{
-    if(image == null)
-      return;
-
-    storage.ref(`/images/${image.name}`).put(image)
-    .on("state_changed" , alert("success") , alert);
-
-  }
   
 //  List Items in Storage
   useEffect(() => {
@@ -123,7 +112,7 @@ const buildTable = () => {
          </a>
          <div className="btn-group">
            <button type="button" className="btn btn-light"><img className="d-inline-block align-text-top" src={userIcon} alt="" width="20" height="20" />
-             {" Dr. " + props.currentUser}
+             {props.currentUser}
            </button>
           <button type="button" className="btn btn-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
              <span className="visually-hidden">Toggle Dropdown</span>
@@ -142,19 +131,16 @@ const buildTable = () => {
        <Link to="/reports"><button type="button" className="btn btn-secondary btn-sm">Reports</button></Link>
        <button type="button" className="btn btn-secondary btn-sm">Messages</button>
        <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
-       <Link to="/recordings"><button type="button" className="btn btn-secondary btn-sm">Recordings</button></Link>
+       <Link to="/recordings/patient/"><button type="button" className="btn btn-secondary btn-sm">Recordings</button></Link>
        <span className="navbar-brand mb-0 h1"></span>
      </div>
    </div>
    <br/><br/>
-       <h1><strong>Upload a new Recording</strong></h1>
+   <h1><strong>Video Recordings</strong></h1>
         <center>
-        <input type="file" onChange={(e)=>{setImage(e.target.files[0])}}/>
-        <button onClick={upload}>Upload</button>
-        <br/> <br/>
         <br/> <br/>
      
-          <button onClick={buildTable}> Load Patient Recordings </button>
+          <button onClick={buildTable}> Load Recordings </button>
 
           <table className='recordings'>
                   <thead>
@@ -176,5 +162,5 @@ const buildTable = () => {
 
 }
   export {
-    storage, firebase, DoctorRecordings as default
+    storage, firebase, PatientRecordings as default
   }
