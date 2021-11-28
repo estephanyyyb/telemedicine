@@ -123,7 +123,7 @@ const App = () => {
               <div className={style.dot}><img id={style['center-icons2']} src={meetingIcon} alt="" width="110" height="100" className="d-inline-block align-text-top" />
               </div>
               <div className={style.textbox}>
-                <a href="#"><h3 className={style.h3}>Join a Meeting</h3></a>
+                <a onClick={createVideoChatRoom}><h3 className={style.h3}>Join a Meeting</h3></a>
               </div>
             </div>
           </div>
@@ -193,7 +193,7 @@ const App = () => {
               <div className={style.dot}><img id={style['center-icons2']} src={meetingIcon} alt="" width="110" height="100" className="d-inline-block align-text-top" />
               </div>
               <div className={style.textbox}>
-                <a href="https://telemedicine-video-call.herokuapp.com/" target="_blank"><h3 className={style.h3}>Start a Meeting</h3></a>
+                <a onClick={createVideoChatRoom} target="_blank"><h3 className={style.h3}>Start a Meeting</h3></a>
               </div>
             </div>
           </div>
@@ -495,7 +495,14 @@ const App = () => {
 
 }
 
+function createVideoChatRoom () {
+  const roomName = prompt('Enter the name of the room you would like to create or join.');
+  var roomNameNoSpaces = roomName.replace(/\s/g, "-");
+  roomNameNoSpaces = roomNameNoSpaces.toLowerCase();
+  var url = `https://telemedicine-video-call.herokuapp.com/${roomNameNoSpaces}`
+  
+  window.open(url, '_blank');
 
+}
 
 export default App;
-
