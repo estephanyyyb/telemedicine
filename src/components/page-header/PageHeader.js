@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './PageHeader.css';
+import style from '../../App.module.css';
 import telemedicineLogo from '../../images/telemedicineLogo2.png';
 import userIcon from '../../images/userIcon1.png';
-import { useHistory } from 'react-router-dom';
 
 import { AmplifySignOut } from '@aws-amplify/ui-react';
 
@@ -44,8 +43,8 @@ const RenderDoctorView = (props) => {
             <span className="visually-hidden">Toggle Dropdown</span>
           </button>
           <ul className="dropdown-menu">
-            <li><a className="dropdown-item" href="#">Profile</a></li>
-            <li><a className="dropdown-item" href="#">Another action</a></li>
+            <li><a className="dropdown-item" href="">Profile</a></li>
+            <li><a className="dropdown-item" href="/">Home</a></li>
             <li><a className="dropdown-item" href="#">Something else here</a></li>
             <li><hr className="dropdown-divider"></hr></li>
             <li><a className="dropdown-item" href="#"><AmplifySignOut /></a></li>
@@ -54,21 +53,16 @@ const RenderDoctorView = (props) => {
       </div>
     </nav>
     <div className="d-flex justify-content-evenly navbar primary-color">
-      <button type="button" className="btn btn-secondary btn-sm" href="/reports">Reports</button>
-      <button type="button" className="btn btn-secondary btn-sm">Messages</button>
-      <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
-      <button type="button" className="btn btn-secondary btn-sm">Recordings</button>
+      <a type="button" className="btn btn-secondary btn-sm" href="/reports">Reports</a>
+      <a type="button" className="btn btn-secondary btn-sm" href="/chat">Chat</a>
+      <a type="button" className="btn btn-secondary btn-sm" href="/appointments">Appointments</a>
+      <a type="button" className="btn btn-secondary btn-sm" href="/recordings">Recordings</a>
       <span className="navbar-brand mb-0 h1"></span>
     </div>
   </div>);
 }
 
 const RenderPatientView = (props) => {
-  let history = useHistory();
-  const AppRedirect = () => {
-    history.push('/appointments')
-  }
-
   return (
     <div className="App">
       <nav className="navbar navbar-light bg-light">
@@ -84,7 +78,7 @@ const RenderPatientView = (props) => {
             </button>
             <ul className="dropdown-menu">
               <li><a className="dropdown-item" href="#">Profile</a></li>
-              <li><a className="dropdown-item" href="#">Another action</a></li>
+              <li><a className="dropdown-item" href="/">Home</a></li>
               <li><a className="dropdown-item" href="#">Something else here</a></li>
               <li><hr className="dropdown-divider"></hr></li>
               <li><a className="dropdown-item" href="#"><AmplifySignOut /></a></li>
@@ -93,10 +87,10 @@ const RenderPatientView = (props) => {
         </div>
       </nav>
       <div className="d-flex justify-content-evenly navbar primary-color">
-        <button type="button" className="btn btn-secondary btn-sm" href={"/report/patient/" + props.currentUser.attributes.sub}>Reports</button>
-        <button type="button" className="btn btn-secondary btn-sm">Messages</button>
-        <button type="button" className="btn btn-secondary btn-sm" onClick={AppRedirect}>Appointments</button>
-        <button type="button" className="btn btn-secondary btn-sm">Recordings</button>
+        <a type="button" className="btn btn-secondary btn-sm" href={"/report/patient/" + props.currentUser.attributes.sub}>Reports</a>
+        <a type="button" className="btn btn-secondary btn-sm" href="/chat">Chat</a>
+        <a type="button" className="btn btn-secondary btn-sm" href="/appointments">Appointments</a>
+        <a type="button" className="btn btn-secondary btn-sm" href="/recordings">Recordings</a>
         <span className="navbar-brand mb-0 h1"></span>
       </div>
     </div>
@@ -119,7 +113,7 @@ const RenderNurseView = (props) => {
                 </button>
                 <ul className="dropdown-menu">
                   <li><a className="dropdown-item" href="#">Profile</a></li>
-                  <li><a className="dropdown-item" href="#">Another action</a></li>
+                  <li><a className="dropdown-item" href="/">Home</a></li>
                   <li><a className="dropdown-item" href="#">Something else here</a></li>
                   <li><hr className="dropdown-divider"></hr></li>
                   <li><a className="dropdown-item" href="#"><AmplifySignOut /></a></li>
@@ -128,10 +122,9 @@ const RenderNurseView = (props) => {
             </div>
           </nav>
           <div className="d-flex justify-content-evenly navbar primary-color">
-            <button type="button" className="btn btn-secondary btn-sm" href="/reports">Reports</button>
-            <button type="button" className="btn btn-secondary btn-sm">Messages</button>
-            <button type="button" className="btn btn-secondary btn-sm"></button>
-            {/* <input type='button' className>Appointments</input> */}
+            <a type="button" className="btn btn-secondary btn-sm" href="/reports">Reports</a>
+            <a type="button" className="btn btn-secondary btn-sm" href="/chat">Chat</a>
+            <a type="button" className="btn btn-secondary btn-sm" href="/appointments">Appointments</a>
             <span className="navbar-brand mb-0 h1"></span>
           </div>
     </div>)
@@ -153,7 +146,7 @@ const RenderAdminView = (props) => {
             </button>
             <ul className="dropdown-menu">
               <li><a className="dropdown-item" href="#">Profile</a></li>
-              <li><a className="dropdown-item" href="#">Another action</a></li>
+              <li><a className="dropdown-item" href="/">Home</a></li>
               <li><a className="dropdown-item" href="#">Something else here</a></li>
               <li><hr className="dropdown-divider"></hr></li>
               <li><a className="dropdown-item" href="#"><AmplifySignOut /></a></li>
@@ -162,10 +155,10 @@ const RenderAdminView = (props) => {
         </div>
       </nav>
       <div className="d-flex justify-content-evenly navbar primary-color">
-        <button type="button" className="btn btn-secondary btn-sm" href="/reports">Reports</button>
-        <button type="button" className="btn btn-secondary btn-sm">Messages</button>
-        <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
-        <button type="button" className="btn btn-secondary btn-sm">Recordings</button>
+        <a type="button" className="btn btn-secondary btn-sm" href="/reports">Reports</a>
+        <a type="button" className="btn btn-secondary btn-sm" href="/chat">Chat</a>
+        <a type="button" className="btn btn-secondary btn-sm" href="/appointments">Appointments</a>
+        <a type="button" className="btn btn-secondary btn-sm" href="/recordings">Recordings</a>
         <span className="navbar-brand mb-0 h1"></span>
       </div>
     </div>);

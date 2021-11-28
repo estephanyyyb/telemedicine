@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PageHeader from './PageHeader';
+import PageHeader from './page-header/PageHeader';
 import profileStyle from './Profile.css'
 import Auth from '@aws-amplify/auth';
 

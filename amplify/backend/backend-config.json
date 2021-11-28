@@ -40,14 +40,7 @@
       ]
     }
   },
-  "function": {
-    "telemedicinea0e20537": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": []
-    }
-  },
+  "function": {},
   "api": {
     "telemedicineApi4": {
       "service": "AppSync",
