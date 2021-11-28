@@ -1,0 +1,56 @@
+.main{
+    margin: 30px 30px 0px 0px;
+    align-items: center;
+    font-size: 50px;
+    text-decoration:underline  #7ec4e8;
+    font-weight: 800;
+}
+
+.note{
+    margin: 0px 30px 30px 0px;
+
+    align-items: center;
+    font-size: 15px;
+    text-decoration:none;
+    font-weight: 700;
+}
+
+.mainContainer{
+    height: 525px;
+    margin: 30px 30px 30px 30px;
+    border: 1px solid grey;
+}
+
+.mainContainer1{
+    margin: 130px 30px 200px 30px;
+}
+
+.search{
+    margin-top: 30px;
+}
+
+input{
+    margin-left: 20px;
+    margin-bottom: 30px;
+    width: 400px;
+    height: 40px;
+    font-size: 25px;
+}
+
+.txt{
+    font-size: 30px;
+}
+
+.create button{
+    /* background-color: #7ec4e8;
+    height: 50px; */
+    height: 70px;
+  width: 500px;
+  display: inline;
+  margin: 30px;
+  font-size: 30px;
+  background-color: #7ec4e8;
+  color: black;
+  font-weight: bold;
+  border: 1px solid grey
+}
