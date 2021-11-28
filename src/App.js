@@ -23,7 +23,6 @@ import {
   Link,
 } from "react-router-dom";
 
-import Reports from './components/reports/Reports';
 import PatientReport from './components/reports/PatientReport';
 import ListOfPatientReports from './components/reports/ListOfPatientReports';
 import DoctorRecordings from './components/recordings/DoctorRecordings';
@@ -235,9 +234,9 @@ const App = () => {
             </div>
           </nav>
           <div className={`d-flex justify-content-evenly navbar ${style['primary-color']}`}>
-            <button type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/newReports">Reports</button>
-            <button type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/chat">Chat</button>
-            <button type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/appointments">Appointments</button>
+            <a type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/newReports">Reports</a>
+            <a type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/chat">Chat</a>
+            <a type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/appointments">Appointments</a>
             <span className={`navbar-brand mb-0 ${style.h1}`}></span>
           </div>
           <div className={`d-flex justify-content-evenly flex-column ${style['primary-color']} ${style['welcome-box']}`}>
@@ -304,7 +303,7 @@ const App = () => {
             <a href="/createuser"><button type="button" className={`btn btn-secondary ${style['btn-sm']}`} >Add</button></a>
             <a href="/deleteusers"><button type="button" className={`btn btn-secondary ${style['btn-sm']}`}>Delete</button></a>
             <a href="/listusers"><button type="button" className={`btn btn-secondary ${style['btn-sm']}`}>View All</button></a>
-            <button type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/chat">Chat</button>
+            <a type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/chat">Chat</a>
           </div>
           <div className={`d-flex justify-content-evenly flex-column ${style['primary-color']} ${style['welcome-box']}`}>
             <div className={style['welcome-textbox']}>

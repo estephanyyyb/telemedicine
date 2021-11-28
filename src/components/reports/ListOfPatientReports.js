@@ -4,7 +4,7 @@ import firebase from 'firebase/app';
 import 'firebase/storage';
 import PageHeader from '../page-header/PageHeader';
 import { initializeApp } from '@firebase/app';
-import styles from './Reports.css';
+import styles from './Reports.module.css';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
