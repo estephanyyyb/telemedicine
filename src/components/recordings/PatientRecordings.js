@@ -7,6 +7,7 @@ import firebase from "firebase/app";
 import 'firebase/storage';
 import { Link } from 'react-router-dom';
 import PageHeader from '../page-header/PageHeader';
+import style from '../../App.css'
 
 const firebaseConfig = {
   apiKey: "AIzaSyAwxvSMHLyXiEKTBn4D-L8llyoYu-K8Yqw",

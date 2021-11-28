@@ -1,6 +1,6 @@
 import { ChatEngine } from 'react-chat-engine';
 import { Button, Navbar, Nav } from 'react-bootstrap'
-import './cApp.css';
+import styles from './cApp.module.css';
 import ChatFeed from './components/ChatFeed';
 import Container from 'react-bootstrap/Container'
 import AutoForm from './components/AutoForm';

@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { sendMessage, isTyping } from 'react-chat-engine';
 import { SendOutlined, PictureOutlined } from '@ant-design/icons';
+import styles from '../cApp.module.css';
+
 
 const MessageForm = (props) => {
 	const [value, setValue] = useState('');
@@ -24,17 +26,17 @@ const MessageForm = (props) => {
 		sendMessage(creds, chatId, {files: event.target.files, text: ''});
 	}
 	return (
-	<form className="message-form" onSubmit={handleSubmit}>
+	<form className={styles['message-form']} onSubmit={handleSubmit}>
 		<input
-			className="message-input"
+			className={styles['message-input']}
 			placeholder="Type your message here ..."
 			value={value}
 			onChange={handleChange}
 			onSubmit={handleSubmit}
 		/>
 		<label htmlFor="upload-button">
-			<span className="image-button">
-				<PictureOutlined className="picture-icon" />
+			<span className={styles['image-button']}>
+				<PictureOutlined className={styles['picture-icon']} />
 			</span>
 		</label>
 		<input
@@ -44,8 +46,8 @@ const MessageForm = (props) => {
 			style={{display: 'none'}}
 			onChange={handleUpload}
 		/>
-		<button type="submit" className="send-button">
-			<SendOutlined className="send-icon"/>
+		<button type="submit" className={styles['send-button']}>
+			<SendOutlined className={styles['send-icon']}/>
 		</button>
 	</form>
 	)

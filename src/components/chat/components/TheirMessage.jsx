@@ -1,10 +1,12 @@
+import styles from '../cApp.module.css';
+
 const TheirMessage = ({lastMessage, message}) => {
 	const isFirstMessageByUser = !lastMessage || lastMessage.sender.username !== message.sender.username;
 	return (
-		<div className="message-row">
+		<div className={styles['message-row']}>
 			{isFirstMessageByUser && (
 				<div 
-					className="message-avatar"
+					className={styles['message-avatar']}
 					style={{ backgroundImage: message.sender && `url(${message.sender.avatar})` } }
 				/>
 			)}
@@ -13,11 +15,11 @@ const TheirMessage = ({lastMessage, message}) => {
 				<img 
 					src={message.attachments[0].file}
 					alt="message-attachment"
-					className="message-image"
+					className={styles['message-image']}
 					style={{ marginLeft: isFirstMessageByUser ? '4px' : '48px'}}
 				/>
 		) :(
-			<div className="message" style={{ float: 'left', backgroundColor: '#CABCDC', marginLeft: isFirstMessageByUser ? '4px' : '48px'}}>
+			<div className={styles['message']} style={{ float: 'left', backgroundColor: '#CABCDC', marginLeft: isFirstMessageByUser ? '4px' : '48px'}}>
 				{message.text}
 			</div>
 	)

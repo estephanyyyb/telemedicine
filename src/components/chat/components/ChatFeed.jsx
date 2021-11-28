@@ -1,6 +1,8 @@
 import MyMessage from './MyMessage';
 import TheirMessage from './TheirMessage';
 import MessageForm from './MessageForm';
+import styles from '../cApp.module.css';
+
 
 const ChatFeed = (props) => {
   const { chats, activeChat, userName, messages } = props;
@@ -10,7 +12,7 @@ const ChatFeed = (props) => {
   const renderReadReceipts = (message, isMyMessage) => chat.people.map((person, index) => person.last_read === message.id && (
     <div
       key={`read_${index}`}
-      className="read-receipt"
+      className={styles['read-receipt']}
       style={{
         float: isMyMessage ? 'right' : 'left',
         backgroundImage: person.person.avatar && `url(${person.person.avatar})`,
@@ -28,12 +30,12 @@ const ChatFeed = (props) => {
 
       return (
         <div key={`msg_${index}`} style={{ width: '100%' }}>
-          <div className="message-block">
+          <div className={styles['message-block']}>
             {isMyMessage
               ? <MyMessage message={message} />
               : <TheirMessage message={message} lastMessage={messages[lastMessageKey]} />}
           </div>
-          <div className="read-receipts" style={{ marginRight: isMyMessage ? '18px' : '0px', marginLeft: isMyMessage ? '0px' : '68px' }}>
+          <div className={styles['read-receipts']} style={{ marginRight: isMyMessage ? '18px' : '0px', marginLeft: isMyMessage ? '0px' : '68px' }}>
             {renderReadReceipts(message, isMyMessage)}
           </div>
         </div>
@@ -44,15 +46,15 @@ const ChatFeed = (props) => {
   if (!chat) return <div />;
 
   return (
-    <div className="chat-feed">
-      <div className="chat-title-container">
-        <div className="chat-title">{chat?.title}</div>
-        <div className="chat-subtitle">
+    <div className={styles['chat-feed']}>
+      <div className={styles['chat-title-container']}>
+        <div className={styles['chat-title']}>{chat?.title}</div>
+        <div className={styles['chat-subtitle']}>
         </div>
       </div>
       {renderMessages()}
       <div style={{ height: '100px' }} />
-      <div className="message-form-container">
+      <div className={styles['message-form-container']}>
         <MessageForm {...props} chatId={activeChat} />
       </div>
     </div>

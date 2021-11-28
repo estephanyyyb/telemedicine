@@ -114,7 +114,7 @@ const App = () => {
               <div className={style.dot}><img id={style['center-icons2']} src={appointmentIcon} alt="" width="105" height="100" />
               </div>
               <div className={style.textbox}>
-                <a href="#"><h3 className={style.h3}>Schedule an Appointment</h3></a>
+                <a href="/appointments"><h3 className={style.h3}>Schedule an Appointment</h3></a>
               </div>
             </div>
           </div>
@@ -256,7 +256,7 @@ const App = () => {
               <div className={style.dot}><img id={style['center-icons2']} src={appointmentIcon} alt="" width="105" height="100" />
               </div>
               <div className={style.textbox}>
-                <a href="#"><h3 className={style.h3} href="/appointments">View Appointments</h3></a>
+                <a href="/appointments"><h3 className={style.h3}>View Appointments</h3></a>
               </div>
             </div>
           </div>
