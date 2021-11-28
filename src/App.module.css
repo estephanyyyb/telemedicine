@@ -164,3 +164,12 @@
     text-align: center;
   }
   
+  #upload-card {
+    width: 20%;
+    margin: 0 auto;
+    font-size: 20px;
+}
+
+#recordings {
+    font-size: 20px;
+}

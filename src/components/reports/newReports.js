@@ -65,19 +65,19 @@ const NewReports = (props) => {
   return (
     <div className="App">
       <PageHeader currentUser={props.currentUser}></PageHeader>
-      <div className="main1">Upload a New Report</div>
-      <div className="mainContainer2">
+      <div className={styles['main1']}>Upload a New Report</div>
+      <div className={styles['mainContainer2']}>
         <center>
-          <div className="uploadStuff"><input type="file" onChange={(e) => { setImage(e.target.files[0]) }} /></div>
-          <div className="uploadButton"><button onClick={upload}>Upload Report</button></div>
+          <div className={styles['uploadStuff']}><input type="file" onChange={(e) => { setImage(e.target.files[0]) }} /></div>
+          <div className={styles['uploadButton']}><button onClick={upload}>Upload Report</button></div>
 
 
           <br /> <br />
           <br />
 
-          <div className="urlLink"><a href={Url}>{Url}</a></div>
+          <div className={styles['urlLink']}><a href={Url}>{Url}</a></div>
           <br /> <br />
-          <div className="uploadButton"><button onClick={listItem}>View Names of All Reports</button></div>
+          <div className={styles['uploadButton']}><button onClick={listItem}>View Names of All Reports</button></div>
           {
             data.map((val) => (
               <h2>{val}</h2>

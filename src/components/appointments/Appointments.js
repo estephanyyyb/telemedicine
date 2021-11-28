@@ -1,5 +1,5 @@
 // import logo from './logo.svg';
-import './Appointments.css';
+import styles from './Appointments.module.css';
 import React from 'react';
 import appointments from './appt.json';
 import parse from 'html-react-parser';
@@ -35,18 +35,18 @@ function Appointments(props){
 
         <div><PageHeader currentUser={props.currentUser}></PageHeader></div>
 
-        <div className="main-content" style={{position: 'absolute', width: "94%", overflow: 'hidden'}}>
-                <div className="main-content-bar">
-                    <h3 className="content-title">VIEW APPOINTMENTS</h3>
+        <div className={styles['main-content']} style={{position: 'absolute', width: "94%", overflow: 'hidden'}}>
+                <div className={styles['main-content-bar']}>
+                    <h3 className={styles['content-title']}>VIEW APPOINTMENTS</h3>
                 </div>
             <div style={{display: 'flex', flexWrap: 'nowrap', height: '100%'}}>
-                <div className="sub-content">
-                    <div className="main-content-bar">
-                        <h3 className="content-title">Your Upcoming Appointments</h3>
+                <div className={styles['sub-content']}>
+                    <div className={styles['main-content-bar']}>
+                        <h3 className={styles['content-title']}>Your Upcoming Appointments</h3>
                     </div>
 
                     <div style={{height: '83%', overflowY: 'scroll'}}>
-                      <div className="appt" id="appt1">
+                      <div className={styles['appt']} id="appt1">
                           {/* <div className="appt" id="appt1" style="display: flex; flex-wrap: wrap; border: solid; margin: 15px; border-radius: 5px; border-width: 1.5px; border-color: gray;"> */}
                           <CreateApptList email={email}></CreateApptList>
                           {/* </div> */}
@@ -54,9 +54,9 @@ function Appointments(props){
                     </div>
                 </div>
 
-                <div className="sub-content">
-                    <div className="main-content-bar">
-                      <h3 id="year" className="content-title">Request an Appointment</h3>
+                <div className={styles['sub-content']}>
+                    <div className={styles['main-content-bar']}>
+                      <h3 id="year" className={styles['content-title']}>Request an Appointment</h3>
                     </div>
                     <div>
                       {/* <form style={{margin:15, display:'flex', flexWrap:'wrap'}}>

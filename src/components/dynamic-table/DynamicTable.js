@@ -58,7 +58,7 @@ export default class DynamicTable extends React.Component {
             <div>
                 <h1 className="fixTitle">{this.props.tableTitle}</h1>
             </div>
-            <div className="tableDiv tableFixHead">
+            <div className={`${syles['tableDiv']} ${styles['tableFixHead']}`}>
                 <table className={styles.table}>
                     <thead className={styles.thead}>
                         <tr>{this.getHeader()}</tr>

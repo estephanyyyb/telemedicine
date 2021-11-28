@@ -4,7 +4,8 @@ import firebase from 'firebase/app';
 import 'firebase/storage';
 import PageHeader from '../page-header/PageHeader';
 import { initializeApp } from '@firebase/app';
-import styles from './Reports.module.css';
+import style from './Reports.module.css';
+import styles from '../dynamic-table/dynamic-table.module.css';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -87,55 +88,64 @@ const PatientReport = (props) => {
 
 
     return (
-        <div className="App">
+        <div>
+        
             <PageHeader currentUser={props.currentUser}></PageHeader>
-            <div className="item1">
-                <h1><strong>{fullName}</strong></h1>
+            <div className={style['name2']}>
+                {fullName}
             </div>
 
-            <div className="item2">
-                <table className="patient-info-table">
+            <div className={style['item3']}>
+                <table className={style['patient-info-table']}>
                     <thead>
-                        <tr>
-                            <th>Patient Name</th>
-                            <th>Date of Birth</th>
-                            <th>Age</th>
-                            <th>Sex</th>
-                            <th>Ethnicity</th>
-                            <th>Marital Status</th>
-                            <th>Phone Number</th>
-                            <th>Provider</th>
+                        <div className={style['l1']}>
+                        <tr >
+                            <th >Patient Name</th>
+                            <th >Date of Birth</th>
+                            <th >Age</th>
+                            <th >Sex</th>
+                            <th >Ethnicity</th>
+                            <th >Marital Status</th>
+                            <th >Phone Number</th>
+                            <th > Provider</th>
                         </tr>
+                        </div>
                     </thead>
                     <tbody>
+                    <div className={style['l1']}>
                         <tr>
-                            <td>{fullName}</td>
-                            <td>{props.patientData.birthdate}</td>
+                            <td >{fullName}</td>
+                            <td >{props.patientData.birthdate}</td>
                             <td>{age}</td>
-                            <td>{props.patientData.gender}</td>
-                            <td>{props.patientData["custom:ethnicity"]}</td>
-                            <td>{props.patientData["custom:marital-status"]}</td>
-                            <td>{props.patientData.phone_number}</td>
-                            <td>{props.patientData["custom:provider"]}</td>
+                            <td > {props.patientData.gender}</td>
+                            <td >{props.patientData["custom:ethnicity"]}</td>
+                            <td > {props.patientData["custom:marital-status"]}</td>
+                            <td >{props.patientData.phone_number}</td>
+                            <td >{props.patientData["custom:provider"]}</td>
                         </tr>
+                        
+                        </div>
+                        
                     </tbody>
+                    
                 </table>
                 <br /><br />
+               
 
 
                 <div className="home__table">
-                    <div className="columnsMain">
+                    <div className={styles['columnsMain1']}>
                         <TableContainer component={Paper}>
                             <Table aria-label="simple table">
                                 <TableHead className="tbHead">
                                     <TableRow >
-                                        <TableCell className="tablecell1" ><div className="columns1">List of all of your Reports</div></TableCell>
+                                        <TableCell className="tablecell1" ><div className={styles['columns1']}>List of all of your Reports</div></TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody className="tBody">
                                     {URL.map((URL) => (
                                         <TableRow key={URL}>
-                                            <TableCell ><div className="rows1">{URL}</div></TableCell>
+                                            <TableCell ><div className={styles['rows1']}>{URL}</div></TableCell>
                                         </TableRow>
                                     ))}
                                 </TableBody>
