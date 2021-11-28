@@ -27,6 +27,7 @@ import Reports from './components/reports/Reports';
 import PatientReport from './components/reports/PatientReport';
 import ListOfPatientReports from './components/reports/ListOfPatientReports';
 import DoctorRecordings from './components/recordings/DoctorRecordings';
+import PatientRecordings from './components/recordings/PatientRecordings';
 import Appointments from './components/appointments/Appointments';
 import Profile from './components/Profile';
 import ListUsers from './listusers';
@@ -89,10 +90,10 @@ const App = () => {
             </div>
           </nav>
           <div className={`d-flex justify-content-evenly navbar ${style['primary-color']}`}>
-            <button type="button" className={`btn btn-secondary ${style['btn-sm']}`} href={"/report/patient/" + user.attributes.sub}>Reports</button>
-            <button type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/chat" >Chat</button>
-            <button type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/appointments">Appointments</button>
-            <button type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/recordings">Recordings</button>
+            <a type="button" className={`btn btn-secondary ${style['btn-sm']}`} href={"/report/patient/" + user.attributes.sub}>Reports</a>
+            <a type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/chat" >Chat</a>
+            <a type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/appointments">Appointments</a>
+            <a type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/recordings/patient">Recordings</a>
             <span className={`navbar-brand mb-0 ${style.h1}`}></span>
           </div>
           <div className={`d-flex justify-content-evenly flex-column ${style['primary-color']} ${style['welcome-box']}`}>
@@ -361,6 +362,9 @@ const App = () => {
           <Route exact path="/recordings">
             <DoctorRecordings userData={user.attributes} currentUser={user}></DoctorRecordings>
           </Route>
+          <Route exact path="/recordings/patient">
+            <PatientRecordings userData={user.attributes} currentUser={user}></PatientRecordings>
+          </Route>
           <Route path={"/report/patient/" + user.attributes.sub}>
             <PatientReport currentUser={user} patientData={user.attributes} />
           </Route>
@@ -500,5 +504,4 @@ const App = () => {
 
 
 export default App;
-
 

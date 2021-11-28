@@ -90,7 +90,7 @@ const RenderPatientView = (props) => {
         <a type="button" className="btn btn-secondary btn-sm" href={"/report/patient/" + props.currentUser.attributes.sub}>Reports</a>
         <a type="button" className="btn btn-secondary btn-sm" href="/chat">Chat</a>
         <a type="button" className="btn btn-secondary btn-sm" href="/appointments">Appointments</a>
-        <a type="button" className="btn btn-secondary btn-sm" href="/recordings">Recordings</a>
+        <a type="button" className="btn btn-secondary btn-sm" href="/recordings/patient">Recordings</a>
         <span className="navbar-brand mb-0 h1"></span>
       </div>
     </div>
