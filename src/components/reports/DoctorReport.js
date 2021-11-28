@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './Reports.css';
+import styles from './Reports.module.css';
 
 function DocterReport (props) {
 	

@@ -3,7 +3,6 @@ import telemedicineLogo from '../../images/telemedicineLogo2.png';
 import userIcon from '../../images/userIcon1.png';
 import { AmplifySignOut } from '@aws-amplify/ui-react';
 import PropTypes from 'prop-types';
-import styles from './DoctorRecordings.css'
 import firebase from "firebase/app";
 import 'firebase/storage';
 import { Link } from 'react-router-dom';

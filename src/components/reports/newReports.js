@@ -4,7 +4,7 @@ import firebase from 'firebase/app';
 import 'firebase/storage';
 import PageHeader from '../page-header/PageHeader';
 import { initializeApp } from '@firebase/app';
-import styles from './Reports.css';
+import styles from './Reports.module.css';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDgxKxiGZv8nLVb-w6bYIHTlGy6aQDJp9g",

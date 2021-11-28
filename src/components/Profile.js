@@ -1,7 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import PageHeader from './page-header/PageHeader';
-import profileStyle from './Profile.css'
+import PageHeader from './page-header/PageHeader.js';
+import profileStyle from './Profile.module.css'
 import Auth from '@aws-amplify/auth';
 
 
@@ -82,22 +81,22 @@ class Profile extends React.Component {
                                     <h4>Basic Information</h4>
                                     <br/>
                                     <h5>Full-Name</h5>
-                                    <label>{(this.props.userData.given_name + " " + this.props.userData.family_name).toUpperCase()}</label>
+                                    <label className={profileStyle.label}>{(this.props.userData.given_name + " " + this.props.userData.family_name).toUpperCase()}</label>
                                     <br/>
                                     <br/>
                                     <hr/>
                                     <h5>Date of Birth</h5>
-                                    <label>{(this.props.userData.birthdate).toUpperCase()}</label>
+                                    <label className={profileStyle.label}>{(this.props.userData.birthdate).toUpperCase()}</label>
                                     <br/>
                                     <br/>
                                     <hr/>
                                     <h5>Ethnicity</h5>
-                                    <label>{(this.props.userData["custom:ethnicity"]).toUpperCase()}</label>
+                                    <label className={profileStyle.label}>{(this.props.userData["custom:ethnicity"]).toUpperCase()}</label>
                                     <br/>
                                     <br/>
                                     <hr/>
                                     <h5>Marital Status</h5>
-                                    <label>{(this.props.userData["custom:marital-status"]).toUpperCase()}</label>
+                                    <label className={profileStyle.label}>{(this.props.userData["custom:marital-status"]).toUpperCase()}</label>
                                     <br/>
                                     <br/>
                                     <hr/>
@@ -107,14 +106,14 @@ class Profile extends React.Component {
                                     <h4>Contact Information</h4>
                                     <br/>
                                     <h5>Email Address</h5>
-                                    <label>{(this.props.userData.email).toUpperCase()}</label>
+                                    <label className={profileStyle.label}>{(this.props.userData.email).toUpperCase()}</label>
                                     <br/>
                                     <br/>
                                     <hr/>
 
                                     <br/>
                                     <h5>Address</h5>
-                                    <label id="address_label">{(this.props.userData.address + ", " + this.props.userData['custom:city'] + ", " + this.props.userData['custom:state'] + " " + this.props.userData['custom:zc']).toUpperCase()}</label>
+                                    <label className={profileStyle.label} id="address_label">{(this.props.userData.address + ", " + this.props.userData['custom:city'] + ", " + this.props.userData['custom:state'] + " " + this.props.userData['custom:zc']).toUpperCase()}</label>
 
                                     <br/>
                                     <br/>
@@ -123,28 +122,28 @@ class Profile extends React.Component {
                                         {
                                             this.state.reveal?
                                             <div className="">
-                                                <label for="inputAddress">Edit Street Address</label>
+                                                <label className={profileStyle.label} for="inputAddress">Edit Street Address</label>
                                                 <br/>
-                                                <input type="text" className="form-control" id="inputAddress" value={address} name="address" placeholder={address} onChange={this.handleInputChange}/>
+                                                <input className={profileStyle.label} type="text" className="form-control" id="inputAddress" value={address} name="address" placeholder={address} onChange={this.handleInputChange}/>
                                                 <br/>
-                                                <label id="city_label" for="inputCity">Edit City</label>
+                                                <label className={profileStyle.label} id="city_label" for="inputCity">Edit City</label>
                                                 <input type="text" className="form-control" id="inputCity" value={city} name="city" placeholder={city} onChange={this.handleInputChange}/>
                                                 <br/>
-                                                <label id="state_label" for="inputState">Edit State</label>
+                                                <label className={profileStyle.label} id="state_label" for="inputState">Edit State</label>
                                                 <input type="text" className="form-control" id="inputState" value={state} name="state" placeholder={state} onChange={this.handleInputChange}/>
                                                 <br/>
-                                                <label id="zipcode_label" for="inputState">Edit ZIP Code</label>
+                                                <label className={profileStyle.label} id="zipcode_label" for="inputState">Edit ZIP Code</label>
                                                 <input type="text" className="form-control" id="zipcode_label" value={zipcode} name="zipcode" placeholder={zipcode} onChange={this.handleInputChange}/>
                                                 <br/>
                                             </div>
                                             :null
                                         }
-                                        <button className="edit-dropdown"onClick={this.operation}>Edit Address</button>
+                                        <button className={profileStyle['edit-dropdown']} onClick={this.operation}>Edit Address</button>
                                     </div>
                                     <br/>
                                     <hr/>
                                     <h5>Phone Number</h5>
-                                    <label id="phone_number_label">{this.props.userData.phone_number}</label>
+                                    <label className={profileStyle.label} id="phone_number_label">{this.props.userData.phone_number}</label>
                                     <br/>
                                     <br/>
                                     
@@ -152,13 +151,13 @@ class Profile extends React.Component {
                                         {
                                             this.state.revealPhone?
                                             <div className="">
-                                                <label for="inputPhoneNumber">Edit Phone Number</label>
+                                                <label className={profileStyle.label} for="inputPhoneNumber">Edit Phone Number</label>
                                                 <input type="text" className="form-control" id="inputPhoneNumber" value={phone_number} name="phone_number" placeholder={phone_number} onChange={this.handleInputChange}/>
                                             </div>
                                             :""
                                         }
                                         <br/>
-                                        { <button className="edit-dropdown" onClick={this.operationPhone}>Edit Number</button> }
+                                        { <button className={profileStyle['edit-dropdown']} onClick={this.operationPhone}>Edit Number</button> }
                                     </div>
                                 </div>
                                 <br/>
