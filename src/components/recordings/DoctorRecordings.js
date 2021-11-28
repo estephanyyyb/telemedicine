@@ -5,6 +5,7 @@ import { AmplifySignOut } from '@aws-amplify/ui-react';
 import PropTypes from 'prop-types';
 import styles from './DoctorRecordings.css'
 // import AWS from 'aws-sdk';
+import PageHeader from '../page-header/PageHeader';
 
 const AWS = require('aws-sdk');
 const S3 = new AWS.S3(); // YOU NEED THIS LINE
@@ -124,89 +125,53 @@ const DoctorRecordings = (props) => {
       console.log(body[i]);
     }
 
-
-
-
-
-
     return (
       <div>
       {/* <PageHeader currentUser={props.currentUser}></PageHeader> */}
-      <div>
-    <nav className="navbar navbar-light bg-light">
-      <div className="container-fluid">
-        <a className="navbar-brand brand-text" href="/">
-          <img src={telemedicineLogo} alt="" width="25" height="25" className="d-inline-block align-text-top" />
-          Telemedicine
-        </a>
-        <div className="btn-group">
-          <button type="button" className="btn btn-light"><img className="d-inline-block align-text-top" src={userIcon} alt="" width="20" height="20" />
-            {" Dr. " + props.currentUser}
-          </button>
-          <button type="button" className="btn btn-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-            <span className="visually-hidden">Toggle Dropdown</span>
-          </button>
-          <ul className="dropdown-menu">
-            <li><a className="dropdown-item" href="#">Profile</a></li>
-            <li><a className="dropdown-item" href="#">Another action</a></li>
-            <li><a className="dropdown-item" href="#">Something else here</a></li>
-            <li><hr className="dropdown-divider"></hr></li>
-            <li><a className="dropdown-item" href="#"><AmplifySignOut /></a></li>
-          </ul>
+      <PageHeader currentUser={props.currentUser}></PageHeader>
+    <br/><br/>
+        <h1><strong>Upload a new Recording</strong></h1>
+        <div id="upload-card">
+        <div>Native SDK File Upload Progress is {progress}%</div>
+        <input type="file" onChange={handleFileInput}/><br/>
+        <button onClick={() => uploadFile(selectedFile)}> Upload to S3</button>
         </div>
-      </div>
-    </nav>
-    <div className="d-flex justify-content-evenly navbar primary-color">
-      <button type="button" className="btn btn-secondary btn-sm" href="/reports">Reports</button>
-      <button type="button" className="btn btn-secondary btn-sm">Messages</button>
-      <button type="button" className="btn btn-secondary btn-sm">Appointments</button>
-      <button type="button" className="btn btn-secondary btn-sm">Recordings</button>
-      <span className="navbar-brand mb-0 h1"></span>
-    </div>
-  </div>
-  <br/><br/>
-      <h1><strong>Upload a new Recording</strong></h1>
-      <div id="upload-card">
-      <div>Native SDK File Upload Progress is {progress}%</div>
-      <input type="file" onChange={handleFileInput}/><br/>
-      <button onClick={() => uploadFile(selectedFile)}> Upload to S3</button>
-      </div>
-      <br/><br/><br/><br/>
-      <h1><strong>Video Recordings: Bucket Objects</strong></h1>
-      <table id="recordings" style={{width: 1000}}>
-        <thead>
-          <tr> 
-            <th>File</th><th>Last Modified</th><th>Size</th>
-          </tr>
-        </thead>
-          <tr>
-            <th><a href="https://recordings-staging-telemedicine5a.s3.amazonaws.com/testvideo1.mov">testvideo1.mov</a></th><th>October 28, 2021, 04:07:46 (UTC-04:00)</th><th>822.3 KB</th>
-          </tr>
-          <tr>
-          <th><a href="https://recordings-staging-telemedicine5a.s3.amazonaws.com/testvideo2.mov">testvideo2.mov</a></th><th>October 28, 2021, 04:07:45 (UTC-04:00)</th><th>1.4 MB</th>
-          </tr>
-          <tr>
-          <th><a href="https://recordings-staging-telemedicine5a.s3.amazonaws.com/testvideo3.mov">testvideo3.mov</a></th><th>October 28, 2021, 04:07:45 (UTC-04:00)</th><th>627.4 KB</th>
-          </tr>
-          <tr>
-          <th><a href="https://recordings-staging-telemedicine5a.s3.amazonaws.com/testvideo4.mov">testvideo4.mov</a></th><th>October 28, 2021, 04:07:44 (UTC-04:00)</th><th>1.5 MB</th>
-          </tr>
-          <tr>
-          <th><a href="https://recordings-staging-telemedicine5a.s3.amazonaws.com/testvideo5.mov">testvideo5.mov</a></th><th>October 28, 2021, 04:07:44 (UTC-04:00)</th><th>2.1 MB</th>
-          </tr>
-        
-      </table>
-      {/* <table style={{width: 500}}>
-        <thead>
-          <tr>
-            {heading.map(head => <th>{head}</th>)}
-          </tr>
-        </thead>
-        <tbody>
-          {body.map(row => <td> {row} </td>)}
-        </tbody>
-      </table> */}
-      </div>
+        <br/><br/><br/><br/>
+        <h1><strong>Video Recordings: Bucket Objects</strong></h1>
+        <table id="recordings" style={{width: 1000}}>
+          <thead>
+            <tr> 
+              <th>File</th><th>Last Modified</th><th>Size</th>
+            </tr>
+          </thead>
+            <tr>
+              <th><a href="https://recordings-staging-telemedicine5a.s3.amazonaws.com/testvideo1.mov">testvideo1.mov</a></th><th>October 28, 2021, 04:07:46 (UTC-04:00)</th><th>822.3 KB</th>
+            </tr>
+            <tr>
+            <th><a href="https://recordings-staging-telemedicine5a.s3.amazonaws.com/testvideo2.mov">testvideo2.mov</a></th><th>October 28, 2021, 04:07:45 (UTC-04:00)</th><th>1.4 MB</th>
+            </tr>
+            <tr>
+            <th><a href="https://recordings-staging-telemedicine5a.s3.amazonaws.com/testvideo3.mov">testvideo3.mov</a></th><th>October 28, 2021, 04:07:45 (UTC-04:00)</th><th>627.4 KB</th>
+            </tr>
+            <tr>
+            <th><a href="https://recordings-staging-telemedicine5a.s3.amazonaws.com/testvideo4.mov">testvideo4.mov</a></th><th>October 28, 2021, 04:07:44 (UTC-04:00)</th><th>1.5 MB</th>
+            </tr>
+            <tr>
+            <th><a href="https://recordings-staging-telemedicine5a.s3.amazonaws.com/testvideo5.mov">testvideo5.mov</a></th><th>October 28, 2021, 04:07:44 (UTC-04:00)</th><th>2.1 MB</th>
+            </tr>
+          
+        </table>
+        {/* <table style={{width: 500}}>
+          <thead>
+            <tr>
+              {heading.map(head => <th>{head}</th>)}
+            </tr>
+          </thead>
+          <tbody>
+            {body.map(row => <td> {row} </td>)}
+          </tbody>
+        </table> */}
+        </div>
         
     );
 

@@ -16,14 +16,6 @@ export type AmplifyDependentResourcesAttributes = {
             "patientsGroupRole": "string"
         }
     },
-    "function": {
-        "telemedicinea0e20537": {
-            "Name": "string",
-            "Arn": "string",
-            "Region": "string",
-            "LambdaExecutionRole": "string"
-        }
-    },
     "api": {
         "telemedicineApi4": {
             "GraphQLAPIIdOutput": "string",

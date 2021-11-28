@@ -15,6 +15,7 @@ import addUserIcon from './images/addUserIcon.png'
 import removeUserIcon from './images/removeUserIcon.png'
 import editUserIcon from './images/editUserIcon.png'
 
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -30,6 +31,7 @@ import Appointments from './components/appointments/Appointments';
 import Profile from './components/Profile';
 import ListUsers from './listusers';
 
+import ChatApp from "./components/chat/cApp";
 
 Amplify.configure(awsconfig);
 
@@ -37,6 +39,7 @@ const App = () => {
 
   const [authState, setAuthState] = React.useState();
   const [user, setUser] = React.useState();
+  window.$user = user;	
 
   React.useEffect(() => {
 
@@ -66,7 +69,7 @@ const App = () => {
         <div className="App">
           <nav className="navbar navbar-light bg-light">
             <div className="container-fluid">
-              <a className={`navbar-brand ${style.a} ${style['brand-text']}`} href="#">
+              <a className={`navbar-brand ${style.a} ${style['brand-text']}`} href="/">
                 <img src={telemedicineLogo} alt="" width="25" height="25" className="d-inline-block align-text-top" />
                 Telemedicine
               </a>
@@ -87,9 +90,9 @@ const App = () => {
           </nav>
           <div className={`d-flex justify-content-evenly navbar ${style['primary-color']}`}>
             <button type="button" className={`btn btn-secondary ${style['btn-sm']}`} href={"/report/patient/" + user.attributes.sub}>Reports</button>
-            <button type="button" className={`btn btn-secondary ${style['btn-sm']}`} >Messages</button>
-            <button type="button" className={`btn btn-secondary ${style['btn-sm']}`} >Appointments</button>
-            <button type="button" className={`btn btn-secondary ${style['btn-sm']}`} >Recordings</button>
+            <button type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/chat" >Chat</button>
+            <button type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/appointments">Appointments</button>
+            <button type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/recordings">Recordings</button>
             <span className={`navbar-brand mb-0 ${style.h1}`}></span>
           </div>
           <div className={`d-flex justify-content-evenly flex-column ${style['primary-color']} ${style['welcome-box']}`}>
@@ -127,7 +130,7 @@ const App = () => {
               <div className={style.dot}><img id={style['center-icons2']} src={chatIcon} alt="" width="110" height="100" className="d-inline-block align-text-top" />
               </div>
               <div className={style.textbox}>
-                <a href="#"><h3 className={style.h3}>Chat with a Doctor</h3></a>
+                <a href="/chat"><h3 className={style.h3}>Chat with a Doctor</h3></a>
               </div>
             </div>
           </div>
@@ -156,10 +159,10 @@ const App = () => {
             </div>
           </nav>
           <div className={`d-flex justify-content-evenly navbar ${style['primary-color']}`}>
-            <button type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/reports">Reports</button>
-            <button type="button" className={`btn btn-secondary ${style['btn-sm']}`}>Messages</button>
-            <button type="button" className={`btn btn-secondary ${style['btn-sm']}`}>Appointments</button>
-            <button type="button" className={`btn btn-secondary ${style['btn-sm']}`}>Recordings</button>
+            <a type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/reports">Reports</a>
+            <a type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/chat">Chat</a>
+            <a type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/appointments">Appointments</a>
+            <a type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/recordings">Recordings</a>
             <span className={`navbar-brand mb-0 ${style.h1}`}></span>
           </div>
           <div className={`d-flex justify-content-evenly flex-column ${style['primary-color']} ${style['welcome-box']}`}>
@@ -179,7 +182,7 @@ const App = () => {
               <div className={style.dot}><img id={style['center-icons2']} src={appointmentIcon} alt="" width="105" height="100" />
               </div>
               <div className={style.textbox}>
-                <a href="#"><h3 className={style.h3}>View Appointments</h3></a>
+                <a href="/appointments"><h3 className={style.h3}>View Appointments</h3></a>
               </div>
             </div>
           </div>
@@ -188,7 +191,7 @@ const App = () => {
               <div className={style.dot}><img id={style['center-icons2']} src={meetingIcon} alt="" width="110" height="100" className="d-inline-block align-text-top" />
               </div>
               <div className={style.textbox}>
-              <a href="https://video-app-tele.herokuapp.com/" target="_blank"><h3 className={style.h3}>Start a Meeting</h3></a>
+              <a href="https://telemedicine-video-call.herokuapp.com/" target="_blank"><h3 className={style.h3}>Start a Meeting</h3></a>
               </div>
             </div>
           </div>
@@ -197,7 +200,7 @@ const App = () => {
               <div className={style.dot}><img id={style['center-icons2']} src={chatIcon} alt="" width="110" height="100" className="d-inline-block align-text-top" />
               </div>
               <div className={style.textbox}>
-                <a href="#"><h3 className={style.h3}>Chat with Patient</h3></a>
+                <a href="/chat"><h3 className={style.h3}>Chat with Patient</h3></a>
               </div>
             </div>
           </div>
@@ -234,8 +237,8 @@ const App = () => {
           </nav>
           <div className={`d-flex justify-content-evenly navbar ${style['primary-color']}`}>
             <button type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/reports">Reports</button>
-            <button type="button" className={`btn btn-secondary ${style['btn-sm']}`}>Messages</button>
-            <button type="button" className={`btn btn-secondary ${style['btn-sm']}`}>Appointments</button>
+            <button type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/chat">Chat</button>
+            <button type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/appointments">Appointments</button>
             <span className={`navbar-brand mb-0 ${style.h1}`}></span>
           </div>
           <div className={`d-flex justify-content-evenly flex-column ${style['primary-color']} ${style['welcome-box']}`}>
@@ -255,7 +258,7 @@ const App = () => {
               <div className={style.dot}><img id={style['center-icons2']} src={appointmentIcon} alt="" width="105" height="100" />
               </div>
               <div className={style.textbox}>
-                <a href="#"><h3 className={style.h3}>View Appointments</h3></a>
+                <a href="#"><h3 className={style.h3} href="/appointments">View Appointments</h3></a>
               </div>
             </div>
           </div>
@@ -264,7 +267,7 @@ const App = () => {
               <div className={style.dot}><img id={style['center-icons2']} src={chatIcon} alt="" width="110" height="100" className="d-inline-block align-text-top" />
               </div>
               <div className={style.textbox}>
-                <a href="#"><h3 className={style.h3}>Chat with Patient</h3></a>
+                <a href="/chat"><h3 className={style.h3}>Chat with Patient</h3></a>
               </div>
             </div>
           </div>
@@ -301,9 +304,9 @@ const App = () => {
           </nav>
           <div className={`d-flex justify-content-evenly navbar ${style['primary-color']}`}>
             <button type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/reports">Reports</button>
-            <button type="button" className={`btn btn-secondary ${style['btn-sm']}`}>Messages</button>
-            <button type="button" className={`btn btn-secondary ${style['btn-sm']}`}>Appointments</button>
-            <button type="button" className={`btn btn-secondary ${style['btn-sm']}`}>Recordings</button>
+            <button type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/chat">Chat</button>
+            <button type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/appointments">Appointments</button>
+            <button type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/recordings">Recordings</button>
             <span className={`navbar-brand mb-0 ${style.h1}`}></span>
           </div>
           <div className={`d-flex justify-content-evenly flex-column ${style['primary-color']} ${style['welcome-box']}`}>
@@ -355,7 +358,9 @@ const App = () => {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route exact path="/recordings" component={DoctorRecordings} />
+          <Route exact path="/recordings">
+            <DoctorRecordings userData={user.attributes} currentUser={user}></DoctorRecordings>
+          </Route>
           <Route path={"/report/patient/" + user.attributes.sub}>
             <PatientReport currentUser={user} patientData={user.attributes} />
           </Route>
@@ -377,6 +382,7 @@ const App = () => {
         {/* <Route path ="#">
             <DoctorTest currentUser = {user} patientData = {user.attributes}/>
         </Route> */}
+		  <Route exact path="/chat" component={ChatApp}/>
         </Switch>
       </div>
     </Router>
