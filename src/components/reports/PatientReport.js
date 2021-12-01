@@ -34,23 +34,52 @@ else {
 var storage = firebase.storage();
 
 const PatientReport = (props) => {
-    // const [Url, setUrl] = useState('');
-    // const [data, setData] = useState([]);
-    // const [image, setImage] = useState('');
-
-    // //Lists all of the files in Storage
-    // const listItem = () => {
-    //     storage.ref().child('images/').listAll()
-    //         .then(res => {
-    //             res.items.forEach((item) => {
-    //                 setData(arr => [...arr, item.name]);
-    //             })
-    //         })
-    //         .catch(err => {
-    //             alert(err.message);
-    //         })
-    // }
+    const [URL2, setURL2] = useState("");
     const [URL, setURLArray] = useState([]); //declare URL array
+
+
+
+    // const getFromFirebase = () => {
+    //     let storageRef = storage.ref();
+
+    //     storageRef.listAll().then(function (res) {
+    //         res.items.forEach((URLRef) => {
+    //             URLRef.getDownloadURL().then((url) => {
+    //                 setURLArray((URL) => [...URL,url]);
+    //             });
+    //         });
+    //     })
+    //     .catch(function(error) {
+    //         console.log(error);
+    //     });
+    // };
+
+    // storage.ref().listAll().then(function(result){
+    //     result.items.forEach(function(URLRef){
+    //         console.log(result.items);
+    //     displayURL(imageRef);
+    //     });
+    // }) 
+    // useEffect(() => {
+    //     const fetchImages = async () => {
+
+    //     let result = await storageRef.child('images').listAll();
+    //         let urlPromises = result.items.map(imageRef => imageRef.getDownloadURL());
+
+    //         return Promise.all(urlPromises);
+
+    //     }
+
+    //     const loadImages = async () => {
+    //         const urls = await fetchImages();
+    //         setFiles(urls);
+    //     }
+    //     loadImages();
+    //     }, []);
+
+
+
+
 
 
     // useEffect(() => {
@@ -89,82 +118,91 @@ const PatientReport = (props) => {
 
     return (
         <div>
-        
+
             <PageHeader currentUser={props.currentUser}></PageHeader>
             <div className={style['name2']}>
-                {fullName}
+                REPORTS
             </div>
 
-            <div className={style['item3']}>
-                <table className={style['patient-info-table']}>
-                    <thead>
-                        <div className={style['l1']}>
-                        <tr >
-                            <th >Patient Name</th>
-                            <th >Date of Birth</th>
-                            <th >Age</th>
-                            <th >Sex</th>
-                            <th >Ethnicity</th>
-                            <th >Marital Status</th>
-                            <th >Phone Number</th>
-                            <th > Provider</th>
-                        </tr>
-                        </div>
-                    </thead>
-                    <tbody>
-                    <div className={style['l1']}>
-                        <tr>
-                            <td >{fullName}</td>
-                            <td >{props.patientData.birthdate}</td>
-                            <td>{age}</td>
-                            <td > {props.patientData.gender}</td>
-                            <td >{props.patientData["custom:ethnicity"]}</td>
-                            <td > {props.patientData["custom:marital-status"]}</td>
-                            <td >{props.patientData.phone_number}</td>
-                            <td >{props.patientData["custom:provider"]}</td>
-                        </tr>
-                        
-                        </div>
-                        
-                    </tbody>
-                    
-                </table>
-                <br /><br />
-               
+            <TableContainer component={Paper}>
+                <Table style={{ marginTop: '30px' }} aria-label="simple table">
+                    <TableHead className="tbHead">
+                        <TableRow  >
+                            <TableCell style={{ fontSize: '20px', fontWeight: 'bold', textAlign: 'center' }} className={style['tablecell1']} >Patient Name</TableCell>
+                            <TableCell style={{ fontSize: '20px', fontWeight: 'bold', textAlign: 'center' }} className={style['tablecell1']} >Date of Birth</TableCell>
+                            <TableCell style={{ fontSize: '20px', fontWeight: 'bold', textAlign: 'center' }} className={style['tablecell1']} >Age</TableCell>
+                            <TableCell style={{ fontSize: '20px', fontWeight: 'bold', textAlign: 'center' }} className={style['tablecell1']}>Sex</TableCell>
+                            <TableCell style={{ fontSize: '20px', fontWeight: 'bold', textAlign: 'center' }} className={style['tablecell1']} >Ethnicity</TableCell>
+                            <TableCell style={{ fontSize: '20px', fontWeight: 'bold', textAlign: 'center' }} className={style['tablecell1']}>Marital Status</TableCell>
+                            <TableCell style={{ fontSize: '20px', fontWeight: 'bold', textAlign: 'center' }} className={style['tablecell1']}>Phone Number</TableCell>
+                            <TableCell style={{ fontSize: '20px', fontWeight: 'bold', textAlign: 'center' }} className={style['tablecell1']}>Provider</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody className="tBody">
+                        <TableRow >
+                            <TableCell style={{ textAlign: 'center' }} >{fullName}</TableCell>
+                            <TableCell style={{ textAlign: 'center' }} component="th" scope="row">
+                                {props.patientData.birthdate}
+                            </TableCell>
+                            <TableCell style={{ textAlign: 'center' }} component="th" scope="row">
+                                {age}
+                            </TableCell>
+                            <TableCell style={{ textAlign: 'center' }} component="th" scope="row">
+                                {props.patientData.gender}
+                            </TableCell>
+                            <TableCell style={{ textAlign: 'center' }} component="th" scope="row">
+                                {props.patientData["custom:ethnicity"]}
+                            </TableCell>
+                            <TableCell style={{ textAlign: 'center' }} component="th" scope="row">
+                                {props.patientData["custom:marital-status"]}
+                            </TableCell>
+                            <TableCell style={{ textAlign: 'center' }} component="th" scope="row">
+                                {props.patientData.phone_number}
+                            </TableCell>
+                            <TableCell style={{ textAlign: 'center' }} component="th" scope="row">
+                                {props.patientData["custom:provider"]}
+                            </TableCell>
 
+                        </TableRow>
+                    </TableBody>
 
-                <div className="home__table">
-                    <div className={styles['columnsMain1']}>
-                        <TableContainer component={Paper}>
-                            <Table aria-label="simple table">
-                                <TableHead className="tbHead">
-                                    <TableRow >
-                                        <TableCell className="tablecell1" ><div className={styles['columns1']}>List of all of your Reports</div></TableCell>
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody className="tBody">
-                                    {URL.map((URL) => (
-                                        <TableRow key={URL}>
-                                            <TableCell ><div className={styles['rows1']}>{URL}</div></TableCell>
-                                        </TableRow>
-                                    ))}
-                                </TableBody>
-                                {/* {name.map(name => <td> {name} </td>)} */}
-                                {/* {time.map(time => <td> {time} </td>)} */}
-                                {/* {size.map(size => <td> {size} </td>)} */}
-                                {/* {URL.map(URL => <td> {URL} </td>)} */}
-                            </Table>
-                        </TableContainer>
-
-
-
-                        {/* <div className="uploadButton2"><button onClick={listItem}>View Your Reports</button></div>
-                    {
-                        data.map((val) => (
-                            <h2>{val}</h2>
-                        ))
-                    } */}
+                </Table>
+            </TableContainer>
+            <br />
+            {/* <button onClick={() => getFromFirebase()}>
+            Get Images from Firebase
+          </button> */}
+            {/* {
+             
+              URL.map((URL) => {
+                 
+                      <div key={URL}>
+                    <img src={URL}/>
                     </div>
+                  
+              } )
+          } */}
+            <div style={{ marginLeft: '40px', marginRight: '30px', marginTop: '30px', marginBottom: '30px' }} className="home__table">
+                <div className={styles['columnsMain1']}>
+                    <TableContainer style={{ boxShadow: 'none' }} component={Paper}>
+
+                        <TableHead className="tbHead">
+                            <TableRow >
+                                <TableCell style={{fontSize: '35px', textAlign:'center', fontWeight:'bold'}} className="tablecell1" ><div className={styles['columns1']}>All of {fullName}'s Reports</div></TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody className="tBody">
+                            {URL.map((URL) => (
+                                <TableRow key={URL}>
+                                    <TableCell ><div className={styles['rows1']}>{URL}</div></TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                        {/* {name.map(name => <td> {name} </td>)} */}
+                        {/* {time.map(time => <td> {time} </td>)} */}
+                        {/* {size.map(size => <td> {size} </td>)} */}
+                        {/* {URL.map(URL => <td> {URL} </td>)} */}
+                    </TableContainer>
                 </div>
             </div>
 

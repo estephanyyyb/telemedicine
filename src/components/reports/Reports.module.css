@@ -1,3 +1,9 @@
+/* . {
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+} */
+
 .main1{
     margin: 30px 30px 30px 30px;
     align-items: center;
@@ -8,9 +14,12 @@
 }
 
 .name2{
-	font-weight:bold; 
+	/* font-weight:bold;  */
+	font-weight: 500;
     font-size: 43px;
     text-align: center;
+	font-family: monospace;
+	margin-top: 30px;
 }
 
 /* .l1{
@@ -58,8 +67,8 @@ th{
 	margin-bottom: 40px;
 
 
-}
 
+}
 
 
 
@@ -141,9 +150,17 @@ th{
 	margin-right: auto;
 }
 
-body {
+/* body {
 	font-family: Arial, sans-serif;
+} */
+
+.tablecell1{
+	
+	
+	background-color: #7ec4e8;
+
 }
+
 
 
 

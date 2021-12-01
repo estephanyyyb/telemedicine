@@ -10,7 +10,6 @@ import PropTypes from 'prop-types';
 import userIcon from '../../images/userIcon1.png';
 import { Auth, Amplify } from 'aws-amplify'
 import user from '../../App.js'
-import style from '../../App.module.css';
 import PageHeader from '../page-header/PageHeader';
 
 const ChatApp = (props) => {

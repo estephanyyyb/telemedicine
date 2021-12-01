@@ -51,26 +51,29 @@ const ListOfPatientReports = (props) => {
 		<div className="App">
 			<PageHeader currentUser={props.currentUser}></PageHeader>
 
-			<div className="home__table">
-				<div className="columnsMain">
-					<TableContainer component={Paper}>
-						<Table aria-label="simple table">
-							<TableHead className="tbHead">
-								<TableRow >
-									<TableCell className="tablecell1" ><div className="columns1">List of All Patient Reports</div></TableCell>
-								</TableRow>
-							</TableHead>
-							<TableBody className="tBody">
-								{URL.map((URL) => (
-									<TableRow key={URL}>
-										<TableCell ><div className="rows1">{URL}</div></TableCell>
-									</TableRow>
-								))}
-							</TableBody>
-						</Table>
-					</TableContainer>
-				</div>
-			</div>
+			<div style={{ marginLeft: '40px', marginRight: '30px', marginTop: '30px', marginBottom: '30px' }} className="home__table">
+                <div className={styles['columnsMain1']}>
+                    <TableContainer style={{ boxShadow: 'none' }} component={Paper}>
+
+                        <TableHead className="tbHead">
+                            <TableRow >
+                                <TableCell style={{fontSize: '35px', textAlign:'center', fontWeight:'bold'}} className="tablecell1" ><div className={styles['columns1']}>All Patient's Reports</div></TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody  className="tBody">
+                            {URL.map((URL) => (
+                                <TableRow key={URL}>
+                                    <TableCell style={{textAlign:'center'}} ><div className={styles['rows1']}>{URL}</div></TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                        {/* {name.map(name => <td> {name} </td>)} */}
+                        {/* {time.map(time => <td> {time} </td>)} */}
+                        {/* {size.map(size => <td> {size} </td>)} */}
+                        {/* {URL.map(URL => <td> {URL} </td>)} */}
+                    </TableContainer>
+                </div>
+            </div>
 		</div>
 	);
 }
