@@ -36,7 +36,6 @@ class Form extends Component {
 
   render() {
     return (
-      // <form>
       <form style={{margin:15, display:'flex', flexWrap:'wrap'}} onSubmit={this.handleSubmit}>
         <div>
             <label>Date: </label>
@@ -59,7 +58,6 @@ class Form extends Component {
             <input type="submit"></input>
         </div><div style={{width:'100%'}}/>
       </form>
-// </form>
     );
   }
 }

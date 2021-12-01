@@ -1,125 +1,94 @@
 // import logo from './logo.svg';
-import styles from './Appointments.module.css';
+import apptStyle from './Appointments.module.css';
 import React from 'react';
 import appointments from './appt.json';
 import parse from 'html-react-parser';
 import PageHeader from '../page-header/PageHeader';
-import Form from './Form'
+import Form from './Form';
+import drs from './drs.json';
 
 function Appointments(props){
   const email = props.patientData.email;
-  // constructor (){
-    // super();
-    
-    // var jsonData;
-  // }
-
-  // componentDidMount() {
-  // }
 
   // render (){
-    return (
-      <div className="App">
-        {/* <div className="heading">
-          <h3 className="title">Telemedicine</h3>
-          <div style={{width: "75%"}}></div>
-          <h3 className="title">User Name</h3>
-          <img src={user} style={{width: 30, height: 30, marginLeft: 5}} alt=""></img>
-        </div>
-        <div className="menuBar">
-            <div className="menuButton"><button className="menBut">Reports</button></div>
-            <div className="menuButton"><button className="menBut">Messages</button></div>
-            <div className="menuButton"><button className="menBut">Appointments</button></div>
-            <div className="menuButton"><button className="menBut">Recordings</button></div>
-        </div> */}
+    if(props.currentUser['signInUserSession']['accessToken']['payload']['cognito:groups'][0] === 'patients') {
+      return (
+        <div className="App">
 
-        <div><PageHeader currentUser={props.currentUser}></PageHeader></div>
+          <div><PageHeader currentUser={props.currentUser}></PageHeader></div>
 
-        <div className={styles['main-content']} style={{position: 'absolute', width: "94%", overflow: 'hidden'}}>
-                <div className={styles['main-content-bar']}>
-                    <h3 className={styles['content-title']}>VIEW APPOINTMENTS</h3>
-                </div>
-            <div style={{display: 'flex', flexWrap: 'nowrap', height: '100%'}}>
-                <div className={styles['sub-content']}>
-                    <div className={styles['main-content-bar']}>
-                        <h3 className={styles['content-title']}>Your Upcoming Appointments</h3>
-                    </div>
-
-                    <div style={{height: '83%', overflowY: 'scroll'}}>
-                      <div className={styles['appt']} id="appt1">
-                          {/* <div className="appt" id="appt1" style="display: flex; flex-wrap: wrap; border: solid; margin: 15px; border-radius: 5px; border-width: 1.5px; border-color: gray;"> */}
-                          <CreateApptList email={email}></CreateApptList>
-                          {/* </div> */}
+          <div className={apptStyle.mainContent} style={{position: 'absolute', width: "94%", overflow: 'hidden'}}>
+                  <div className={apptStyle.mainContentBar}>
+                      <h3 className={apptStyle.contentTitle}>VIEW APPOINTMENTS</h3>
+                  </div>
+              <div style={{display: 'flex', flexWrap: 'nowrap', height: '100%'}}>
+                  <div className={apptStyle.subContent}>
+                      <div className={apptStyle.mainContentBar}>
+                          <h3 className={apptStyle.contentTitle}>Your Upcoming Appointments</h3>
                       </div>
-                    </div>
-                </div>
 
-                <div className={styles['sub-content']}>
-                    <div className={styles['main-content-bar']}>
-                      <h3 id="year" className={styles['content-title']}>Request an Appointment</h3>
-                    </div>
-                    <div>
-                      {/* <form style={{margin:15, display:'flex', flexWrap:'wrap'}}>
-                        <div><label>Date: </label>
-                        <input type="date"></input></div><div style={{width:'100%'}}></div>
-                        <div style={{marginTop:15}}><label>Time: </label>
-                        <input type="time"></input></div><div style={{width:'100%'}}></div>
-                        <div style={{marginTop:15}}><label>Reason: </label>
-                        <input type="text"></input></div><div style={{width:'100%'}}></div>
-                        <div style={{marginTop:15}}><label>Notes: </label>
-                        <input type="text"></input></div><div style={{width:'100%'}}></div>
-                      </form> */}
-                      <Form/>
-                    </div>
-                </div>
-            </div>
+                      <div style={{height: '83%', overflowY: 'scroll'}}>
+                        <div className="appt" id="appt1">
+                            {/* <div className="appt" id="appt1" style="display: flex; flex-wrap: wrap; border: solid; margin: 15px; border-radius: 5px; border-width: 1.5px; border-color: gray;"> */}
+                            <CreateApptList email={email}></CreateApptList>
+                            {/* </div> */}
+                        </div>
+                      </div>
+                  </div>
+
+                  <div className={apptStyle.subContent}>
+                      <div className={apptStyle.mainContentBar}>
+                        <h3 id="year" className={apptStyle.contentTitle}>Request an Appointment</h3>
+                      </div>
+                      <div>
+                        <Form/>
+                      </div>
+                  </div>
+              </div>
+          </div>
         </div>
-      </div>
-    );
+      );
+    } else if (props.currentUser['signInUserSession']['accessToken']['payload']['cognito:groups'][0] === 'doctors') {
+      return (
+        <div className="App">
+
+          <div><PageHeader currentUser={props.currentUser}></PageHeader></div>
+
+          <div className={apptStyle.mainContent} style={{position: 'absolute', width: "94%", overflow: 'hidden'}}>
+                  <div className={apptStyle.mainContentBar}>
+                      <h3 className={apptStyle.contentTitle}>VIEW APPOINTMENTS</h3>
+                  </div>
+              <div style={{display: 'flex', flexWrap: 'nowrap', height: '100%'}}>
+                  <div className={apptStyle.subContent}>
+                      <div className={apptStyle.mainContentBar}>
+                          <h3 className={apptStyle.contentTitle}>Your Upcoming Appointments</h3>
+                      </div>
+
+                      <div style={{height: '83%', overflowY: 'scroll'}}>
+                        <div className="appt" id="appt1">
+                            {/* <div className="appt" id="appt1" style="display: flex; flex-wrap: wrap; border: solid; margin: 15px; border-radius: 5px; border-width: 1.5px; border-color: gray;"> */}
+                            <CreateApptList email={email}></CreateApptList>
+                            {/* </div> */}
+                        </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+      );
+    }
   // }
 
-  /*setUpCalendar() {
-    document.getElementById('month').innerHTML = this.months[this.month - 1];
-    document.getElementById('year').innerHTML = this.year;
   
-    var table = "<table><tr>";
-    for (var i=0; i < this.daysOfWeek.length; i++){
-        table += "<th className='dayOfWeek'>"+ this.daysOfWeek[i]+"</th>";
-    }
-    table += "</tr><tr>";
-  
-    var days = 30; // How many days we need?
-    var appendEmptyDays = 7 - (days+7) % 7 - this.startDay; // How many empty cells we miss?
-  
-    for(var j=0; j < this.startDay; j++){
-        table += "<td className='calendarDay'></td>";
-    }
-  
-    for(var k=1; k <= days; k++){
-        table += "<td className='calendarDay'>"+ k +"</td>";
-        if((k + this.startDay) %7===0) table += "</tr><tr>"; // Add a new week row?
-    }
-  
-    for(var l=0; l < appendEmptyDays; l++){
-        table += "<td className='calendarDay'></td>";
-    }
-    document.getElementById('calendar').innerHTML = table;
-  
-    // var appointments = [];
-    
-  }*/
 }
 
 function CreateApptList(props) {
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  // const month = 9;
-  // const day = 6;
-  // const year = 2021;
-  // const startDay = 3;
   // const daysOfWeek = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
   let ampm = "AM";
 
-  // appointments[0].year = 2020;
+  replaceEmailWithName();
+  // console.log(drs[1]);
 
   appointments.sort(function(a, b) {
     let compareYr = a.year - b.year;
@@ -153,7 +122,7 @@ function CreateApptList(props) {
 
   var str = "";
   for(var i = 0; i < appointments.length; i++) {
-    if(props.email === appointments[i].email) {
+    if(props.email === appointments[i].email && appointments[i].approved) {
       var h = appointments[i].hour;
       str += '<div style=" border: solid; margin: 15px; border-radius: 5px; border-width: 1.5px; border-color: gray;">' +
       "<div style='display: flex; flex-wrap: wrap;'><div style='margin-left:10px'><h4>";
@@ -175,13 +144,23 @@ function CreateApptList(props) {
       str += "<div style='display: flex; flex-wrap: wrap;'><p style='margin-left:10px'> Notes: " + appointments[i].notes + "</p></div></div>"
     }
   }
-  // appointments.array.forEach(element => {
-  //     str += element.month;
-  // });
   
   return(
       <div>{parse (str)}</div>
   );
+}
+
+function replaceEmailWithName() {
+  for(let appt = 0; appt < appointments.length; appt++) {
+    var dremail = appointments[appt].doctor;
+    // console.log(dremail);
+    for(let dr = 0; dr < drs.length; dr++) {
+      if(drs[dr].email === dremail) {
+        appointments[appt].doctor = drs[dr].name;
+        break;
+      }
+    }
+  }
 }
 
 export default Appointments;

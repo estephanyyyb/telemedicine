@@ -6,9 +6,10 @@
       "year": 2021,
       "hour": 13,
       "minute": 15,
-      "doctor": "Dr. Wilson",
+      "doctor": "mjohnson@healtht.org",
       "reason": "Nausea",
-      "notes": "Dizziness, nausea, headaches"
+      "notes": "Dizziness, nausea, headaches",
+      "approved": true
     },
     {
       "email": "yash239@gmail.com",
@@ -28,9 +29,10 @@
       "year": 2021,
       "hour": 15,
       "minute": 15,
-      "doctor": "Dr. Smith",
+      "doctor": "mjackson@healtht.org",
       "reason": "Sports Physical",
-      "notes": ""
+      "notes": "",
+      "approved": true
     },
     {
       "email": "william.paris96@gmail.com",
@@ -369,7 +371,7 @@
       "year": 2021,
       "hour": 15,
       "minute": 15,
-      "doctor": "Dr. Smith",
+      "doctor": "Josh Johnson",
       "reason": "Sports Physical",
       "notes": ""
     },
@@ -380,7 +382,7 @@
       "year": 2021,
       "hour": 13,
       "minute": 15,
-      "doctor": "Dr. Wilson",
+      "doctor": "Tim Hill",
       "reason": "Nausea",
       "notes": "Dizziness, nausea, headaches"
     },
@@ -391,7 +393,7 @@
       "year": 2021,
       "hour": 14,
       "minute": 15,
-      "doctor": "Dr. Wilson",
+      "doctor": "Kendall Graveman",
       "reason": "Annual Check Up",
       "notes": ""
     },
@@ -415,6 +417,38 @@
       "minute": 30,
       "doctor": "Dr. Wilson",
       "reason": "Check Up",
+      "notes": ""
+    },{
+      "email": "yshidhay@students.kennesaw.edu",
+      "month": 12,
+      "day": 15,
+      "year": 2021,
+      "hour": 15,
+      "minute": 15,
+      "doctor": "Josh Johnson",
+      "reason": "Sports Physical",
+      "notes": ""
+    },
+    {
+      "email": "yshidhay@students.kennesaw.edu",
+      "month": 9,
+      "day": 17,
+      "year": 2021,
+      "hour": 13,
+      "minute": 15,
+      "doctor": "Tim Hill",
+      "reason": "Nausea",
+      "notes": "Dizziness, nausea, headaches"
+    },
+    {
+      "email": "yshidhay@students.kennesaw.edu",
+      "month": 12,
+      "day": 22,
+      "year": 2021,
+      "hour": 14,
+      "minute": 15,
+      "doctor": "Kendall Graveman",
+      "reason": "Annual Check Up",
       "notes": ""
     }
 ]
