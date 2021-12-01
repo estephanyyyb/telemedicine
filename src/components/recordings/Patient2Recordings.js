@@ -12,7 +12,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyAwxvSMHLyXiEKTBn4D-L8llyoYu-K8Yqw",
   authDomain: "telemedicine-c0afa.firebaseapp.com",
   projectId: "telemedicine-c0afa",
-  storageBucket: "gs://telemedicine-c0afa.appspot.com/",
+  storageBucket: "gs://telemedicine-c0afa-patient2",
   messagingSenderId: "404118376728",
   appId: "1:404118376728:web:500e4dca21d7d18f62ce6d",
   measurementId: "G-4WQP69JN8X"
@@ -23,7 +23,7 @@ if (!firebase.apps.length) {
 }else {
   firebase.app(); // if already initialized, use that one
 }
-const storage = firebase.storage();
+var storage = firebase.app().storage("gs://telemedicine-c0afa-patient2");
 
 const PatientRecordings = (props) => { 
 
@@ -69,6 +69,7 @@ const PatientRecordings = (props) => {
 
 // Build Dynamic Table
 const buildTable = () => {
+    console.log('patient2');
   const tableID = document.querySelector('.recordings');
   var tableRows = tableID.getElementsByTagName('tr');
   var rowCount = tableRows.length;
