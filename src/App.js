@@ -27,6 +27,7 @@ import PatientReport from './components/reports/PatientReport';
 import ListOfPatientReports from './components/reports/ListOfPatientReports';
 import DoctorRecordings from './components/recordings/DoctorRecordings';
 import PatientRecordings from './components/recordings/PatientRecordings';
+import Patient2Recordings from './components/recordings/Patient2Recordings';
 import Appointments from './components/appointments/Appointments';
 import Profile from './components/Profile';
 import ListUsers from './listusers';
@@ -53,6 +54,7 @@ const App = () => {
     });
   }, []);
 
+  var patientBucketConditional = "/recordings/patient";
 
   function Home() {
     if ((user['signInUserSession']['accessToken']['payload']['cognito:groups'] === undefined) || (user['signInUserSession']['accessToken']['payload']['cognito:groups'] === 0)) {
@@ -68,6 +70,9 @@ const App = () => {
       )
     }
     else if (user['signInUserSession']['accessToken']['payload']['cognito:groups'][0] === 'patients') {
+      if(user.attributes.sub == 'f4a29157-2edb-47fa-84fe-5f0028c4e51e') { 
+        console.log('yes');
+        patientBucketConditional = "/recordings/patient2"; }
       return (
         <div className="App">
           <nav className="navbar navbar-light bg-light">
@@ -94,7 +99,7 @@ const App = () => {
             <a type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/report/patient/">Reports</a>
             <a type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/chat" >Chat</a>
             <a type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/appointments">Appointments</a>
-            <a type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/recordings/patient">Recordings</a>
+            <a type="button" className={`btn btn-secondary ${style['btn-sm']}`} href={patientBucketConditional}>Recordings</a>
             <span className={`navbar-brand mb-0 ${style.h1}`}></span>
           </div>
           <div className={`d-flex justify-content-evenly flex-column ${style['primary-color']} ${style['welcome-box']}`}>
@@ -355,6 +360,9 @@ const App = () => {
           </Route>
           <Route exact path="/recordings/patient">
             <PatientRecordings userData={user.attributes} currentUser={user}></PatientRecordings>
+          </Route>
+          <Route exact path="/recordings/patient2">
+            <Patient2Recordings userData={user.attributes} currentUser={user}></Patient2Recordings>
           </Route>
           <Route path="/report/patient/">
             <PatientReport currentUser={user} patientData={user.attributes} />
