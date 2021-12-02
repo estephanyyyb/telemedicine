@@ -74,7 +74,7 @@ const CreateUsers = (props) => {
         <div className="App">
             <PageHeader currentUser={props.currentUser}></PageHeader>
         
-            <div className="main">
+            <div style={{fontWeight:'500', fontSize:'43px', textAlign:'center', fontFamily:'monospace', marginTop:'30px'}}>
                 Create a User
             </div>
 

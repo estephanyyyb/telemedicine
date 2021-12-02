@@ -40,12 +40,13 @@ const NewReports = (props) => {
 
     //this is what sends files to Firebase Storage
     storage.ref(`/images/${image.name}`).put(image)
-      .on("state_changed", alert("success"), alert, () => {
+      .on("state_changed", alert("Report has been successfully uploaded"), alert, () => {
 
         // Getting Download Link
         storage.ref("images").child(image.name).getDownloadURL()
           .then((url) => {
             setUrl(url);
+            console.log('url');
           })
       });
   }
@@ -65,6 +66,9 @@ const NewReports = (props) => {
         alert(err.message);
       })
   }
+
+  
+  
   return (
     <div className="App">
       <PageHeader currentUser={props.currentUser}></PageHeader>
@@ -96,8 +100,8 @@ const NewReports = (props) => {
                         <TableBody >
                             {data.map((val) => (
                                 <TableRow key={val}>
-                                    <TableCell style={{width:'800px'
-                                          ,  fontSize:'20px', fontWeight:'bold', textAlign: 'center'}} ><div className={styles['rows1']}>{val}</div></TableCell>
+                                    <TableCell style={{width:'800px', fontSize:'20px', fontWeight:'bold', textAlign: 'center'}} >
+                                      {val}</TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
@@ -107,7 +111,10 @@ const NewReports = (props) => {
                         {/* {URL.map(URL => <td> {URL} </td>)} */}
                     
             </div>
+
+            
           }
+         
 
         </center>
       </div>

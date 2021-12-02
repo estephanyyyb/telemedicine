@@ -8,6 +8,19 @@ export const onCreateUser = /* GraphQL */ `
       email
       given_name
       family_name
+      appointments {
+        items {
+          id
+          email
+          patientDate
+          doctorReason
+          doctorNotes
+          approval
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -20,6 +33,19 @@ export const onUpdateUser = /* GraphQL */ `
       email
       given_name
       family_name
+      appointments {
+        items {
+          id
+          email
+          patientDate
+          doctorReason
+          doctorNotes
+          approval
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -32,6 +58,94 @@ export const onDeleteUser = /* GraphQL */ `
       email
       given_name
       family_name
+      appointments {
+        items {
+          id
+          email
+          patientDate
+          doctorReason
+          doctorNotes
+          approval
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateAppointments = /* GraphQL */ `
+  subscription OnCreateAppointments {
+    onCreateAppointments {
+      id
+      email
+      patientDate
+      doctorReason
+      doctorNotes
+      approval
+      userObject {
+        id
+        email
+        given_name
+        family_name
+        appointments {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateAppointments = /* GraphQL */ `
+  subscription OnUpdateAppointments {
+    onUpdateAppointments {
+      id
+      email
+      patientDate
+      doctorReason
+      doctorNotes
+      approval
+      userObject {
+        id
+        email
+        given_name
+        family_name
+        appointments {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteAppointments = /* GraphQL */ `
+  subscription OnDeleteAppointments {
+    onDeleteAppointments {
+      id
+      email
+      patientDate
+      doctorReason
+      doctorNotes
+      approval
+      userObject {
+        id
+        email
+        given_name
+        family_name
+        appointments {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }

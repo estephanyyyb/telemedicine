@@ -49,18 +49,21 @@ const ListUsers = (props) => {
         }
     }
 
+
+    const fullName = props.patientData.given_name + " " + (props.patientData.middle_name ? props.patientData.middle_name + " " : " ") + props.patientData.family_name;
     return (
         <div className="App">
             <PageHeader currentUser={props.currentUser}></PageHeader>
-            <div className="main1">
-            All Users in Health-T
-        </div>
+            <div style={{fontWeight:'500', fontSize:'43px', textAlign:'center', fontFamily:'monospace', marginTop:'30px'}}>
+                All Users in Health-T
+            </div>
             <div className="home__table">
                 <div className="columnsMain">
-                    <TableContainer component={Paper}>
-                        <Table aria-label="simple table">
+                    <TableContainer >
+                        <Table style={{marginTop: '0px'}} aria-label="simple table">
                             <TableHead className="tbHead">
                                 <TableRow >
+                                <TableCell className="tablecell1" ><div className="columns1">ID</div></TableCell>
                                     <TableCell className="tablecell1" ><div className="columns1">Name</div></TableCell>
                                     <TableCell className="tablecell1"><div className="columns1">Email</div></TableCell>
                                     {/* <TableCell className="tablecell1"><div className="columns1">Last Name</div></TableCell> */}
@@ -70,6 +73,9 @@ const ListUsers = (props) => {
                             <TableBody className="tBody">
                                 {users.map((row) => (
                                     <TableRow key={row?.user}>
+                                        <TableCell component="th" scope="row"> <div className="rows1">
+                                            {row?.id} </div>
+                                        </TableCell>
                                         <TableCell ><div className="rows1">{row?.given_name + " " + row?.family_name}</div></TableCell>
                                         <TableCell component="th" scope="row"> <div className="rows1">
                                             {row?.email} </div>

@@ -4,4 +4,14 @@ type User @model
   email: String!
   given_name: String!
   family_name: String!
+  appointments: [Appointments]! @connection(name: "UserAppointment", keyField: "userEmail")
+}
+
+type Appointments @model {
+  email: String!
+  patientDate: String!
+  doctorReason: String!
+  doctorNotes: String
+  approval: Boolean!
+  userObject: User! @connection(name: "UserAppointment", keyField: "userEmail")
 }

@@ -8,6 +8,15 @@
     background-color: #7ec4e8;
 }
 
+.name2{
+	/* font-weight:bold;  */
+	font-weight: 500;
+    font-size: 43px;
+    text-align: center;
+	font-family: monospace;
+	margin-top: 30px;
+}
+
 .columnsMain{
     height: 700px;
     margin: 30px 30px 30px 30px;

@@ -11,6 +11,19 @@ export const createUser = /* GraphQL */ `
       email
       given_name
       family_name
+      appointments {
+        items {
+          id
+          email
+          patientDate
+          doctorReason
+          doctorNotes
+          approval
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -26,6 +39,19 @@ export const updateUser = /* GraphQL */ `
       email
       given_name
       family_name
+      appointments {
+        items {
+          id
+          email
+          patientDate
+          doctorReason
+          doctorNotes
+          approval
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -41,6 +67,103 @@ export const deleteUser = /* GraphQL */ `
       email
       given_name
       family_name
+      appointments {
+        items {
+          id
+          email
+          patientDate
+          doctorReason
+          doctorNotes
+          approval
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createAppointments = /* GraphQL */ `
+  mutation CreateAppointments(
+    $input: CreateAppointmentsInput!
+    $condition: ModelAppointmentsConditionInput
+  ) {
+    createAppointments(input: $input, condition: $condition) {
+      id
+      email
+      patientDate
+      doctorReason
+      doctorNotes
+      approval
+      userObject {
+        id
+        email
+        given_name
+        family_name
+        appointments {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateAppointments = /* GraphQL */ `
+  mutation UpdateAppointments(
+    $input: UpdateAppointmentsInput!
+    $condition: ModelAppointmentsConditionInput
+  ) {
+    updateAppointments(input: $input, condition: $condition) {
+      id
+      email
+      patientDate
+      doctorReason
+      doctorNotes
+      approval
+      userObject {
+        id
+        email
+        given_name
+        family_name
+        appointments {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteAppointments = /* GraphQL */ `
+  mutation DeleteAppointments(
+    $input: DeleteAppointmentsInput!
+    $condition: ModelAppointmentsConditionInput
+  ) {
+    deleteAppointments(input: $input, condition: $condition) {
+      id
+      email
+      patientDate
+      doctorReason
+      doctorNotes
+      approval
+      userObject {
+        id
+        email
+        given_name
+        family_name
+        appointments {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
