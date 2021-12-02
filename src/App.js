@@ -55,6 +55,7 @@ const App = () => {
   }, []);
 
   var patientBucketConditional = "/recordings/patient";
+  var patientReportBucketConditional = '/reports/patient';
 
   function Home() {
     if ((user['signInUserSession']['accessToken']['payload']['cognito:groups'] === undefined) || (user['signInUserSession']['accessToken']['payload']['cognito:groups'] === 0)) {
@@ -73,6 +74,10 @@ const App = () => {
       if(user.attributes.sub == 'f4a29157-2edb-47fa-84fe-5f0028c4e51e') { 
         console.log('yes');
         patientBucketConditional = "/recordings/patient2"; }
+      // if(user.attributes.sub == '8814cfec-5190-4d0c-b5c4-9ba12f08856e'){
+      //   console.log('This is for patient Taylor Swift');
+      //   patientReportBucketConditional = '/reports/patient1reports'
+      // }
       return (
         <div className="App">
           <nav className="navbar navbar-light bg-light">
@@ -306,7 +311,7 @@ const App = () => {
           </nav>
           <div className={`d-flex justify-content-evenly navbar ${style['primary-color']}`}>
             <a href="/createuser"><button type="button" className={`btn btn-secondary ${style['btn-sm']}`} >Add</button></a>
-            <a href="/deleteusers"><button type="button" className={`btn btn-secondary ${style['btn-sm']}`}>Delete</button></a>
+            <a href="/reports"><button type="button" className={`btn btn-secondary ${style['btn-sm']}`}>Reports</button></a>
             <a href="/listusers"><button type="button" className={`btn btn-secondary ${style['btn-sm']}`}>View All</button></a>
             <a type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/chat">Chat</a>
           </div>
@@ -327,7 +332,7 @@ const App = () => {
               <div className={style.dot}><img id={style['center-icons1']} src={removeUserIcon} alt="" width="105" height="100" />
               </div>
               <div className={style.textbox}>
-                <a href="/deleteusers"><h3 className={style.h3}>Delete A User (Under Construction)</h3></a>
+              <a href="/reports"><h3 className={style.h3}>View Patient Reports</h3></a>
               </div>
             </div>
           </div>

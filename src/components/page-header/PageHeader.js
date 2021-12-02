@@ -150,7 +150,7 @@ const RenderAdminView = (props) => {
           </nav>
           <div className={`d-flex justify-content-evenly navbar ${style['primary-color']}`}>
             <a href="/createuser"><button type="button" className={`btn btn-secondary ${style['btn-sm']}`} >Add</button></a>
-            <a href="/deleteusers"><button type="button" className={`btn btn-secondary ${style['btn-sm']}`}>Delete</button></a>
+            <a href="/reports"><button type="button" className={`btn btn-secondary ${style['btn-sm']}`}>Reports</button></a>
             <a href="/listusers"><button type="button" className={`btn btn-secondary ${style['btn-sm']}`}>View All</button></a>
             <a type="button" className={`btn btn-secondary ${style['btn-sm']}`} href="/chat">Chat</a>
           </div>

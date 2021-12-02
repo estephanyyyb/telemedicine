@@ -121,7 +121,7 @@ const PatientReport = (props) => {
 
             <PageHeader currentUser={props.currentUser}></PageHeader>
             <div className={style['name2']}>
-                REPORTS
+                Reports
             </div>
 
             <TableContainer component={Paper}>
@@ -169,26 +169,14 @@ const PatientReport = (props) => {
                 </Table>
             </TableContainer>
             <br />
-            {/* <button onClick={() => getFromFirebase()}>
-            Get Images from Firebase
-          </button> */}
-            {/* {
-             
-              URL.map((URL) => {
-                 
-                      <div key={URL}>
-                    <img src={URL}/>
-                    </div>
-                  
-              } )
-          } */}
             <div style={{ marginLeft: '40px', marginRight: '30px', marginTop: '30px', marginBottom: '30px' }} className="home__table">
                 <div className={styles['columnsMain1']}>
                     <TableContainer style={{ boxShadow: 'none' }} component={Paper}>
 
                         <TableHead className="tbHead">
                             <TableRow >
-                                <TableCell style={{fontSize: '35px', textAlign:'center', fontWeight:'bold'}} className="tablecell1" ><div className={styles['columns1']}>All of {fullName}'s Reports</div></TableCell>
+                                <TableCell style={{fontSize: '35px', textAlign:'center', fontWeight:'bold'}} className="tablecell1" >
+                                    <div className={styles['columns1']}>{fullName}'s Reports</div></TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody className="tBody">
@@ -198,10 +186,6 @@ const PatientReport = (props) => {
                                 </TableRow>
                             ))}
                         </TableBody>
-                        {/* {name.map(name => <td> {name} </td>)} */}
-                        {/* {time.map(time => <td> {time} </td>)} */}
-                        {/* {size.map(size => <td> {size} </td>)} */}
-                        {/* {URL.map(URL => <td> {URL} </td>)} */}
                     </TableContainer>
                 </div>
             </div>
