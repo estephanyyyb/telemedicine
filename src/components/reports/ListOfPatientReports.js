@@ -47,6 +47,12 @@ const ListOfPatientReports = (props) => {
 				})
 			})
 	}, [])
+
+	const linkURLs = () =>{
+		let url2 = document.createElement('a');
+		url2.textContent = URL;
+		url2.href=URL;
+	}
 	return (
 		<div className="App">
 			<PageHeader currentUser={props.currentUser}></PageHeader>
@@ -57,20 +63,23 @@ const ListOfPatientReports = (props) => {
 
                         <TableHead className="tbHead">
                             <TableRow >
-                                <TableCell style={{fontSize: '35px', textAlign:'center', fontWeight:'bold'}} className="tablecell1" ><div className={styles['columns1']}>All Patient's Reports</div></TableCell>
+                                <TableCell style={{fontSize: '35px', textAlign:'center', fontWeight:'bold', width: '1350px'}} className="tablecell1" ><div className={styles['columns1']}>All Patient's Reports</div></TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody  className="tBody">
                             {URL.map((URL) => (
                                 <TableRow key={URL}>
-                                    <TableCell style={{textAlign:'center'}} ><div className={styles['rows1']}>{URL}</div></TableCell>
+                                    <TableCell style={{textAlign:'center'}} > <a href={URL}>{URL}</a></TableCell>
                                 </TableRow>
                             ))}
+							{/* {
+                                <TableRow>
+                                    <TableCell>
+                            <a href="https://firebasestorage.googleapis.com/v0/b/telemedicine-report.appspot.com/o/images%2FReport2_TaylorSwift.pdf?alt=media&token=9333daeb-a229-4739-8afc-13867cce342">link</a>
+                            </TableCell>
+                            </TableRow>} */}
                         </TableBody>
-                        {/* {name.map(name => <td> {name} </td>)} */}
-                        {/* {time.map(time => <td> {time} </td>)} */}
-                        {/* {size.map(size => <td> {size} </td>)} */}
-                        {/* {URL.map(URL => <td> {URL} </td>)} */}
+                        
                     </TableContainer>
                 </div>
             </div>
