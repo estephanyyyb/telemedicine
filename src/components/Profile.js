@@ -91,12 +91,12 @@ class Profile extends React.Component {
                                     <br/>
                                     <hr/>
                                     <h5>Ethnicity</h5>
-                                    <label className={profileStyle.label}>{(this.props.userData["custom:ethnicity"]).toUpperCase()}</label>
+                                    <label className={profileStyle.label}>{(this.props.userData["custom:ethnicity"])}</label>
                                     <br/>
                                     <br/>
                                     <hr/>
                                     <h5>Marital Status</h5>
-                                    <label className={profileStyle.label}>{(this.props.userData["custom:marital-status"]).toUpperCase()}</label>
+                                    <label className={profileStyle.label}>{(this.props.userData["custom:marital-status"])}</label>
                                     <br/>
                                     <br/>
                                     <hr/>
