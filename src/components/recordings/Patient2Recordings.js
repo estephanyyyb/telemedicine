@@ -87,11 +87,11 @@ const buildTable = () => {
     timeCreatedColumn.innerText = time[i];
     let sizeColumn = document.createElement('td');
     sizeColumn.innerText = size[i];
-    // let urlColumn = document.createElement('a');
-    // urlColumn.textContent = URL[i];
-    // urlColumn.href = URL[i];
-    let urlColumn = document.createElement('td');
-    urlColumn.innerText = URL[i];
+    let urlColumn = document.createElement('a');
+    urlColumn.textContent = 'download';
+    urlColumn.href = URL[i];
+    // let urlColumn = document.createElement('td');
+    // urlColumn.innerText = URL[i];
 
     recordingsRow.append(numColumn, fileNameColumn, timeCreatedColumn, sizeColumn, urlColumn);
     tableID.append(recordingsRow);
