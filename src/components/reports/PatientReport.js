@@ -34,7 +34,7 @@ else {
 var storage = firebase.storage();
 
 const PatientReport = (props) => {
-    const [URL2, setURL2] = useState("");
+    // const [URL2, setURL2] = useState("");
     const [URL, setURLArray] = useState([]); //declare URL array
 
 
@@ -169,9 +169,12 @@ const PatientReport = (props) => {
                 </Table>
             </TableContainer>
             <br />
-            <div style={{ marginLeft: '40px', marginRight: '30px', marginTop: '30px', marginBottom: '30px' }} className="home__table">
+
+
+
+            <div style={{ marginLeft: '170px', marginRight: '170px', marginTop: '30px', marginBottom: '30px' }} className="home__table">
                 <div className={styles['columnsMain1']}>
-                    <TableContainer style={{ boxShadow: 'none' }} component={Paper}>
+                    <TableContainer style={{ boxShadow: 'none',  }} component={Paper}>
 
                         <TableHead className="tbHead">
                             <TableRow >
@@ -182,10 +185,11 @@ const PatientReport = (props) => {
                         <TableBody className="tBody">
                             {URL.map((URL) => (
                                 <TableRow key={URL}>
-                                    <TableCell ><div className={styles['rows1']}>{URL}</div></TableCell>
+                                    <TableCell ><div className={styles['rows1']}><a href={URL}>{URL}</a></div></TableCell>
                                 </TableRow>
                             ))}
-                        </TableBody>
+                            
+                            </TableBody>
                     </TableContainer>
                 </div>
             </div>
