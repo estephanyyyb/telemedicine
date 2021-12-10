@@ -78,22 +78,10 @@
   
   .chat-title-container {
     width: calc(100% - 36px);
-    padding: 18px;
+    padding: 12px;
     text-align: center;
   }
   
-  .chat-title {
-    color: #000000;
-    font-weight: 800;
-    font-size: 24px;
-  }
-  
-  .chat-subtitle {
-    color: #7554a0;
-    font-weight: 600;
-    font-size: 12px;
-    padding-top: 4px;
-  }
   
   .message-row {
     float: left;
