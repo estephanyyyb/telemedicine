@@ -360,7 +360,11 @@ function CreateNurseApptList(props) {
 }
 
 function approve(mess) {
-  alert(mess + ' yay');
+  if(mess === 'Approve') {
+    alert('Approved');
+  } else {
+    alert('Denied');
+  }
 }
 
 export default Appointments;
