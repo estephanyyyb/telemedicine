@@ -11,15 +11,15 @@ import FormFunction from './FormFunction';
 
 const listAppointments = `query listAppointments {
   listAppointments{
-      items{
-          id
-          patient
-          doctor
-          date
-          reason
-          notes
-          approval
-      }
+    items{
+      id
+      patient
+      doctor
+      date
+      reason
+      notes
+      approval
+    }
   }
 }`;
 
@@ -37,13 +37,14 @@ function Appointments(props){
 
   async function fetchUsers() {
       try {
-          const userData = await API.graphql(graphqlOperation(listAppointments));
-          const users = userData.data.listAppointments.items;
+        const userData = await API.graphql(graphqlOperation(listAppointments));
+        const users = userData.data.listAppointments.items;
 
-          console.log(users);
-          setUsers(users);
+        console.log(users);
+        setUsers(users);
       } catch (err) {
-          console.log('error fetching appointments');
+        console.log(err);
+        console.log('error fetching appointments');
       }
   }
 
@@ -337,7 +338,7 @@ function CreateNurseApptList(props) {
       
       str += "<div style='display: flex; flex-wrap: wrap;'><h4 style='margin-left:10px'>Reason: " + appointment[i].reason + "</h4><div style='width:100%'></div></div>";
       str += "<div style='display: flex; flex-wrap: wrap;'><p style='margin-left:10px'> Notes: " + appointment[i].notes + "</p></div>";
-      str += "<div style='display:flex; flex-wrap: wrap;'><button id='approve'>Approve</button><button>Deny</button></div></div>";
+      str += "<div style='display:flex; flex-wrap: wrap;'><button id=" + appointment[i].id +">Approve</button><button id=" + appointment[i].id + ">Deny</button></div></div>";
     }
   }
   
@@ -346,11 +347,11 @@ function CreateNurseApptList(props) {
         replace: domNode => {
           if (domNode.attribs && domNode.name === 'button' ) {
           	delete domNode.attribs.onclick;
-            console.log(domNode.children[0].data)
+            console.log(domNode)
             return (
               <button
                 {...domNode.attribs}
-                onClick={() => { approve(domNode.children[0].data) }}
+                onClick={() => { approve(domNode) }}
                 style={{backgroundColor:'#7EC4E8', border:'none', margin:5, padding:5, borderRadius:5, width:75}}
               >{domNode.children[0].data}</button>
             );
@@ -361,7 +362,7 @@ function CreateNurseApptList(props) {
 }
 
 function approve(mess) {
-  if(mess === 'Approve') {
+  if(mess.children[0].data === 'Approve') {
     alert('Approved');
   } else {
     alert('Denied');

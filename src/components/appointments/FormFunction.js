@@ -109,7 +109,7 @@ const FormFunction = (props) => {
         <form style={{margin:15, display:'flex', flexWrap:'wrap'}} onSubmit={handleSubmit}>
           <div>
               <label>Date: </label>
-              <input type="datetime-local" name="date" value="2021-12-20T08:00" style={{maxWidth:300}} onChange={handleChange("date")}></input>
+              <input type="datetime-local" name="date" defaultValue="2021-12-20T08:00" style={{maxWidth:300}} onChange={handleChange("date")}></input>
           </div><div style={{width:'100%'}}/>
           {/* <div style={{marginTop:0}}>
               <label>Time: </label>
