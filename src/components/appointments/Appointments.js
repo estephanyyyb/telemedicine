@@ -7,6 +7,7 @@ import Form from './Form';
 import drs from './drs.json';
 import React, { useState, useEffect } from 'react';
 import { API, graphqlOperation } from "aws-amplify";
+import FormFunction from './FormFunction';
 
 const listAppointments = `query listAppointments {
   listAppointments{
@@ -86,7 +87,7 @@ function Appointments(props){
                         <h3 id="year" className={apptStyle.contentTitle}>Request an Appointment</h3>
                       </div>
                       <div>
-                        <Form patientEmail={email} currentIndex={currentIndex}/>
+                        <FormFunction patientEmail={email} currentIndex={currentIndex}/>
                       </div>
                   </div>
               </div>
