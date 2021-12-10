@@ -12,22 +12,24 @@ const listAppointments = `query listAppointments {
   listAppointments{
       items{
           id
-          email
+          patient
+          doctor
+          date
+          reason
+          notes
           approval
-          doctorNotes
-          doctorReason
-          patientDate
       }
   }
 }`;
 
-const initialState = { id: '', email: '', approval: '', doctorNotes: '', doctorReason: '', patientDate: ''};
+const initialState = { id: '', patient: '', doctor: '', date: '', reason: '', notes: '', approval: ''};
+var currentIndex = 0;
 
 function Appointments(props){
   const email = props.patientData.email;
 
   const [formState, setFormState] = useState(initialState);
-  const [users, setUsers] = useState([]);
+  const [appts, setUsers] = useState([]);
   useEffect(() => {
       fetchUsers();
   }, []);
@@ -40,12 +42,21 @@ function Appointments(props){
           console.log(users);
           setUsers(users);
       } catch (err) {
-          console.log('error fetching users');
+          console.log('error fetching appointments');
       }
+  }
+
+  function setidx() {
+    for(var i = 0; i < appts.length; i++) {
+      if(appts[i].id > currentIndex) {
+        currentIndex = parseInt(appts[i].id);
+      }
+    }
   }
 
   // render (){
     if(props.currentUser['signInUserSession']['accessToken']['payload']['cognito:groups'][0] === 'patients') {
+      setidx();
       return (
         <div className="App">
 
@@ -64,7 +75,7 @@ function Appointments(props){
                       <div style={{height: '83%', overflowY: 'scroll'}}>
                         <div className="appt" id="appt1">
                             {/* <div className="appt" id="appt1" style="display: flex; flex-wrap: wrap; border: solid; margin: 15px; border-radius: 5px; border-width: 1.5px; border-color: gray;"> */}
-                            <CreateApptList users={users} email={email} userType="patient"/>
+                            <CreateApptList appts={appts} email={email} userType="patient"/>
                             {/* </div> */}
                         </div>
                       </div>
@@ -75,7 +86,7 @@ function Appointments(props){
                         <h3 id="year" className={apptStyle.contentTitle}>Request an Appointment</h3>
                       </div>
                       <div>
-                        <Form/>
+                        <Form patientEmail={email} currentIndex={currentIndex}/>
                       </div>
                   </div>
               </div>
@@ -83,6 +94,7 @@ function Appointments(props){
         </div>
       );
     } else if (props.currentUser['signInUserSession']['accessToken']['payload']['cognito:groups'][0] === 'doctors') {
+      setidx();
       return (
         <div className="App">
 
@@ -101,7 +113,7 @@ function Appointments(props){
                       <div style={{height: '83%', overflowY: 'scroll'}}>
                         <div className="appt" id="appt1">
                             {/* <div className="appt" id="appt1" style="display: flex; flex-wrap: wrap; border: solid; margin: 15px; border-radius: 5px; border-width: 1.5px; border-color: gray;"> */}
-                            <CreateApptList users={users} email={email} userType="doctor"/>
+                            <CreateApptList appts={appts} email={email} userType="doctor"/>
                             {/* </div> */}
                         </div>
                       </div>
@@ -111,6 +123,7 @@ function Appointments(props){
         </div>
       );
     } else if(props.currentUser['signInUserSession']['accessToken']['payload']['cognito:groups'][0] === 'nurses') {
+      setidx();
       return (
         <div className="App">
 
@@ -129,7 +142,7 @@ function Appointments(props){
                       <div style={{height: '83%', overflowY: 'scroll'}}>
                         <div className="appt" id="appt1">
                             {/* <div className="appt" id="appt1" style="display: flex; flex-wrap: wrap; border: solid; margin: 15px; border-radius: 5px; border-width: 1.5px; border-color: gray;"> */}
-                            <CreateApptList users={users} email={email} userType="doctor"/>
+                            <CreateNurseApptList appts={appts} email={email} userType="doctor"/>
                             {/* </div> */}
                         </div>
                       </div>
@@ -149,7 +162,7 @@ function CreateApptList(props) {
   // const daysOfWeek = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
   let ampm = "AM";
 
-  var appointment = props.users;
+  var appointment = props.appts;
   // console.log(drs[1]);
 
   appointment.sort(function(ax, bx) {
@@ -191,7 +204,7 @@ function CreateApptList(props) {
   var str = "";
   for(var i = 0; i < appointment.length; i++) {
     var a = parseDate(appointment[i]);
-    if(props.email === appointment[i].email && appointment[i].approval) {
+    if( ((props.email === appointment[i].patient) || (props.email === appointment[i].doctor)) && appointment[i].approval) {
       str += '<div style=" border: solid; margin: 15px; border-radius: 5px; border-width: 1.5px; border-color: gray;">' +
       "<div style='display: flex; flex-wrap: wrap;'><div style='margin-left:10px'><h4>";
       str += months[a.month - 1] + " " + a.day + ", " + a.year + "</h4></div>";
@@ -208,14 +221,14 @@ function CreateApptList(props) {
       if(a.minute === 0) str += "0";
       str += " " + ampm + "</h4></div></div>";
       
-      if(props.userType === 'patient') {
-        str += "<div style='display: flex; flex-wrap: wrap;'><div style='margin-left:10px'><h4>" + appointment[i].email + "</h4></div><div style='width:100%'></div></div>";
-      } else if (props.userType === 'doctor') {
-        str += "<div style='display: flex; flex-wrap: wrap;'><div style='margin-left:10px'><h4>" + appointment[i].doctorEmail + "</h4></div><div style='width:100%'></div></div>";
+      if(props.userType === 'doctor') {
+        str += "<div style='display: flex; flex-wrap: wrap;'><div style='margin-left:10px'><h4>" + appointment[i].patient + "</h4></div><div style='width:100%'></div></div>";
+      } else if (props.userType === 'patient') {
+        str += "<div style='display: flex; flex-wrap: wrap;'><div style='margin-left:10px'><h4>" + appointment[i].doctor + "</h4></div><div style='width:100%'></div></div>";
       }
       
-      str += "<div style='display: flex; flex-wrap: wrap;'><h4 style='margin-left:10px'>Reason: " + appointment[i].doctorReason + "</h4><div style='width:100%'></div></div>";
-      str += "<div style='display: flex; flex-wrap: wrap;'><p style='margin-left:10px'> Notes: " + appointment[i].doctorNotes + "</p></div></div>"
+      str += "<div style='display: flex; flex-wrap: wrap;'><h4 style='margin-left:10px'>Reason: " + appointment[i].reason + "</h4><div style='width:100%'></div></div>";
+      str += "<div style='display: flex; flex-wrap: wrap;'><p style='margin-left:10px'> Notes: " + appointment[i].notes + "</p></div></div>"
     }
   }
   
@@ -226,11 +239,11 @@ function CreateApptList(props) {
 
 function replaceEmailWithName(appointment) {
   for(let appt = 0; appt < appointment.length; appt++) {
-    var dremail = appointment[appt].email;
+    var dremail = appointment[appt].doctor;
     // console.log(dremail);
     for(let dr = 0; dr < drs.length; dr++) {
       if(drs[dr].email === dremail) {
-        appointment[appt].email = drs[dr].name;
+        appointment[appt].doctor = drs[dr].name;
         break;
       }
     }
@@ -238,15 +251,15 @@ function replaceEmailWithName(appointment) {
 }
 
 function parseDate(appointment) {
-  var s = "2021-12-21T17:42:34Z";
+  var s = "2021-12-21T17:42";
   if(appointment) {
     // console.log(appointment);
-    var y = appointment.patientDate.substring(0, 4);
-    var mo = appointment.patientDate.substring(5, 7);
-    var d = appointment.patientDate.substring(8, 10);
-    var h = appointment.patientDate.substring(11, 13);
-    var min = appointment.patientDate.substring(14, 16);
-    console.log(min);
+    var y = appointment.date.substring(0, 4);
+    var mo = appointment.date.substring(5, 7);
+    var d = appointment.date.substring(8, 10);
+    var h = appointment.date.substring(11, 13);
+    var min = appointment.date.substring(14, 16);
+    // console.log(min);
     h = parseInt(h);
     mo = parseInt(mo);
     y = parseInt(y);
@@ -262,10 +275,10 @@ function CreateNurseApptList(props) {
   // const daysOfWeek = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
   let ampm = "AM";
 
-  var appointment = props.users;
+  var appointment = props.appts;
   // console.log(drs[1]);
 
-  appointments.sort(function(a, b) {
+  appointment.sort(function(a, b) {
     let compareYr = a.year - b.year;
     let compareMo = a.month - b.month;
     let compareDay = a.day - b.day;
@@ -318,17 +331,36 @@ function CreateNurseApptList(props) {
       if(a.minute === 0) str += "0";
       str += " " + ampm + "</h4></div></div>";
       
-      str += "<div style='display: flex; flex-wrap: wrap;'><div style='margin-left:10px'><h4>Patient: " + appointment[i].email + "</h4></div><div style='width:100%'></div></div>";
-      str += "<div style='display: flex; flex-wrap: wrap;'><div style='margin-left:10px'><h4>Doctor: " + appointment[i].doctorEmail + "</h4></div><div style='width:100%'></div></div>";
+      str += "<div style='display: flex; flex-wrap: wrap;'><div style='margin-left:10px'><h4>Patient: " + appointment[i].patient + "</h4></div><div style='width:100%'></div></div>";
+      str += "<div style='display: flex; flex-wrap: wrap;'><div style='margin-left:10px'><h4>Doctor: " + appointment[i].doctor + "</h4></div><div style='width:100%'></div></div>";
       
-      str += "<div style='display: flex; flex-wrap: wrap;'><h4 style='margin-left:10px'>Reason: " + appointment[i].doctorReason + "</h4><div style='width:100%'></div></div>";
-      str += "<div style='display: flex; flex-wrap: wrap;'><p style='margin-left:10px'> Notes: " + appointment[i].doctorNotes + "</p></div></div>"
+      str += "<div style='display: flex; flex-wrap: wrap;'><h4 style='margin-left:10px'>Reason: " + appointment[i].reason + "</h4><div style='width:100%'></div></div>";
+      str += "<div style='display: flex; flex-wrap: wrap;'><p style='margin-left:10px'> Notes: " + appointment[i].notes + "</p></div>";
+      str += "<div style='display:flex; flex-wrap: wrap;'><button id='approve'>Approve</button><button>Deny</button></div></div>";
     }
   }
   
   return(
-      <div>{parse (str)}</div>
+      <div>{parse(str, {
+        replace: domNode => {
+          if (domNode.attribs && domNode.name === 'button' ) {
+          	delete domNode.attribs.onclick;
+            console.log(domNode.children[0].data)
+            return (
+              <button
+                {...domNode.attribs}
+                onClick={() => { approve(domNode.children[0].data) }}
+                style={{backgroundColor:'#7EC4E8', border:'none', margin:5, padding:5, borderRadius:5, width:75}}
+              >{domNode.children[0].data}</button>
+            );
+          }
+        }
+      })}</div>
   );
+}
+
+function approve(mess) {
+  alert(mess + ' yay');
 }
 
 export default Appointments;

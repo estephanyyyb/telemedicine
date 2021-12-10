@@ -6,5 +6,9 @@
     {
         "email": "exampleuser@example.com",
         "name": "Dr. Jackson"
+    },
+    {
+        "email": "yshidhay@students.kennesaw.edu",
+        "name": "Dr. Test"
     }
 ]

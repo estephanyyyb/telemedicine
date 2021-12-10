@@ -124,3 +124,7 @@
 .dayOfWeek {
   text-align: center;
 }
+
+input {
+  margin-left: 0px;
+}
